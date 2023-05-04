@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var isMoving: [String] = Array(repeating: "", count: 12)
-    @State var isPlaying = true
+    @State var isFlipped = UserDefaults.standard.array(forKey: "_isFlipped") as! [Bool]
     
     var body: some View {
         VStack {
@@ -45,11 +44,14 @@ struct MainView: View {
                                 .frame(width: getWidth() * 0.18, height: getWidth() * 0.24)
                                 .cornerRadius(7)
                                 .flipped()
-                                .opacity(isMoving[index] != "" ? 1 : 0)
+                                .opacity(isFlipped[index] != false ? 1 : 0)
                         }
-                        .rotation3DEffect(.init(degrees: isMoving[index] != "" ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
+                        .rotation3DEffect(.init(degrees: isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
                         .onTapGesture(perform: { withAnimation(Animation.easeInOut(duration: 0.5)) {
-                            if isMoving[index] == "" { isMoving[index] = "." }
+                            if isFlipped[index] == false {
+                                isFlipped[index] = true
+                                UserDefaults.standard.set(isFlipped, forKey: "_isFlipped")
+                            }
                         }})
                     }
                 }
