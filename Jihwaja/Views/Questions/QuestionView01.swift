@@ -35,6 +35,8 @@ struct QuestionView01: View {
             // 저장 버튼
             Button(action:{
                 // MainView 로 넘어가는 코드
+                
+                // 첫 번째 답변 저장
             }){
                 // name.isEmpty == false 이면 isActive true
                 StoreButtonView(isActive: !name.isEmpty)
@@ -42,10 +44,15 @@ struct QuestionView01: View {
             
         }
         .onAppear {
-            // View가 로드될 때 키보드를 자동으로 띄워준다
+            // View가 로드될 때 키보드를 자동으로 띄워줌
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
             }
+        }
+        
+        .onTapGesture {
+            // 키보드 외 영역 터치 시 키보드를 내리도록 함
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
 
     }
