@@ -1,5 +1,5 @@
 //
-//  Question.swift
+//  QuestionView.swift
 //  Jihwaja
 //
 //  Created by SY AN on 2023/05/04.
@@ -8,12 +8,13 @@
 import SwiftUI
 
 
-struct Question: View {
+struct QuestionView: View {
     var question: String
     var body: some View {
         VStack{
             Text(question)
-                .font(.title2)
+                .font(.title)
+                .fontWeight(.bold)
                 .multilineTextAlignment(.center)
         }
         .padding(.top, getWidth() * 0.25)
@@ -21,8 +22,8 @@ struct Question: View {
     }
 }
 
-struct Question_Previews: PreviewProvider {
+struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        Question(question:"❓우리와 함께하고 있는\n당신의 이름은 무엇인가요?")
+        QuestionView(question:"❓우리와 함께하고 있는\n당신의 이름은 무엇인가요?")
     }
 }
