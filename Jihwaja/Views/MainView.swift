@@ -64,11 +64,10 @@ struct MainView: View {
             }
             .padding(.top, getWidth() * 0.04)
             .padding(.bottom, getWidth() * 0.12)
-        }.frame(width: getWidth() * 0.76)
-    }
-    
-    func getWidth() -> CGFloat {
-        return UIScreen.main.bounds.width
+        }
+        .frame(width: getWidth() * 0.76)
+        .navigationBarHidden(true)
+        
     }
 }
 

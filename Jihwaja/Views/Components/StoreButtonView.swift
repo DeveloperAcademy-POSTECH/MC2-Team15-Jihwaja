@@ -8,22 +8,27 @@
 import SwiftUI
 
 struct StoreButtonView: View {
+    // 활성화 시킬건지
     var isActive: Bool
     
     var body: some View {
-        
-            Text("저장하기")
-                .foregroundColor(.white)
-                .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
-                .background(isActive ? Color.green : Color.gray)
-                .cornerRadius(15)
-                .padding(.top, getWidth() * 0.04)
-                .padding(.bottom, getWidth() * 0.1)
+        NavigationLink(destination:MainView()){
+            Button("저장하기"){
+                
+            }
+            .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
+            // 버튼이 활성화되면 초록색, 비활성화되면 회색 배경색
+            .background(isActive ? Color.green : Color.gray)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+        }
+        // 버튼이 활성화 되어야 MainView로 이동하는 NavigationLink 활성화
+        .disabled(!isActive)
     }
 }
 
 struct StoreButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreButtonView(isActive: false)
+        StoreButtonView(isActive: true)
     }
 }
