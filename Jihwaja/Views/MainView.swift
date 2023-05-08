@@ -10,8 +10,9 @@ import SwiftUI
 struct MainView: View {
     @State var isMoving: [String] = Array(repeating: "", count: 12)
     @State var isPlaying = true
+    
     @State var isActive = false
-  
+    
     var body: some View {
         VStack {
             HStack {
@@ -55,16 +56,6 @@ struct MainView: View {
                     }
                 }
             }
-            
-//            Button {} label: {
-//                Image(systemName: "lock.fill")
-//                    .foregroundColor(.white)
-//                    .frame(width: getWidth() * 0.78, height: getWidth() * 0.12)
-//                    .background(Color.gray)
-//                    .cornerRadius(10)
-//            }
-//            .padding(.top, getWidth() * 0.04)
-//            .padding(.bottom, getWidth() * 0.12)
             Button("아직 11개의 질문이 남아있어요"){
                 
             }
@@ -78,9 +69,12 @@ struct MainView: View {
         }
         .frame(width: getWidth() * 0.76)
         .navigationBarHidden(true)
-        
+
     }
+
 }
+
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
