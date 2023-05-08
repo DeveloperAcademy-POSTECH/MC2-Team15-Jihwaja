@@ -11,7 +11,9 @@ import SwiftUI
 struct JihwajaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            //MainView()
+            QuestionView01()
         }
     }
 }
