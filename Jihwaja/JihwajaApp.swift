@@ -12,7 +12,7 @@ struct JihwajaApp: App {
     var body: some Scene {
         WindowGroup {
             //ContentView()
-            
+            //MainView()
             QuestionView01()
         }
     }
