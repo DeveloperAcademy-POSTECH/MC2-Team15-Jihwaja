@@ -11,7 +11,7 @@ struct MainView: View {
     @State var isMoving: [String] = Array(repeating: "", count: 12)
     @State var isPlaying = true
     @State var isActive = false
-    
+  
     var body: some View {
         VStack {
             HStack {
@@ -65,7 +65,7 @@ struct MainView: View {
 //            }
 //            .padding(.top, getWidth() * 0.04)
 //            .padding(.bottom, getWidth() * 0.12)
-            Button("저장하기"){
+            Button("아직 11개의 질문이 남아있어요"){
                 
             }
             .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
