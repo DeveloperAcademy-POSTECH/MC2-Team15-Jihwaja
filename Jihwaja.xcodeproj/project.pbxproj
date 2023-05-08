@@ -30,7 +30,7 @@
 		9789340F2A035EF20029AD06 /* getWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9789340E2A035EF20029AD06 /* getWidth.swift */; };
 		978934112A035EFB0029AD06 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978934102A035EFB0029AD06 /* QuestionView.swift */; };
 		97F9C9AA2A03C2E900335E65 /* StoreButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F9C9A92A03C2E900335E65 /* StoreButtonView.swift */; };
-		D4149D912A09243400CC47AA /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4149D902A09243400CC47AA /* HalfModalView.swift */; };
+		D4149D932A0925BF00CC47AA /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4149D922A0925BF00CC47AA /* HalfModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +58,7 @@
 		9789340E2A035EF20029AD06 /* getWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getWidth.swift; sourceTree = "<group>"; };
 		978934102A035EFB0029AD06 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		97F9C9A92A03C2E900335E65 /* StoreButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreButtonView.swift; sourceTree = "<group>"; };
-		D4149D902A09243400CC47AA /* HalfModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HalfModalView.swift; path = "../../../../../.Trash/MC2-Team15-Jihwaja 오후 9.28.20/Jihwaja/Views/Components/HalfModalView.swift"; sourceTree = "<group>"; };
+		D4149D922A0925BF00CC47AA /* HalfModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,7 @@
 				9789340E2A035EF20029AD06 /* getWidth.swift */,
 				978934102A035EFB0029AD06 /* QuestionView.swift */,
 				97F9C9A92A03C2E900335E65 /* StoreButtonView.swift */,
-				D4149D902A09243400CC47AA /* HalfModalView.swift */,
+				D4149D922A0925BF00CC47AA /* HalfModalView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -224,7 +224,7 @@
 				4D4418892A013567000EDC42 /* QuestionView06.swift in Sources */,
 				4524FD212A00EB1100A5BC27 /* ContentView.swift in Sources */,
 				4D44188D2A013587000EDC42 /* QuestionView08.swift in Sources */,
-				D4149D912A09243400CC47AA /* HalfModalView.swift in Sources */,
+				D4149D932A0925BF00CC47AA /* HalfModalView.swift in Sources */,
 				4D4418912A013591000EDC42 /* QuestionView10.swift in Sources */,
 				4D4418932A013597000EDC42 /* QuestionView11.swift in Sources */,
 				978934112A035EFB0029AD06 /* QuestionView.swift in Sources */,
