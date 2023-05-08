@@ -19,6 +19,7 @@ struct QuestionView02: View {
                 VStack{
                     Text("네!")  
                         .font(.system(size:(10 * (yes/5))))
+                        .fontWeight(.bold)
                         .foregroundColor(Color("green"))
                 }.frame(width: getWidth(), height: getHeight() * 0.4)
                 Slider(value: $yes,
