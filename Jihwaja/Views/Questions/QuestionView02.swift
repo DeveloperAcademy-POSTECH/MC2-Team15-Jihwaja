@@ -8,8 +8,34 @@
 import SwiftUI
 
 struct QuestionView02: View {
+    @State private var yes = 1.0
+    @State private var isActiveQ2 = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            VStack{
+                QuestionView(question: "🙋🏻‍♀️곽애숙씨는 지금까지\n 진정으로 원하는 삶을 살았나요?")
+                Spacer()
+                VStack{
+                    Text("네!")  
+                        .font(.system(size:(10 * (yes/5))))
+                        .foregroundColor(Color("green"))
+                }.frame(width: getWidth(), height: getHeight() * 0.4)
+                Slider(value: $yes,
+                       in: 1...101,
+                       step: 1
+                )
+                .onChange(of: yes) { _ in
+                    isActiveQ2 = true
+                }
+                .accentColor(Color("green"))
+                
+                Text("\(Int(yes)-1) %")
+
+                StoreButtonView(isActive: isActiveQ2)
+            }
+            .padding(.horizontal)
+        }
     }
 }
 
