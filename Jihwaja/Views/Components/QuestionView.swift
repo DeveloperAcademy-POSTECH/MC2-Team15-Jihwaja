@@ -13,12 +13,13 @@ struct QuestionView: View {
     var body: some View {
         VStack{
             Text(question)
-                .font(.title)
+                .font(.system(size: 22))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
         }
         .padding(.top, getWidth() * 0.25)
         .padding(.bottom, getWidth() * 0.1)
+        .padding(.horizontal, getWidth() * 0.1)
     }
 }
 
