@@ -26,7 +26,7 @@ struct QuestionView06: View {
             if eraseFlag {
                 VStack{
                     QuestionView(question: "⚒️ 곽애숙씨의 고치고 싶은 습관이\n고쳐지길 바라면서 지워주세요")
-                    EraseView(initialHabit: habit)
+                    EraseView(lines: $lines, initialHabit: habit)
                 }
             } else {
                     VStack {
@@ -96,7 +96,7 @@ struct EraseView: View {
     @State var habit : String = ""
     @State var isActive : Bool = false
     
-    @State private var lines = [Line]()
+    @Binding var lines : [Line]
     @State private var deletedLines = [Line]()
     @State private var brushColor: Color = .white
     @State private var brushWidth: CGFloat = 30
