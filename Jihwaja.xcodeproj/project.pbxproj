@@ -12,7 +12,6 @@
 		4524FD232A00EB1200A5BC27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4524FD222A00EB1200A5BC27 /* Assets.xcassets */; };
 		4524FD262A00EB1200A5BC27 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4524FD252A00EB1200A5BC27 /* Preview Assets.xcassets */; };
 		4569EEA32A09DFFD003B1D48 /* DrawingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569EEA22A09DFFD003B1D48 /* DrawingManager.swift */; };
-		4569EEA52A09E02F003B1D48 /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569EEA42A09E02F003B1D48 /* HalfModalView.swift */; };
 		4D4418762A013455000EDC42 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4418752A013454000EDC42 /* MainView.swift */; };
 		4D4418782A013463000EDC42 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4418772A013463000EDC42 /* SplashView.swift */; };
 		4D44187A2A013476000EDC42 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4418792A013476000EDC42 /* OnboardingView.swift */; };
@@ -36,13 +35,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4524FD1B2A00EB1100A5BC27 /* Jihwaja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jihwaja.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4524FD1B2A00EB1100A5BC27 /* Jihwaja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Jihwaja.app; path = "/Users/geee3/Documents/MC2-Team15-Jihwaja/build/Debug-iphoneos/Jihwaja.app"; sourceTree = "<absolute>"; };
 		4524FD1E2A00EB1100A5BC27 /* JihwajaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JihwajaApp.swift; sourceTree = "<group>"; };
 		4524FD202A00EB1100A5BC27 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4524FD222A00EB1200A5BC27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4524FD252A00EB1200A5BC27 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4569EEA22A09DFFD003B1D48 /* DrawingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingManager.swift; sourceTree = "<group>"; };
-		4569EEA42A09E02F003B1D48 /* HalfModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalView.swift; sourceTree = "<group>"; };
 		4D4418752A013454000EDC42 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4D4418772A013463000EDC42 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		4D4418792A013476000EDC42 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -80,16 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				4524FD1D2A00EB1100A5BC27 /* Jihwaja */,
-				4524FD1C2A00EB1100A5BC27 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		4524FD1C2A00EB1100A5BC27 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4524FD1B2A00EB1100A5BC27 /* Jihwaja.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4524FD1D2A00EB1100A5BC27 /* Jihwaja */ = {
@@ -208,7 +197,7 @@
 				Base,
 			);
 			mainGroup = 4524FD122A00EB1100A5BC27;
-			productRefGroup = 4524FD1C2A00EB1100A5BC27 /* Products */;
+			productRefGroup = 4524FD122A00EB1100A5BC27;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -239,7 +228,6 @@
 				4D44188D2A013587000EDC42 /* QuestionView08.swift in Sources */,
 				D4149D932A0925BF00CC47AA /* HalfModalView.swift in Sources */,
 				4D4418912A013591000EDC42 /* QuestionView10.swift in Sources */,
-				4569EEA52A09E02F003B1D48 /* HalfModalView.swift in Sources */,
 				4D4418932A013597000EDC42 /* QuestionView11.swift in Sources */,
 				978934112A035EFB0029AD06 /* QuestionView.swift in Sources */,
 				4D4418782A013463000EDC42 /* SplashView.swift in Sources */,

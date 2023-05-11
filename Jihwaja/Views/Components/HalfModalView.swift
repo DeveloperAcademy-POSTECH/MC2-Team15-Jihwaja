@@ -46,7 +46,7 @@ struct HalfModalView: View {
                 .padding(.bottom, getWidth() * 0.08)
             }
         }
-      .presentationDetents([.height(570)])
+        .presentationDetents([.height(getWidth() * 1.4)])
       .multilineTextAlignment(.center)
     }
   }
