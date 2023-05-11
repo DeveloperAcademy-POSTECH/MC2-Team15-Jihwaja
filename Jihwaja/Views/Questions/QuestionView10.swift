@@ -5,97 +5,86 @@
 //  Created by Minkyung Kim on 2023/05/02.
 //
 
+//import SwiftUI
+//
+//struct QuestionView10: View {
+//
+//
+//
+//    var body: some View {
+//        NavigationView{
+//            VStack{
+//                ScrollView{
+//                    // 질문 뷰
+//                    QuestionView(question: "💁‍♂️ 두 가지 선택지 중 곽애숙씨가 더 선호하는 취미를 골라주세요")
+//
+//                    // 답변
+//
+//                    Spacer()
+//                }
+//
+//                // 저장 버튼
+//
+//
+//
+//            }
+//
+//
+//        }
+//    }
+//}
+//
+//struct QuestionView10_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuestionView10()
+//    }
+//}
+
+    
+
 import SwiftUI
 
 struct QuestionView10: View {
-    
-    @State private var selectedCard: Int? = nil
+    @State private var selectedCard: Int?
     
     var body: some View {
-        NavigationView{
-            VStack{
-                ScrollView{
-                    // 질문 뷰
-                    QuestionView(question: "💁‍♂️ 두 가지 선택지 중 곽애숙씨가 더 선호하는 취미를 골라주세요")
-                    
-                    // 답변 TextField
-//                    if selectedCard == nil {
-//                        // Display both cards
-//                        HStack {
-//                            CardView(imageName: "cardDesign00")
-//                                .onTapGesture {
-//                                    // Select card 1
-//                                    selectedCard = 1
-//                                }
-//
-//                            CardView(imageName: "cardDesign01")
-//                                .onTapGesture {
-//                                    // Select card 2
-//                                    selectedCard = 2
-//                                }
-//                        }
-//                    } else {
-//                        // Display the selected card
-//                        CardView(imageName: "card\(selectedCard!)")
-//                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                            .onTapGesture {
-//                                // Deselect the card
-//                                selectedCard = nil
-//                            }
-//                    }
-                    HStack {
-                        CardView(imageName: "cardDesign00")
-                            .opacity(selectedCard == 2 ? 0 : 1)
-                            .onTapGesture {
-                                // Select card 1
-                                selectedCard = 1
-                            }
-                        
-                        CardView(imageName: "cardDesign01")
-                            .opacity(selectedCard == 1 ? 0 : 1)
-                            .onTapGesture {
-                                // Select card 2
-                                selectedCard = 2
-                            }
+        VStack {
+            HStack {
+                Button(action: {
+                    selectedCard = 1
+                }) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.blue.opacity(selectedCard == 1 ? 1 : 0.5))
+                        Text("Card 1")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
                     }
-                    .animation(.default)
-                    .frame(maxHeight: .infinity)
-                    
-                    Spacer()
-                    
-                    if selectedCard != nil {
-                        CardView(imageName: "card\(selectedCard!)")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .onTapGesture {
-                                selectedCard = nil
-                            }
-                    }
-                    
-                    Spacer()
                 }
+                .frame(width: 100, height: 150)
                 
-                // 저장 버튼
-                
-               
-                
+                Button(action: {
+                    selectedCard = 2
+                }) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.red.opacity(selectedCard == 2 ? 1 : 0.5))
+                        Text("Card 2")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                    }
+                }
+                .frame(width: 100, height: 150)
             }
             
+            if let selectedCard = selectedCard {
+                if selectedCard == 1 {
+                    Text("Card 1 selected")
+                } else {
+                    Text("Card 2 selected")
+                }
+            }
         }
-    }
-}
-
-
-
-struct CardView: View {
-    
-    let imageName: String
-    
-    var body: some View {
-        Image(imageName)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 200, height: 300)
-            .padding()
     }
 }
 
