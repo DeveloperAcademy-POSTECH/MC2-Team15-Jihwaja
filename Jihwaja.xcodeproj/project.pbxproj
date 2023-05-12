@@ -12,6 +12,7 @@
 		4524FD232A00EB1200A5BC27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4524FD222A00EB1200A5BC27 /* Assets.xcassets */; };
 		4524FD262A00EB1200A5BC27 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4524FD252A00EB1200A5BC27 /* Preview Assets.xcassets */; };
 		45254E7C2A0B24A50024982F /* PressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45254E7B2A0B24A50024982F /* PressManager.swift */; };
+		45429E922A0DD6890049C727 /* Q2_motion.gif in Resources */ = {isa = PBXBuildFile; fileRef = 45429E912A0DD6890049C727 /* Q2_motion.gif */; };
 		4569EEA32A09DFFD003B1D48 /* DrawingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569EEA22A09DFFD003B1D48 /* DrawingManager.swift */; };
 		45E06A422A0DBF4600D90F88 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 45E06A412A0DBF4600D90F88 /* FLAnimatedImage */; };
 		45E06A442A0DC1EF00D90F88 /* AnimatedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E06A432A0DC1EF00D90F88 /* AnimatedManager.swift */; };
@@ -43,6 +44,7 @@
 		4524FD222A00EB1200A5BC27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4524FD252A00EB1200A5BC27 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		45254E7B2A0B24A50024982F /* PressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressManager.swift; sourceTree = "<group>"; };
+		45429E912A0DD6890049C727 /* Q2_motion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Q2_motion.gif; sourceTree = "<group>"; };
 		4569EEA22A09DFFD003B1D48 /* DrawingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingManager.swift; sourceTree = "<group>"; };
 		45E06A3F2A0D3FDB00D90F88 /* Jihwaja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jihwaja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E06A432A0DC1EF00D90F88 /* AnimatedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedManager.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				4D4418742A01343D000EDC42 /* Views */,
 				4569EEA12A09DFA7003B1D48 /* Managers */,
+				45429E902A0DD6510049C727 /* GIFs */,
 				4524FD1E2A00EB1100A5BC27 /* JihwajaApp.swift */,
 				4524FD202A00EB1100A5BC27 /* ContentView.swift */,
 				4524FD222A00EB1200A5BC27 /* Assets.xcassets */,
@@ -107,6 +110,14 @@
 				4524FD252A00EB1200A5BC27 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		45429E902A0DD6510049C727 /* GIFs */ = {
+			isa = PBXGroup;
+			children = (
+				45429E912A0DD6890049C727 /* Q2_motion.gif */,
+			);
+			path = GIFs;
 			sourceTree = "<group>";
 		};
 		4569EEA12A09DFA7003B1D48 /* Managers */ = {
@@ -228,6 +239,7 @@
 			files = (
 				4524FD262A00EB1200A5BC27 /* Preview Assets.xcassets in Resources */,
 				4524FD232A00EB1200A5BC27 /* Assets.xcassets in Resources */,
+				45429E922A0DD6890049C727 /* Q2_motion.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
