@@ -56,9 +56,9 @@ struct QuestionView05: View {
             }
         }
 }
-
-struct QuestionView05_Previews: PreviewProvider {
-    static var previews: some View {
-        QuestionView05()
+    
+    struct QuestionView05_Previews: PreviewProvider {
+        static var previews: some View {
+            QuestionView05()
+        }
     }
-}
