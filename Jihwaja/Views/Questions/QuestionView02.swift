@@ -47,6 +47,7 @@ struct QuestionView02: View {
                 isActiveQ2 = true
             }
             .accentColor(Color("green"))
+            .disabled(jihwajaData.isCompleted[1])
             
             // % 텍스트
             Text("\(Int(yes)-1) %")

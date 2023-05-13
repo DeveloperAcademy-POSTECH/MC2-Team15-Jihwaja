@@ -13,16 +13,16 @@ struct StoreButtonView: View {
     
     var body: some View {
         
-            Text("저장하기")
-                .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
-            // 버튼이 활성화되면 초록색, 비활성화되면 회색 배경색
-                .background(isActive ? Color("green") : Color("grayButton"))
-                .foregroundColor(.white)
-                .cornerRadius(10)
-            
-                .padding(.top, getWidth() * 0.04)
-                .padding(.bottom, getWidth() * 0.12)
-        }
+        Text("저장하기")
+            .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
+        // 버튼이 활성화되면 초록색, 비활성화되면 회색 배경색
+            .background(isActive ? Color("green") : Color("grayButton"))
+            .foregroundColor(.white)
+            .cornerRadius(10)
+        
+            .padding(.top, getWidth() * 0.04)
+            .padding(.bottom, getWidth() * 0.12)
+    }
 }
 
 struct StoreButtonView_Previews: PreviewProvider {

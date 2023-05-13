@@ -13,6 +13,7 @@ struct JihwajaApp: App {
     
     var body: some Scene {
         WindowGroup {
+
             MainView(jihwajaData: $store.jihwaja){
                 Task{
                     do {
@@ -31,6 +32,7 @@ struct JihwajaApp: App {
                     fatalError(error.localizedDescription)
                 }
             }
+
         }
     }
 }

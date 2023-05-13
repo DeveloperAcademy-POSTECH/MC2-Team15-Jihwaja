@@ -39,10 +39,10 @@ struct jihwajaData : Codable {
     static let emptyData : jihwajaData
     = jihwajaData(isFirst: true,
                   isCompleted: [false, false, false, false, false, false, false, false, false, false, false, false],
-                  isFlipped: [false, false, false, false, false, false, false, false, false, false, false, false],
+                  isFlipped: [true, false, false, false, false, false, false, false, false, false, false, false],
                   A1: "",
                   A2: 1.0,
-                  A3: [],
+                  A3: Array(repeating: CGPoint(x: 50, y: 40), count: 9),
                   A4: "",
                   A5: 0.0,
                   A6: "",
