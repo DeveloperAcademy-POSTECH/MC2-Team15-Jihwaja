@@ -34,7 +34,7 @@ struct JihwajaApp: App {
             }
             
             } else {
-                OnboardingView()
+                OnboardingView(jihwajaData: $store.jihwaja)
             }
 
         }

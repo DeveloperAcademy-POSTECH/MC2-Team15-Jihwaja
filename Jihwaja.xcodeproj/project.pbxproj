@@ -139,10 +139,10 @@
 		4D4418742A01343D000EDC42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4524FD202A00EB1100A5BC27 /* ContentView.swift */,
-				4D4418752A013454000EDC42 /* MainView.swift */,
 				4D4418772A013463000EDC42 /* SplashView.swift */,
+				4524FD202A00EB1100A5BC27 /* ContentView.swift */,
 				4D4418792A013476000EDC42 /* OnboardingView.swift */,
+				4D4418752A013454000EDC42 /* MainView.swift */,
 				4D44187B2A0134A0000EDC42 /* ReportView.swift */,
 				9754C85E2A0E596B009A5405 /* LaunchScreen.storyboard */,
 				9789340D2A035EE50029AD06 /* Components */,
