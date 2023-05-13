@@ -30,6 +30,7 @@ struct QuestionView07: View {
                     )
                     .cornerRadius(15)
                     .frame(width: getWidth() * 0.78, height: getHeight() * 0.15)
+                    .disabled(jihwajaData.isCompleted[6])
                 
                 Spacer()
             }

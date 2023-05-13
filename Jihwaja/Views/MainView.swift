@@ -117,9 +117,9 @@ struct MainView: View {
         case 2:
             return AnyView(NavigationView {QuestionView02(jihwajaData:$jihwajaData)})
         case 3:
-            return AnyView(QuestionView03())
+            return AnyView(NavigationView {QuestionView03(jihwajaData:$jihwajaData)})
         case 4:
-            return AnyView(QuestionView04())
+            return AnyView(NavigationView {QuestionView04(jihwajaData:$jihwajaData)})
         case 5:
             return AnyView(QuestionView05())
         case 6:
