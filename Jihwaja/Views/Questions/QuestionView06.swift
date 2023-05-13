@@ -27,7 +27,7 @@ struct QuestionView06: View {
     
     var body: some View {
         ZStack {
-            if jihwajaData.isCompleted[5] || eraseFlag {
+            if eraseFlag {
                 VStack{
                     QuestionView(question: "⚒️ \(jihwajaData.A1)씨의 고치고 싶은 습관이\n고쳐지길 바라면서 지워주세요")
                     EraseView(lines: $lines, initialHabit: habit)
@@ -82,14 +82,8 @@ struct QuestionView06: View {
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }) {
-                        if eraseFlag {
                             // lines.isEmpty == false 이면 isActive true
-                            StoreButtonView(isActive: !lines.isEmpty)
-                            
-                        } else {
-                            // habit.isEmpty == false 이면 isActive true
-                            StoreButtonView(isActive: !habit.isEmpty)
-                        }
+                            StoreButtonView(isActive: eraseFlag ? !habit.isEmpty : !lines.isEmpty)
                     }
                     .sheet(isPresented: self.$showModal) {
                         HalfModalView(imageName: "test_gif", title: "힘껏 문지르기", content: "고치고 싶은 습관이 고쳐지길\n바라면서 힘껏 문질러주세요")
