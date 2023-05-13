@@ -14,6 +14,7 @@ struct QuestionView12: View {
     @State private var items: [String] = ["", "", "", ""]
     @State private var showSecondView = false
     
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -23,9 +24,10 @@ struct QuestionView12: View {
                 List {
                     ForEach(items.indices, id: \.self) { index in
                         TextField("호칭 \(index+1)", text: $items[index])
+                            .background(Color.clear)
                     }
                 }
-                .listStyle(InsetGroupedListStyle())
+//                .listStyle(InsetGroupedListStyle())
               
                 
                 NavigationLink(destination: QuestionView12Second(items: $items), isActive: $showSecondView) {
@@ -36,7 +38,7 @@ struct QuestionView12: View {
                             .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
                             // 버튼이 활성화되면 초록색, 비활성화되면 회색 배경색
                             .background(items.allSatisfy { !$0.isEmpty } ? Color("green") : Color("grayButton"))
-                            .foregroundColor(.white)
+                            .accentColor(.white)
                             .cornerRadius(10)
                             .padding(.top, getWidth() * 0.04)
                             .padding(.bottom, getWidth() * 0.12)
