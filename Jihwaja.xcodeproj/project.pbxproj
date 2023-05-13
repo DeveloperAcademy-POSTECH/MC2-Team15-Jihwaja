@@ -11,6 +11,11 @@
 		4524FD212A00EB1100A5BC27 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524FD202A00EB1100A5BC27 /* ContentView.swift */; };
 		4524FD232A00EB1200A5BC27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4524FD222A00EB1200A5BC27 /* Assets.xcassets */; };
 		4524FD262A00EB1200A5BC27 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4524FD252A00EB1200A5BC27 /* Preview Assets.xcassets */; };
+		45254E7C2A0B24A50024982F /* PressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45254E7B2A0B24A50024982F /* PressManager.swift */; };
+		45429E922A0DD6890049C727 /* Q2_motion.gif in Resources */ = {isa = PBXBuildFile; fileRef = 45429E912A0DD6890049C727 /* Q2_motion.gif */; };
+		4569EEA32A09DFFD003B1D48 /* DrawingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569EEA22A09DFFD003B1D48 /* DrawingManager.swift */; };
+		45E06A422A0DBF4600D90F88 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 45E06A412A0DBF4600D90F88 /* FLAnimatedImage */; };
+		45E06A442A0DC1EF00D90F88 /* AnimatedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E06A432A0DC1EF00D90F88 /* AnimatedManager.swift */; };
 		4D4418762A013455000EDC42 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4418752A013454000EDC42 /* MainView.swift */; };
 		4D4418782A013463000EDC42 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4418772A013463000EDC42 /* SplashView.swift */; };
 		4D44187A2A013476000EDC42 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4418792A013476000EDC42 /* OnboardingView.swift */; };
@@ -30,14 +35,19 @@
 		9789340F2A035EF20029AD06 /* getWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9789340E2A035EF20029AD06 /* getWidth.swift */; };
 		978934112A035EFB0029AD06 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978934102A035EFB0029AD06 /* QuestionView.swift */; };
 		97F9C9AA2A03C2E900335E65 /* StoreButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F9C9A92A03C2E900335E65 /* StoreButtonView.swift */; };
+		D4149D932A0925BF00CC47AA /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4149D922A0925BF00CC47AA /* HalfModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4524FD1B2A00EB1100A5BC27 /* Jihwaja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jihwaja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4524FD1E2A00EB1100A5BC27 /* JihwajaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JihwajaApp.swift; sourceTree = "<group>"; };
 		4524FD202A00EB1100A5BC27 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4524FD222A00EB1200A5BC27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4524FD252A00EB1200A5BC27 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		45254E7B2A0B24A50024982F /* PressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressManager.swift; sourceTree = "<group>"; };
+		45429E912A0DD6890049C727 /* Q2_motion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Q2_motion.gif; sourceTree = "<group>"; };
+		4569EEA22A09DFFD003B1D48 /* DrawingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingManager.swift; sourceTree = "<group>"; };
+		45E06A3F2A0D3FDB00D90F88 /* Jihwaja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jihwaja.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45E06A432A0DC1EF00D90F88 /* AnimatedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedManager.swift; sourceTree = "<group>"; };
 		4D4418752A013454000EDC42 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4D4418772A013463000EDC42 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		4D4418792A013476000EDC42 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -57,6 +67,7 @@
 		9789340E2A035EF20029AD06 /* getWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getWidth.swift; sourceTree = "<group>"; };
 		978934102A035EFB0029AD06 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		97F9C9A92A03C2E900335E65 /* StoreButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreButtonView.swift; sourceTree = "<group>"; };
+		D4149D922A0925BF00CC47AA /* HalfModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45E06A422A0DBF4600D90F88 /* FLAnimatedImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,22 +86,16 @@
 			isa = PBXGroup;
 			children = (
 				4524FD1D2A00EB1100A5BC27 /* Jihwaja */,
-				4524FD1C2A00EB1100A5BC27 /* Products */,
+				45E06A3F2A0D3FDB00D90F88 /* Jihwaja.app */,
 			);
-			sourceTree = "<group>";
-		};
-		4524FD1C2A00EB1100A5BC27 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4524FD1B2A00EB1100A5BC27 /* Jihwaja.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4524FD1D2A00EB1100A5BC27 /* Jihwaja */ = {
 			isa = PBXGroup;
 			children = (
 				4D4418742A01343D000EDC42 /* Views */,
+				4569EEA12A09DFA7003B1D48 /* Managers */,
+				45429E902A0DD6510049C727 /* GIFs */,
 				4524FD1E2A00EB1100A5BC27 /* JihwajaApp.swift */,
 				4524FD202A00EB1100A5BC27 /* ContentView.swift */,
 				4524FD222A00EB1200A5BC27 /* Assets.xcassets */,
@@ -106,15 +112,33 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		45429E902A0DD6510049C727 /* GIFs */ = {
+			isa = PBXGroup;
+			children = (
+				45429E912A0DD6890049C727 /* Q2_motion.gif */,
+			);
+			path = GIFs;
+			sourceTree = "<group>";
+		};
+		4569EEA12A09DFA7003B1D48 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4569EEA22A09DFFD003B1D48 /* DrawingManager.swift */,
+				45254E7B2A0B24A50024982F /* PressManager.swift */,
+				45E06A432A0DC1EF00D90F88 /* AnimatedManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		4D4418742A01343D000EDC42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				9789340D2A035EE50029AD06 /* Components */,
+				4D44187D2A0134AB000EDC42 /* Questions */,
 				4D4418752A013454000EDC42 /* MainView.swift */,
 				4D4418772A013463000EDC42 /* SplashView.swift */,
 				4D4418792A013476000EDC42 /* OnboardingView.swift */,
 				4D44187B2A0134A0000EDC42 /* ReportView.swift */,
-				4D44187D2A0134AB000EDC42 /* Questions */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,9 +165,10 @@
 		9789340D2A035EE50029AD06 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				9789340E2A035EF20029AD06 /* getWidth.swift */,
 				978934102A035EFB0029AD06 /* QuestionView.swift */,
 				97F9C9A92A03C2E900335E65 /* StoreButtonView.swift */,
+				D4149D922A0925BF00CC47AA /* HalfModalView.swift */,
+				9789340E2A035EF20029AD06 /* getWidth.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -164,8 +189,11 @@
 			dependencies = (
 			);
 			name = Jihwaja;
+			packageProductDependencies = (
+				45E06A412A0DBF4600D90F88 /* FLAnimatedImage */,
+			);
 			productName = Jihwaja;
-			productReference = 4524FD1B2A00EB1100A5BC27 /* Jihwaja.app */;
+			productReference = 45E06A3F2A0D3FDB00D90F88 /* Jihwaja.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -192,7 +220,10 @@
 				Base,
 			);
 			mainGroup = 4524FD122A00EB1100A5BC27;
-			productRefGroup = 4524FD1C2A00EB1100A5BC27 /* Products */;
+			packageReferences = (
+				45E06A402A0DBF4600D90F88 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
+			);
+			productRefGroup = 4524FD122A00EB1100A5BC27;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -208,6 +239,7 @@
 			files = (
 				4524FD262A00EB1200A5BC27 /* Preview Assets.xcassets in Resources */,
 				4524FD232A00EB1200A5BC27 /* Assets.xcassets in Resources */,
+				45429E922A0DD6890049C727 /* Q2_motion.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +253,7 @@
 				4D4418892A013567000EDC42 /* QuestionView06.swift in Sources */,
 				4524FD212A00EB1100A5BC27 /* ContentView.swift in Sources */,
 				4D44188D2A013587000EDC42 /* QuestionView08.swift in Sources */,
+				D4149D932A0925BF00CC47AA /* HalfModalView.swift in Sources */,
 				4D4418912A013591000EDC42 /* QuestionView10.swift in Sources */,
 				4D4418932A013597000EDC42 /* QuestionView11.swift in Sources */,
 				978934112A035EFB0029AD06 /* QuestionView.swift in Sources */,
@@ -231,12 +264,15 @@
 				4D4418812A013548000EDC42 /* QuestionView02.swift in Sources */,
 				4D44187A2A013476000EDC42 /* OnboardingView.swift in Sources */,
 				4524FD1F2A00EB1100A5BC27 /* JihwajaApp.swift in Sources */,
+				45E06A442A0DC1EF00D90F88 /* AnimatedManager.swift in Sources */,
 				97F9C9AA2A03C2E900335E65 /* StoreButtonView.swift in Sources */,
 				4D4418872A013561000EDC42 /* QuestionView05.swift in Sources */,
 				4D44188F2A01358C000EDC42 /* QuestionView09.swift in Sources */,
+				4569EEA32A09DFFD003B1D48 /* DrawingManager.swift in Sources */,
 				4D4418852A01355B000EDC42 /* QuestionView04.swift in Sources */,
 				4D44188B2A01356E000EDC42 /* QuestionView07.swift in Sources */,
 				4D44187F2A01352B000EDC42 /* QuestionView01.swift in Sources */,
+				45254E7C2A0B24A50024982F /* PressManager.swift in Sources */,
 				4D4418952A01359B000EDC42 /* QuestionView12.swift in Sources */,
 				9789340F2A035EF20029AD06 /* getWidth.swift in Sources */,
 			);
@@ -367,7 +403,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jihwaja/Preview Content\"";
-				DEVELOPMENT_TEAM = 2YSYJFB7P9;
+				DEVELOPMENT_TEAM = K4QNQ98D35;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -380,7 +416,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ffffff.Jihwaja;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffffff.JihwajaMK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -396,7 +432,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jihwaja/Preview Content\"";
-				DEVELOPMENT_TEAM = 2YSYJFB7P9;
+				DEVELOPMENT_TEAM = K4QNQ98D35;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -409,7 +445,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ffffff.Jihwaja;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ffffff.JihwajaMK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -439,6 +475,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		45E06A402A0DBF4600D90F88 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Flipboard/FLAnimatedImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		45E06A412A0DBF4600D90F88 /* FLAnimatedImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45E06A402A0DBF4600D90F88 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */;
+			productName = FLAnimatedImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4524FD132A00EB1100A5BC27 /* Project object */;
 }
