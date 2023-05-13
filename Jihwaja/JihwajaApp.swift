@@ -13,7 +13,8 @@ struct JihwajaApp: App {
         WindowGroup {
             //ContentView()
             //MainView()
-            QuestionView11()
+            QuestionView05()
+
         }
     }
 }
