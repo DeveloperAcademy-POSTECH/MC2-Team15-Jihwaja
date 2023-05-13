@@ -27,7 +27,6 @@ struct StoreButtonView: View {
 
         }
         // 버튼이 활성화 되어야 MainView로 이동하는 NavigationLink 활성화
-       // .disabled(!isActive)
     //}
 }
 
