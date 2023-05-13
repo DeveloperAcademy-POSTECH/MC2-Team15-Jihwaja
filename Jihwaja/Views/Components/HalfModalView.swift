@@ -23,8 +23,11 @@ struct HalfModalView: View {
                   .font(Font.title.weight(.heavy))
                   .foregroundColor(Color(UIColor.tertiaryLabel))
                 Spacer()
-                Image("\(imageName)")
+                
+                AnimatedManager(fileName: "Q2_motion")
+                    .frame(width: getWidth() * 0.78, height: getWidth() * 0.62)
                 Spacer()
+                
                 Text(title)
                     .font(.system(size: 22))
                     .fontWeight(.bold)
@@ -46,7 +49,7 @@ struct HalfModalView: View {
                 .padding(.bottom, getWidth() * 0.08)
             }
         }
-      .presentationDetents([.height(570)])
+        .presentationDetents([.height(getWidth() * 1.4)])
       .multilineTextAlignment(.center)
     }
   }
