@@ -12,7 +12,7 @@ struct StoreButtonView: View {
     var isActive: Bool
     
     var body: some View {
-        NavigationLink(destination:MainView()){
+        //NavigationLink(destination:MainView()){
             Button("저장하기"){
                 
             }
@@ -27,8 +27,8 @@ struct StoreButtonView: View {
 
         }
         // 버튼이 활성화 되어야 MainView로 이동하는 NavigationLink 활성화
-        .disabled(!isActive)    
-    }
+       // .disabled(!isActive)
+    //}
 }
 
 struct StoreButtonView_Previews: PreviewProvider {
