@@ -36,14 +36,18 @@ struct QuestionView01: View {
                 // 저장 버튼
                 Button(action: {
                     jihwajaData.A1 = name
-                                self.presentationMode.wrappedValue.dismiss()
-                            }, label: {
+                    jihwajaData.isCompleted[0] = true
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
                     StoreButtonView(isActive: !name.isEmpty)
                 }).disabled(name.isEmpty)
+                    .opacity(jihwajaData.isCompleted[0] == true ? 0: 1)
                     
             }
             
             .onAppear {
+                
+                name = jihwajaData.A1
                 // View가 로드될 때 키보드를 자동으로 띄워줌
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)

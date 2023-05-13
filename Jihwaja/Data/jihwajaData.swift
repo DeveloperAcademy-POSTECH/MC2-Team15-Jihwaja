@@ -19,8 +19,10 @@ struct jihwajaData : Codable {
     var A4 : String
     var A5 : CGFloat
     var A6 : String
+    var A7 : String
     
-    init(isFirst: Bool, isCompleted: [Bool], isFlipped: [Bool], A1: String, A2: Double, A3: [CGPoint], A4: String, A5: CGFloat, A6: String) {
+    
+    init(isFirst: Bool, isCompleted: [Bool], isFlipped: [Bool], A1: String, A2: Double, A3: [CGPoint], A4: String, A5: CGFloat, A6: String, A7: String) {
         self.isFirst = isFirst
         self.isCompleted = isCompleted
         self.isFlipped = isFlipped
@@ -30,18 +32,23 @@ struct jihwajaData : Codable {
         self.A4 = A4
         self.A5 = A5
         self.A6 = A6
+        self.A7 = A7
+        
     }
     
     static let emptyData : jihwajaData
     = jihwajaData(isFirst: true,
-                  isCompleted: [true, false, false, false, false, false, false, false, false, false, false, false],
-                  isFlipped: [true, false, false, false, false, false, false, false, false, false, false, false],
+                  isCompleted: [false, false, false, false, false, false, false, false, false, false, false, false],
+                  isFlipped: [false, false, false, false, false, false, false, false, false, false, false, false],
                   A1: "",
                   A2: 1.0,
                   A3: [],
                   A4: "",
                   A5: 0.0,
-                  A6: "")
+                  A6: "",
+                  A7: ""
+                 
+    )
 
     
 }

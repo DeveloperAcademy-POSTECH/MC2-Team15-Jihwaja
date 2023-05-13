@@ -59,12 +59,11 @@ struct QuestionView02: View {
             }, label: {
                 StoreButtonView(isActive: isActiveQ2)
             }).disabled(!isActiveQ2)
+                .opacity(jihwajaData.isCompleted[1] == true ? 0 : 1)
         }
         .padding(.horizontal)
         .onAppear{
-            
             yes = jihwajaData.A2
-            print(yes)
         }
     }
     

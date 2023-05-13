@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct QuestionView07: View {
+    @Binding var jihwajaData : jihwajaData
+    @Environment(\.presentationMode) var presentationMode
     @State var food : String = ""
     @State var isActive : Bool = false
     
@@ -16,7 +18,7 @@ struct QuestionView07: View {
         VStack{
             ScrollView{
                 // 질문 뷰
-                QuestionView(question: "🍛 곽애숙씨에게 추억을 떠올리게\n하는 음식과 그 추억을 말해주세요!")
+                QuestionView(question: "🍛 \(jihwajaData.A1)씨에게 추억을 떠올리게\n하는 음식과 그 추억을 말해주세요!")
                 
                 // 답변 TextEditor
                 TextEditor(text: $food)
@@ -33,17 +35,19 @@ struct QuestionView07: View {
             }
             
             // 저장 버튼
-            Button(action:{
-                // MainView 로 넘어가는 코드
-                
-                // 일곱 번째 답변 저장
-            }){
-                // name.isEmpty == false 이면 isActive true
+            Button(action: {
+                jihwajaData.A7 = food
+                jihwajaData.isCompleted[6] = true
+                self.presentationMode.wrappedValue.dismiss()
+            }, label: {
                 StoreButtonView(isActive: !food.isEmpty)
-            }
+            }).disabled(food.isEmpty)
+                .opacity(jihwajaData.isCompleted[6] == true ? 0 : 1)
             
         }
         .onAppear {
+            food = jihwajaData.A7
+            
             // View가 로드될 때 키보드를 자동으로 띄워줌
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
@@ -60,6 +64,6 @@ struct QuestionView07: View {
 
 struct QuestionView07_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView07()
+        QuestionView07(jihwajaData:.constant(jihwajaData.emptyData))
     }
 }

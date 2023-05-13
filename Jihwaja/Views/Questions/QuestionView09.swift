@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct QuestionView09: View {
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var jihwajaData : jihwajaData
+
     @State private var lines = [Line]()
     @State private var deletedLines = [Line]()
     @State private var brushColor: Color = .black
@@ -161,6 +164,6 @@ struct QuestionView09: View {
 
 struct QuestionView09_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView09()
+        QuestionView09(jihwajaData:.constant(jihwajaData.emptyData))
     }
 }
