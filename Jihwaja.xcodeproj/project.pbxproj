@@ -36,6 +36,7 @@
 		9754C8622A0E5B1E009A5405 /* jihwajaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754C8612A0E5B1E009A5405 /* jihwajaData.swift */; };
 		9789340F2A035EF20029AD06 /* getWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9789340E2A035EF20029AD06 /* getWidth.swift */; };
 		978934112A035EFB0029AD06 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978934102A035EFB0029AD06 /* QuestionView.swift */; };
+		97B5AA602A0FA75E00B15C61 /* JIhwajaStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5AA5F2A0FA75E00B15C61 /* JIhwajaStore.swift */; };
 		97F9C9AA2A03C2E900335E65 /* StoreButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F9C9A92A03C2E900335E65 /* StoreButtonView.swift */; };
 		D4149D932A0925BF00CC47AA /* HalfModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4149D922A0925BF00CC47AA /* HalfModalView.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		9754C8612A0E5B1E009A5405 /* jihwajaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jihwajaData.swift; sourceTree = "<group>"; };
 		9789340E2A035EF20029AD06 /* getWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getWidth.swift; sourceTree = "<group>"; };
 		978934102A035EFB0029AD06 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		97B5AA5F2A0FA75E00B15C61 /* JIhwajaStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JIhwajaStore.swift; sourceTree = "<group>"; };
 		97F9C9A92A03C2E900335E65 /* StoreButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreButtonView.swift; sourceTree = "<group>"; };
 		D4149D922A0925BF00CC47AA /* HalfModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +99,7 @@
 		4524FD1D2A00EB1100A5BC27 /* Jihwaja */ = {
 			isa = PBXGroup;
 			children = (
+				4524FD1E2A00EB1100A5BC27 /* JihwajaApp.swift */,
 				9754C8602A0E5B08009A5405 /* Data */,
 				4D4418742A01343D000EDC42 /* Views */,
 				4569EEA12A09DFA7003B1D48 /* Managers */,
@@ -136,7 +139,6 @@
 		4D4418742A01343D000EDC42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4524FD1E2A00EB1100A5BC27 /* JihwajaApp.swift */,
 				4524FD202A00EB1100A5BC27 /* ContentView.swift */,
 				4D4418752A013454000EDC42 /* MainView.swift */,
 				4D4418772A013463000EDC42 /* SplashView.swift */,
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				9754C8612A0E5B1E009A5405 /* jihwajaData.swift */,
+				97B5AA5F2A0FA75E00B15C61 /* JIhwajaStore.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				4D4418932A013597000EDC42 /* QuestionView11.swift in Sources */,
 				978934112A035EFB0029AD06 /* QuestionView.swift in Sources */,
 				4D4418782A013463000EDC42 /* SplashView.swift in Sources */,
+				97B5AA602A0FA75E00B15C61 /* JIhwajaStore.swift in Sources */,
 				4D44187C2A0134A0000EDC42 /* ReportView.swift in Sources */,
 				4D4418762A013455000EDC42 /* MainView.swift in Sources */,
 				4D4418832A01354F000EDC42 /* QuestionView03.swift in Sources */,

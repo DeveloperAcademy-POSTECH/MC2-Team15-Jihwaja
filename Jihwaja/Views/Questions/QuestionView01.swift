@@ -9,8 +9,8 @@ import SwiftUI
 
 struct QuestionView01: View {
     @State var name : String = ""
-    //@State private var buttonPressed = false
     @Environment(\.presentationMode) var presentationMode
+    @Binding var jihwajaData : jihwajaData
     
     var body: some View {
         NavigationView{
@@ -35,6 +35,7 @@ struct QuestionView01: View {
                 
                 // 저장 버튼
                 Button(action: {
+                    jihwajaData.A1 = name
                                 self.presentationMode.wrappedValue.dismiss()
                             }, label: {
                     StoreButtonView(isActive: !name.isEmpty)
@@ -59,6 +60,6 @@ struct QuestionView01: View {
 
 struct QuestionView01_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView01()
+        QuestionView01(jihwajaData:.constant(jihwajaData.emptyData))
     }
 }

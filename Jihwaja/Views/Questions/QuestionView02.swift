@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct QuestionView02: View {
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var jihwajaData : jihwajaData
+    
     @State private var yes = 1.0
     @State private var isActiveQ2 = false
     
@@ -15,13 +18,13 @@ struct QuestionView02: View {
         
         VStack{
             // 질문
-            QuestionView(question: "🙋🏻‍♀️곽애숙씨는 지금까지\n 진정으로 원하는 삶을 살았나요?")
+            QuestionView(question: "🙋🏻‍♀️\(jihwajaData.A1)씨는 지금까지\n 진정으로 원하는 삶을 살았나요?")
             Spacer()
             
             //답변 영역
             VStack{
                 Text("네!")
-                    // 슬라이더에서 변경되는 $yes에 따라 font size 변경
+                // 슬라이더에서 변경되는 $yes에 따라 font size 변경
                     .font(.system(size:(10 * (yes/5))))
                     .foregroundColor(Color("green"))
             }.frame(width: getWidth(), height: getHeight() * 0.4)
@@ -49,15 +52,26 @@ struct QuestionView02: View {
             Text("\(Int(yes)-1) %")
             
             //저장 버튼
-            StoreButtonView(isActive: isActiveQ2)
+            Button(action: {
+                jihwajaData.A2 = yes
+                jihwajaData.isCompleted[1] = true
+                self.presentationMode.wrappedValue.dismiss()
+            }, label: {
+                StoreButtonView(isActive: isActiveQ2)
+            }).disabled(!isActiveQ2)
         }
         .padding(.horizontal)
+        .onAppear{
+            
+            yes = jihwajaData.A2
+            print(yes)
+        }
     }
     
 }
 
 struct QuestionView02_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView02()
+        QuestionView02(jihwajaData:.constant(jihwajaData.emptyData))
     }
 }

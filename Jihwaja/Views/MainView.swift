@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct MainView: View {
-    // UserDefaults의 _isFlipped isFlipped에 저장
-    // @State var isFlipped = UserDefaults.standard.array(forKey: "_isFlipped") as! [Bool]
-    @State var isFlipped : [Bool]
-    @State var name : String = "곽애숙"
-    @State var Qnum = 0
-    @State var remainingQ = 11
+    @Environment(\.presentationMode) var presentationMode
     
+    // 사용자가 화면을 이탈하는지 감시할 변수
+    @Environment(\.scenePhase) private var scenePhase
     
-    // 각 버튼
-    @State var isQuestionViewShown: [Bool] = Array(repeating: false, count: 12)
+    // 앱 내에서 계속 읽고 쓸 데이터 원본 from JihwajaApp.swift
+    @Binding var jihwajaData : jihwajaData
+    
+    let saveAction: ()->Void
     
     var body: some View {
+        
+        var remainingQ = 12 - jihwajaData.isCompleted.filter { $0 }.count
+        
         NavigationView{
             VStack {
                 
                 //문구
                 HStack {
-                    Text(name)
+                    Text(jihwajaData.A1)
                         .font(.title)
                     Text("님, 반가워요!")
                         .font(.title)
@@ -66,9 +68,9 @@ struct MainView: View {
                                             .frame(width: getWidth() * 0.18, height: getWidth() * 0.24)
                                             .cornerRadius(7)
                                             .flipped()
-                                            .opacity(isFlipped[index] != false ? 1 : 0)
+                                            .opacity(jihwajaData.isFlipped[index] != false ? 1 : 0)
                                     }
-                                    .rotation3DEffect(.init(degrees: isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
+                                    .rotation3DEffect(.init(degrees: jihwajaData.isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
 //                                    .onTapGesture(perform: {
 //                                        print(index + 1)
 //                                        withAnimation(Animation.easeInOut(duration: 0.5)) {
@@ -100,10 +102,9 @@ struct MainView: View {
                 
             } //VStack
             .frame(width: getWidth() * 0.76)
-//            .onAppear{
-//                print(Qnum)
-//                Qnum = 0
-//            } //onAppear
+            .onChange(of: scenePhase) { phase in
+                        if phase == .inactive { saveAction() }
+                    }
             
         } //NavigationView
     } // Body
@@ -112,9 +113,9 @@ struct MainView: View {
     func destinationView(for qnum: Int) -> some View {
         switch qnum {
         case 1:
-            return AnyView(NavigationView {QuestionView01()})
+            return AnyView(NavigationView {QuestionView01(jihwajaData:$jihwajaData)})
         case 2:
-            return AnyView(NavigationView {QuestionView02()})
+            return AnyView(NavigationView {QuestionView02(jihwajaData:$jihwajaData)})
         case 3:
             return AnyView(QuestionView03())
         case 4:
@@ -156,6 +157,6 @@ extension View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(isFlipped: [true, false, false, false, false, false, false, false, false, false, false, false])
+        MainView(jihwajaData:.constant(jihwajaData.emptyData), saveAction: {})
     }
 }
