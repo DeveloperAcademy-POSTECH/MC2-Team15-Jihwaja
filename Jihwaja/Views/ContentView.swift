@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    var isFirst = false
+    var isLoading = true
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        
+        if isFirst {
+            Text("Onboarding")
+        } else {
+            Text("Main")
         }
-        .padding()
+        
     }
 }
 

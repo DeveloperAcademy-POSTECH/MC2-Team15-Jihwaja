@@ -10,11 +10,12 @@ import SwiftUI
 struct QuestionView01: View {
     @State var name : String = ""
     //@State private var buttonPressed = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView{
             VStack{
-                ScrollView{
+                
                     // 질문 뷰
                     QuestionView(question: "❓우리와 함께하고 있는\n당신의 이름은 무엇인가요?")
                     
@@ -30,11 +31,14 @@ struct QuestionView01: View {
                         .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
                     
                     Spacer()
-                }
+                
                 
                 // 저장 버튼
-                
+                Button(action: {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }, label: {
                     StoreButtonView(isActive: !name.isEmpty)
+                }).disabled(name.isEmpty)
                     
             }
             
