@@ -36,7 +36,7 @@ struct QuestionView05: View {
                         .opacity(0.1)
                         .frame(width: getWidth() * 0.8)
                         // 확대 축소 제스쳐
-                        .gesture(!jihwajaData.isCompleted[5] ?
+                        .gesture(!jihwajaData.isCompleted[4] ?
                                 MagnificationGesture().onChanged { value in
                                     self.scale = min(value, 4.0)
                                     isActiveQ5 = true

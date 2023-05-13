@@ -27,7 +27,7 @@ struct QuestionView06: View {
     
     var body: some View {
         ZStack {
-            if eraseFlag {
+            if jihwajaData.isCompleted[5] || eraseFlag {
                 VStack{
                     QuestionView(question: "⚒️ \(jihwajaData.A1)씨의 고치고 싶은 습관이\n고쳐지길 바라면서 지워주세요")
                     EraseView(lines: $lines, initialHabit: habit)

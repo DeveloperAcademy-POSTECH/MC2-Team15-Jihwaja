@@ -22,7 +22,7 @@ struct jihwajaData : Codable {
     var A7 : String
     
     
-    init(isFirst: Bool, isCompleted: [Bool], isFlipped: [Bool], A1: String, A2: Double, A3: [CGPoint], A4: String, A5: CGFloat, A6: String, A7: String) {
+    init(isFirst: Bool, isCompleted: [Bool], isFlipped: [Bool], A1: String, A2: Double, A3: [CGPoint], A4: String, A5: CGFloat, A6: String,A7: String) {
         self.isFirst = isFirst
         self.isCompleted = isCompleted
         self.isFlipped = isFlipped
@@ -52,3 +52,4 @@ struct jihwajaData : Codable {
 
     
 }
+
