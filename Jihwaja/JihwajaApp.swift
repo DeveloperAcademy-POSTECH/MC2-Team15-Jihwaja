@@ -14,6 +14,7 @@ struct JihwajaApp: App {
             //ContentView()
             //MainView()
             QuestionView05()
+
         }
     }
 }
