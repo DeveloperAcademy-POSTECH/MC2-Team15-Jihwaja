@@ -166,6 +166,7 @@ struct QuestionView12Second: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State private var isActiveQ12 = true
+
     
     @Binding var items: [String]
     @State private var isLiked: [Bool] = [false, false, false, false]
