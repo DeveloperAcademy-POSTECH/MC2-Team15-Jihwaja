@@ -19,7 +19,7 @@ struct QuestionView02: View {
         
         VStack{
             // 질문
-            QuestionView(question: "🙋🏻‍♀️\(store.jihwaja.A1)씨는 지금까지\n 진정으로 원하는 삶을 살았나요?")
+            QuestionView(question: "🙋🏻‍♀️ \(store.jihwaja.A1)씨는 지금까지\n 진정으로 원하는 삶을 살았나요?")
             Spacer()
             
             //답변 영역

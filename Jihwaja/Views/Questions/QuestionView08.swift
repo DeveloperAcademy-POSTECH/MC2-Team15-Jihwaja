@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct QuestionView08: View {
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var store: JihwajaStore
+    
     let country: [String] = ["이집트", "네덜란드", "일본", "서울", "모스크바", "중국", "인도", "스페인"]
     @State private var isActiveQ8 = true
     @State private var result = ""
@@ -15,7 +18,7 @@ struct QuestionView08: View {
     var body: some View {
         ZStack {
             VStack {
-                QuestionView(question: "✈️ 곽애숙씨가 지금 당장\n떠나고 싶은 곳은 어디인가요?")
+                QuestionView(question: "✈️ \(store.jihwaja.A1)씨가 지금 당장\n떠나고 싶은 곳은 어디인가요?")
                 
                 ZStack {
                     if result == "" {
@@ -49,8 +52,17 @@ struct QuestionView08: View {
                 
                 Spacer()
                 
-                StoreButtonView(isActive: isActiveQ8)
+                Button(action: {
+                    store.jihwaja.A8 = result
+                    store.jihwaja.isCompleted[7] = true
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    StoreButtonView(isActive: isActiveQ8)
+                })
             }
+        }
+        .onAppear{
+            result = store.jihwaja.A8
         }
     }
 }
