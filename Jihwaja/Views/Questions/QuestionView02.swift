@@ -42,6 +42,7 @@ struct QuestionView02: View {
                 // step: value가 변경되는 단위
                 step: 1
             )
+            .padding()
             .onChange(of: yes) { _ in
                 
                 // Slider 값이 변경되면 버튼 Activate

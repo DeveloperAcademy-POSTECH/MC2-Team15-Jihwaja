@@ -135,10 +135,13 @@ struct QuestionView09: View {
                         Button(action:{
                             // MainView 로 넘어가는 코드
                             store.jihwaja.A9 = lines
+                            store.jihwaja.isCompleted[8] = true
+                            self.presentationMode.wrappedValue.dismiss()
                         }){
                             // lines.isEmpty == false 이면 isActive true
                             StoreButtonView(isActive: !lines.isEmpty)
-                        }
+                        }.disabled(store.jihwaja.isCompleted[8])
+                            .opacity(store.jihwaja.isCompleted[8] ? 0 : 1)
                     }
                 }
             }.onAppear {
@@ -160,9 +163,11 @@ struct QuestionView09: View {
                     lines[index].points.append(newPoint)
                 }
             }
-        }).onEnded({ value in
+        })
+        .onEnded({ value in
             if let lastLine = lines.last?.points, lastLine.isEmpty { lines.removeLast() }
-        }))
+        })
+        ).disabled(store.jihwaja.isCompleted[8])
     }
 }
 

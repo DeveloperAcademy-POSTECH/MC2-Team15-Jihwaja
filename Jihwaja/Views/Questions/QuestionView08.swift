@@ -20,6 +20,15 @@ struct QuestionView08: View {
             VStack {
                 QuestionView(question: "✈️ \(store.jihwaja.A1)씨가 지금 당장\n떠나고 싶은 곳은 어디인가요?")
                 
+                if store.jihwaja.isCompleted[7] {
+                    Text("\n지금 당장 \(result)로 떠나보는 것은 어떨까요?")
+                        .multilineTextAlignment(.center)
+                        .frame(width: getWidth() * 0.65)
+                        .font(.system(size: 27))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("green"))
+                    
+                } else {
                 ZStack {
                     if result == "" {
                         Text("\n지금 당장 떠나고 싶은 곳이 있나요?")
@@ -49,7 +58,7 @@ struct QuestionView08: View {
                             .stacked(at: index, in: 8)
                     }
                 }
-                
+            }
                 Spacer()
                 
                 // 저장 버튼
@@ -60,7 +69,7 @@ struct QuestionView08: View {
                 }, label: {
                     StoreButtonView(isActive: isActiveQ8)
                 })
-                .opacity(store.jihwaja.isCompleted[7])
+                .opacity(store.jihwaja.isCompleted[7] ? 0 : 1)
             }
         }
         .onAppear{

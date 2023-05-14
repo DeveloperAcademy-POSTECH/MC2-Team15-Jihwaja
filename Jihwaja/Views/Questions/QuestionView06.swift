@@ -75,6 +75,9 @@ struct QuestionView06 : View {
             } // Vstack
             .onAppear {
                 habit = store.jihwaja.A6
+                if !store.jihwaja.isCompleted[5] {
+                    habit = ""
+                }
                 // View가 로드될 때 키보드를 자동으로 띄워줌
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
