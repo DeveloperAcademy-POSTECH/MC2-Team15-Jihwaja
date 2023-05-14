@@ -64,5 +64,6 @@ struct HalfModalView: View {
 struct HalfModalView_Previews: PreviewProvider {
     static var previews: some View {
         HalfModalView(imageName: "", title: "", content: "", showModal : .constant(true))
+        
     }
 }

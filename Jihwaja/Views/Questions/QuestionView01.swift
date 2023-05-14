@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct QuestionView01: View {
-    @State var name : String = ""
-    @Environment(\.presentationMode) var presentationMode
+
     @EnvironmentObject var store: JihwajaStore
-    
+    @Binding var isFirstLaunching : Bool
+    @State var name : String = ""
     
     var body: some View {
         NavigationView{
@@ -39,16 +39,16 @@ struct QuestionView01: View {
                 Button(action: {
                     store.jihwaja.A1 = name
                     store.jihwaja.isCompleted[0] = true
-                    self.presentationMode.wrappedValue.dismiss()
+                    print(store.jihwaja.A1)
+                    print("Clicked")
+                    isFirstLaunching.toggle()
                 }, label: {
                     StoreButtonView(isActive: !name.isEmpty)
                 }).disabled(name.isEmpty)
                     .opacity(store.jihwaja.isCompleted[0] == true ? 0: 1)
-                    
             }
             
             .onAppear {
-                
                 name = store.jihwaja.A1
                 // View가 로드될 때 키보드를 자동으로 띄워줌
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -66,6 +66,6 @@ struct QuestionView01: View {
 
 struct QuestionView01_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView01()
+        QuestionView01(isFirstLaunching: .constant(true))
     }
 }
