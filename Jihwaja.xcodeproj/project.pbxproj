@@ -16,6 +16,7 @@
 		4569EEA32A09DFFD003B1D48 /* DrawingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569EEA22A09DFFD003B1D48 /* DrawingManager.swift */; };
 		458B045B2A111F31008A1851 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458B045A2A111F31008A1851 /* ColorManager.swift */; };
 		458B04682A11318E008A1851 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 458B04672A11318E008A1851 /* OpenAISwift */; };
+		458B047A2A118C77008A1851 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 458B04792A118C77008A1851 /* Alamofire */; };
 		45E06A422A0DBF4600D90F88 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 45E06A412A0DBF4600D90F88 /* FLAnimatedImage */; };
 		45E06A442A0DC1EF00D90F88 /* AnimatedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E06A432A0DC1EF00D90F88 /* AnimatedManager.swift */; };
 		4D4418762A013455000EDC42 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4418752A013454000EDC42 /* MainView.swift */; };
@@ -98,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				458B047A2A118C77008A1851 /* Alamofire in Frameworks */,
 				458B04682A11318E008A1851 /* OpenAISwift in Frameworks */,
 				45E06A422A0DBF4600D90F88 /* FLAnimatedImage in Frameworks */,
 			);
@@ -235,6 +237,7 @@
 			packageProductDependencies = (
 				45E06A412A0DBF4600D90F88 /* FLAnimatedImage */,
 				458B04672A11318E008A1851 /* OpenAISwift */,
+				458B04792A118C77008A1851 /* Alamofire */,
 			);
 			productName = Jihwaja;
 			productReference = 45E06A3F2A0D3FDB00D90F88 /* Jihwaja.app */;
@@ -267,6 +270,7 @@
 			packageReferences = (
 				45E06A402A0DBF4600D90F88 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
 				458B04662A11318E008A1851 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				458B04782A118C77008A1851 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 4524FD122A00EB1100A5BC27;
 			projectDirPath = "";
@@ -545,6 +549,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		458B04782A118C77008A1851 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		45E06A402A0DBF4600D90F88 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Flipboard/FLAnimatedImage";
@@ -560,6 +572,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 458B04662A11318E008A1851 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
+		};
+		458B04792A118C77008A1851 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 458B04782A118C77008A1851 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		45E06A412A0DBF4600D90F88 /* FLAnimatedImage */ = {
 			isa = XCSwiftPackageProductDependency;
