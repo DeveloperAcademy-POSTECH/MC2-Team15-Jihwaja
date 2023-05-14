@@ -13,6 +13,7 @@ struct JihwajaApp: App {
     
     var body: some Scene {
         WindowGroup {
+
             if store.jihwaja.isFirst{
             MainView()
                     {

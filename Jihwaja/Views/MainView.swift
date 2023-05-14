@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+
     @Environment(\.presentationMode) var presentationMode
     
     // 사용자가 화면을 이탈하는지 감시할 변수
@@ -139,6 +140,7 @@ struct MainView: View {
         default:
             return AnyView(EmptyView())
         }
+
     }
     
  
@@ -155,8 +157,10 @@ extension View {
     }
 }
 
+
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView(saveAction: {})
     }
 }
+

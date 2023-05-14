@@ -25,6 +25,7 @@ struct StoreButtonView: View {
     }
 }
 
+
 struct StoreButtonView_Previews: PreviewProvider {
     static var previews: some View {
         StoreButtonView(isActive: true)
