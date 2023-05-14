@@ -8,8 +8,10 @@
 import SwiftUI
 
 
-
+// Q12 1st View
 struct QuestionView12: View {
+    @EnvironmentObject var store: JihwajaStore
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var items: [String] = ["", "", "", ""]
     @State private var showSecondView = false
@@ -18,7 +20,7 @@ struct QuestionView12: View {
     var body: some View {
         NavigationView{
             VStack{
-                QuestionView(question: "😎 주변에서 곽애숙씨를 부를 때 사용하는 호칭들을 작성해주세요!")
+                QuestionView(question: "😎 주변에서 \(store.jihwaja.A1)씨를 부를 때 사용하는 호칭들을 작성해주세요!")
                 Spacer()
                 
                 List {
@@ -27,21 +29,22 @@ struct QuestionView12: View {
                             .background(Color.clear)
                     }
                 }
-//                .listStyle(InsetGroupedListStyle())
-              
+                //                .listStyle(InsetGroupedListStyle())
+                
                 
                 NavigationLink(destination: QuestionView12Second(items: $items), isActive: $showSecondView) {
                     Button {
+                        store.jihwaja.A12S = items
                         showSecondView.toggle()
                     } label: {
                         Text("작성완료")
                             .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
-                            // 버튼이 활성화되면 초록색, 비활성화되면 회색 배경색
+                        // 버튼이 활성화되면 초록색, 비활성화되면 회색 배경색
                             .background(items.allSatisfy { !$0.isEmpty } ? Color("green") : Color("grayButton"))
                             .accentColor(.white)
                             .cornerRadius(10)
                             .padding(.top, getWidth() * 0.04)
-                            .padding(.bottom, getWidth() * 0.12)
+                            .padding(.bottom, getWidth() * 0.08)
                             .disabled(!items.allSatisfy { !$0.isEmpty })
                     }
                 }
@@ -61,11 +64,12 @@ struct QuestionView12: View {
             }
         }
     }
-    
 }
 
-
+// Q12 2nd 뷰
 struct QuestionView12Second: View {
+    @EnvironmentObject var store: JihwajaStore
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var isActiveQ12 = true
     
@@ -75,7 +79,7 @@ struct QuestionView12Second: View {
     var body: some View {
         NavigationView {
             VStack{
-                QuestionView(question: "😎 앞으로도 곽애숙씨가 불려지고 싶은 호칭을 선택해주세요!")
+                QuestionView(question: "😎 앞으로도 \(store.jihwaja.A1)씨가 불려지고 싶은 호칭을 선택해주세요!")
                 Spacer()
                 
                 List {
@@ -91,19 +95,29 @@ struct QuestionView12Second: View {
                             }) {
                                 Image(systemName: isLiked[index] ? "heart.fill" : "heart")
                                     .foregroundColor(isLiked[index] ? .red : .gray)
-                            }
+                            }.disabled(store.jihwaja.isCompleted[11])
                         }
                     }
                 }
                 .listStyle(InsetGroupedListStyle())
                 
-                StoreButtonView(isActive: isActiveQ12)
+                
+                Button(action: {
+                    store.jihwaja.A12B = isLiked
+                    store.jihwaja.isCompleted[11] = true
+                    self.presentationMode.wrappedValue.dismiss()
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    StoreButtonView(isActive: isActiveQ12)
+                }).disabled(!isActiveQ12)
+                    .opacity(store.jihwaja.isCompleted[11] == true ? 0: 1)
                 
             }
-        
-            
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear{
+            isLiked = store.jihwaja.A12B
+        }
     }
 }
 
