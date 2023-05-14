@@ -14,6 +14,7 @@ struct QuestionView08: View {
     let country: [String] = ["이집트", "네덜란드", "일본", "서울", "모스크바", "중국", "인도", "스페인"]
     @State private var isActiveQ8 = true
     @State private var result = ""
+    @State var showModal = true
     
     var body: some View {
         ZStack {
@@ -71,7 +72,13 @@ struct QuestionView08: View {
                 })
                 .opacity(store.jihwaja.isCompleted[7] ? 0 : 1)
             }
+        }.sheet(isPresented: store.jihwaja.isCompleted[7] ? .constant(false) : $showModal)
+        { HalfModalView(imageName:"Q6_motion",
+                       title: "카드 좌우로 밀기",
+                        content: "긍정적이면 오른쪽, 부정적이면 왼쪽으로 카드를 밀어주세요!",
+                        showModal: $showModal)
         }
+        
         .onAppear{
             result = store.jihwaja.A8
         }

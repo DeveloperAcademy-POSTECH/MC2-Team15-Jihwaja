@@ -27,8 +27,6 @@ struct QuestionView12: View{
                             .background(Color.clear)
                     }
                 }
-                //                .listStyle(InsetGroupedListStyle())
-                
                 
                     Button {
                         store.jihwaja.A12S = items
@@ -66,7 +64,7 @@ struct QuestionView12: View{
                 List {
                     ForEach(items.indices, id: \.self){ index in
                         HStack {
-                            Text("호칭 \(items[index])")
+                            Text("\(items[index])")
                                 .padding()
                                 .disabled(store.jihwaja.isCompleted[11])
                             
