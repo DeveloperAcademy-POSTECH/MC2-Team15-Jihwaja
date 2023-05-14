@@ -15,6 +15,7 @@
 		45429E922A0DD6890049C727 /* Q2_motion.gif in Resources */ = {isa = PBXBuildFile; fileRef = 45429E912A0DD6890049C727 /* Q2_motion.gif */; };
 		4569EEA32A09DFFD003B1D48 /* DrawingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569EEA22A09DFFD003B1D48 /* DrawingManager.swift */; };
 		458B045B2A111F31008A1851 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458B045A2A111F31008A1851 /* ColorManager.swift */; };
+		458B04682A11318E008A1851 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 458B04672A11318E008A1851 /* OpenAISwift */; };
 		45E06A422A0DBF4600D90F88 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 45E06A412A0DBF4600D90F88 /* FLAnimatedImage */; };
 		45E06A442A0DC1EF00D90F88 /* AnimatedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E06A432A0DC1EF00D90F88 /* AnimatedManager.swift */; };
 		4D4418762A013455000EDC42 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4418752A013454000EDC42 /* MainView.swift */; };
@@ -97,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				458B04682A11318E008A1851 /* OpenAISwift in Frameworks */,
 				45E06A422A0DBF4600D90F88 /* FLAnimatedImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +234,7 @@
 			name = Jihwaja;
 			packageProductDependencies = (
 				45E06A412A0DBF4600D90F88 /* FLAnimatedImage */,
+				458B04672A11318E008A1851 /* OpenAISwift */,
 			);
 			productName = Jihwaja;
 			productReference = 45E06A3F2A0D3FDB00D90F88 /* Jihwaja.app */;
@@ -263,6 +266,7 @@
 			mainGroup = 4524FD122A00EB1100A5BC27;
 			packageReferences = (
 				45E06A402A0DBF4600D90F88 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
+				458B04662A11318E008A1851 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = 4524FD122A00EB1100A5BC27;
 			projectDirPath = "";
@@ -533,6 +537,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		458B04662A11318E008A1851 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		45E06A402A0DBF4600D90F88 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Flipboard/FLAnimatedImage";
@@ -544,6 +556,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		458B04672A11318E008A1851 /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 458B04662A11318E008A1851 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
+		};
 		45E06A412A0DBF4600D90F88 /* FLAnimatedImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 45E06A402A0DBF4600D90F88 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */;
