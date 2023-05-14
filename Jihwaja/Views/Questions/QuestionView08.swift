@@ -57,7 +57,7 @@ struct QuestionView08: View {
 
 struct QuestionView08_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView05()
+        QuestionView08()
     }
 }
 
