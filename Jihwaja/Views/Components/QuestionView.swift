@@ -17,7 +17,7 @@ struct QuestionView: View {
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
         }
-        .padding(.top, getWidth() * 0.25)
+        .padding(.top, getWidth() * 0.1)
         .padding(.bottom, getWidth() * 0.1)
         .padding(.horizontal, getWidth() * 0.1)
     }

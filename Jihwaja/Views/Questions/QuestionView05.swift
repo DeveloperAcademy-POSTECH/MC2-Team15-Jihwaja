@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct QuestionView05: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var store: JihwajaStore
+    
+    
     @State private var scale: CGFloat = 0.4
     @State private var isActiveQ5 = false
 
         var body: some View {
             VStack{
                 // 질문
-                QuestionView(question: "😄 지금 곽애숙씨가 느끼고 있는\n행복의 크기를 알려주세요!")
+                QuestionView(question: "😄 지금 \(store.jihwaja.A1)씨가 느끼고 있는\n행복의 크기를 알려주세요!")
                 Spacer()
                
                 //답변 영역
@@ -32,16 +37,11 @@ struct QuestionView05: View {
                         .opacity(0.1)
                         .frame(width: getWidth() * 0.8)
                         // 확대 축소 제스쳐
-                        .gesture(
-                            // MagnificationGesture: 확대 축소
-                            MagnificationGesture()
-                                .onChanged { value in
-                                    //value의 최댓값: 무제한으로 원이 커지는 것 방지
+                        .gesture(!store.jihwaja.isCompleted[4] ?
+                                MagnificationGesture().onChanged { value in
                                     self.scale = min(value, 4.0)
-                                    //원의 크기가 변경되면 저장 버튼 Activate
                                     isActiveQ5 = true
-                                }
-                        )
+                                } : nil)
                 }
                 
                 // % 텍스트
@@ -52,7 +52,18 @@ struct QuestionView05: View {
                 
                 Spacer()
                 //저장 버튼
-                StoreButtonView(isActive: isActiveQ5)
+                Button(action: {
+                    store.jihwaja.A5 = Double(scale)
+                    store.jihwaja.isCompleted[4] = true
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    StoreButtonView(isActive: isActiveQ5)
+                }).disabled(!isActiveQ5)
+                    .opacity(store.jihwaja.isCompleted[4] == true ? 0: 1)
+                    
+            }
+            .onAppear{
+                scale = CGFloat(store.jihwaja.A5)
             }
         }
 }

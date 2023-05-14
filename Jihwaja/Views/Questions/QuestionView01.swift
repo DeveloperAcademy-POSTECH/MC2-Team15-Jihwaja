@@ -9,12 +9,14 @@ import SwiftUI
 
 struct QuestionView01: View {
     @State var name : String = ""
-    //@State private var buttonPressed = false
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var store: JihwajaStore
+    
     
     var body: some View {
         NavigationView{
             VStack{
-                ScrollView{
+                
                     // 질문 뷰
                     QuestionView(question: "❓우리와 함께하고 있는\n당신의 이름은 무엇인가요?")
                     
@@ -28,17 +30,26 @@ struct QuestionView01: View {
                         )
                         .cornerRadius(15)
                         .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
+                        .disabled(store.jihwaja.isCompleted[0])
                     
                     Spacer()
-                }
+                
                 
                 // 저장 버튼
-                
+                Button(action: {
+                    store.jihwaja.A1 = name
+                    store.jihwaja.isCompleted[0] = true
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
                     StoreButtonView(isActive: !name.isEmpty)
+                }).disabled(name.isEmpty)
+                    .opacity(store.jihwaja.isCompleted[0] == true ? 0: 1)
                     
             }
             
             .onAppear {
+                
+                name = store.jihwaja.A1
                 // View가 로드될 때 키보드를 자동으로 띄워줌
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
