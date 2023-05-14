@@ -7,9 +7,11 @@ let IMAGE_HEIGHTS: CGFloat = 200
 
 
 struct QuestionView10: View {
-    
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var store: JihwajaStore
     
     @State private var isActiveQ10 = false
+    @State var showModal = true
     
     // stage 0: 8강
     // stage 1: 4강
@@ -21,16 +23,14 @@ struct QuestionView10: View {
     // default card list for each stage
     @State var not_cards = ["cardDesign00", "cardDesign01", "cardDesign02", "cardDesign03","cardDesign04", "cardDesign05", "cardDesign06", "cardDesign07", "", ""]
     
-    
     var body: some View {
         
-        NavigationView{
-            
-            VStack {
-                
+       
+        VStack {
+            if !store.jihwaja.isCompleted[9] {
                 ScrollView {
                     
-                    QuestionView(question: "💁‍♂️ 두 가지 선택지 중 곽애숙씨가 더 선호하는 취미를 골라주세요")
+                    QuestionView(question: "💁‍♂️ 두 가지 선택지 중 \(store.jihwaja.A1)씨가 더 선호하는 취미를 골라주세요")
                     
                     
                     VStack {
@@ -41,7 +41,7 @@ struct QuestionView10: View {
                         if stage == 3 {
                             
                             HStack() {
-                                    ImageView(imageName: selected[0])
+                                ImageView(imageName: selected[0])
                             }
                             .frame(width: IMAGE_WIDTHS + 50, height: IMAGE_HEIGHTS + 50)
                         }
@@ -90,20 +90,39 @@ struct QuestionView10: View {
                         isActiveQ10 = true
                     }
                 }
-                
-                StoreButtonView(isActive: isActiveQ10)
+            } else {
+                VStack{
+                    Text("🥳 우승! 🎉")
+                        .font(.system(size: 40, weight: .bold, design: .rounded))
+                        .foregroundColor(.green)
                     
+                    HStack() {
+                        ImageView(imageName: store.jihwaja.A10)
+                    }
+                    .frame(width: IMAGE_WIDTHS + 50, height: IMAGE_HEIGHTS + 50)
+                }
+            }
+            
+            //저장 버튼
+            Button(action: {
+                store.jihwaja.A10 = selected[0]
+                store.jihwaja.isCompleted[9] = true
+                self.presentationMode.wrappedValue.dismiss()
+            }, label: {
+                StoreButtonView(isActive: isActiveQ10)
+            })
+            .disabled(!isActiveQ10)
+            .opacity(store.jihwaja.isCompleted[9] == true ? 0 : 1)
+            .sheet(isPresented: store.jihwaja.isCompleted[9] ? .constant(false) : $showModal)
+            { HalfModalView(imageName:"Q10_motion",
+                            title: "선택지에서 고르기",
+                            content: "두 가지 선택지 중에 더 선호하는 취미를 골라주세요!",
+                            showModal: $showModal)
+                
             }
         }
     }
-    
-    
-    
 }
-
-
-
-
 
 struct ImageView: View {
     var imageName: String

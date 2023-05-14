@@ -19,7 +19,7 @@ struct QuestionView02: View {
         
         VStack{
             // 질문
-            QuestionView(question: "🙋🏻‍♀️\(store.jihwaja.A1)씨는 지금까지\n 진정으로 원하는 삶을 살았나요?")
+            QuestionView(question: "🙋🏻‍♀️ \(store.jihwaja.A1)씨는 지금까지\n 진정으로 원하는 삶을 살았나요?")
             Spacer()
             
             //답변 영역
@@ -42,6 +42,7 @@ struct QuestionView02: View {
                 // step: value가 변경되는 단위
                 step: 1
             )
+            .padding()
             .onChange(of: yes) { _ in
                 
                 // Slider 값이 변경되면 버튼 Activate
@@ -64,7 +65,6 @@ struct QuestionView02: View {
             .disabled(!isActiveQ2)
             .opacity(store.jihwaja.isCompleted[1] == true ? 0 : 1)
             .sheet(isPresented: store.jihwaja.isCompleted[1] ? .constant(false) : $showModal)
-            
             { HalfModalView(imageName:"Q2_motion",
                            title: "옆으로 밀기",
                             content: "슬라이더를 옆으로 밀어 답변의 크기를 조절해보세요!",

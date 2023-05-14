@@ -28,6 +28,7 @@ struct QuestionView06 : View {
                 EraseView(lines: $lines)
                 
                 Button(action:{
+                    store.jihwaja.A6L = lines
                     store.jihwaja.isCompleted[5] = true
                     self.presentationMode.wrappedValue.dismiss()
                     
@@ -35,6 +36,9 @@ struct QuestionView06 : View {
                     // lines.isEmpty == false 이면 isActive true
                     StoreButtonView(isActive: !lines.isEmpty)
                 }.opacity(store.jihwaja.isCompleted[5] ? 0 : 1)
+            }
+            .onAppear{
+                lines = store.jihwaja.A6L
             }
             .sheet(isPresented: store.jihwaja.isCompleted[5] ? .constant(false) : $showModal)
             { HalfModalView(imageName:"Q6_motion",
@@ -75,6 +79,9 @@ struct QuestionView06 : View {
             } // Vstack
             .onAppear {
                 habit = store.jihwaja.A6
+                if !store.jihwaja.isCompleted[5] {
+                    habit = ""
+                }
                 // View가 로드될 때 키보드를 자동으로 띄워줌
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)

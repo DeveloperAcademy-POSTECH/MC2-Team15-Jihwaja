@@ -8,15 +8,28 @@
 import SwiftUI
 
 struct QuestionView08: View {
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var store: JihwajaStore
+    
     let country: [String] = ["이집트", "네덜란드", "일본", "서울", "모스크바", "중국", "인도", "스페인"]
     @State private var isActiveQ8 = true
     @State private var result = ""
+    @State var showModal = true
     
     var body: some View {
         ZStack {
             VStack {
-                QuestionView(question: "✈️ 곽애숙씨가 지금 당장\n떠나고 싶은 곳은 어디인가요?")
+                QuestionView(question: "✈️ \(store.jihwaja.A1)씨가 지금 당장\n떠나고 싶은 곳은 어디인가요?")
                 
+                if store.jihwaja.isCompleted[7] {
+                    Text("\n지금 당장 \(result)로 떠나보는 것은 어떨까요?")
+                        .multilineTextAlignment(.center)
+                        .frame(width: getWidth() * 0.65)
+                        .font(.system(size: 27))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("green"))
+                    
+                } else {
                 ZStack {
                     if result == "" {
                         Text("\n지금 당장 떠나고 싶은 곳이 있나요?")
@@ -46,11 +59,28 @@ struct QuestionView08: View {
                             .stacked(at: index, in: 8)
                     }
                 }
-                
+            }
                 Spacer()
                 
-                StoreButtonView(isActive: isActiveQ8)
+                // 저장 버튼
+                Button(action: {
+                    store.jihwaja.A8 = result
+                    store.jihwaja.isCompleted[7] = true
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    StoreButtonView(isActive: isActiveQ8)
+                })
+                .opacity(store.jihwaja.isCompleted[7] ? 0 : 1)
             }
+        }.sheet(isPresented: store.jihwaja.isCompleted[7] ? .constant(false) : $showModal)
+        { HalfModalView(imageName:"Q8_motion",
+                       title: "카드 좌우로 밀기",
+                        content: "긍정적이면 오른쪽, 부정적이면 왼쪽으로 카드를 밀어주세요!",
+                        showModal: $showModal)
+        }
+        
+        .onAppear{
+            result = store.jihwaja.A8
         }
     }
 }
@@ -91,7 +121,7 @@ struct CardView: View {
         .opacity(2 - Double(abs(offset.width / 50)))
         .gesture(DragGesture()
             .onChanged { gesture in
-                offset = gesture.translation
+                offset = gesture.translation 
             }.onEnded{ _ in
                 if offset.width > 100 {
                     if result == "" {

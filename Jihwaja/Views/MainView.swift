@@ -17,7 +17,7 @@ struct MainView: View {
     // 앱 내에서 계속 읽고 쓸 데이터 원본 from JihwajaApp.swift
     @EnvironmentObject var store: JihwajaStore
     
-    //let saveAction: ()->Void
+    @State var isReportViewShowing : Bool = false
     
     var body: some View {
         
@@ -87,16 +87,17 @@ struct MainView: View {
                 }
                 
                 // 결과 버튼
-                Button(remainingQ == 0 ? "결과 보러가기" : "아직 \(remainingQ)개의 질문이 남아있어요"){
-                    
-                }
-                .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
-                .background(remainingQ == 0 ? Color("green") : Color("grayButton"))
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .padding(.top, getWidth() * 0.04)
-                .padding(.bottom, getWidth() * 0.12)
-                
+                NavigationLink(destination: ReportView(), isActive: $isReportViewShowing){
+                    Button(remainingQ == 0 ? "축하합니다! 결과를 보러 가 볼까요?" : "아직 \(remainingQ)개의 질문이 남아있어요!"){
+                        isReportViewShowing.toggle()
+                    }
+                    .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
+                    .background(remainingQ == 0 ? Color("green") : Color("grayButton"))
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .padding(.top, getWidth() * 0.04)
+                    .padding(.bottom, getWidth() * 0.12)
+                }.disabled(remainingQ != 0)
             } //VStack
             .frame(width: getWidth() * 0.76)
         } //NavigationView
