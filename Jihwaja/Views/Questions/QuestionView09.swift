@@ -133,13 +133,15 @@ struct QuestionView09: View {
                         // 저장 버튼
                         Button(action:{
                             // MainView 로 넘어가는 코드
-                            
+                            store.jihwaja.A9 = lines
                         }){
                             // lines.isEmpty == false 이면 isActive true
                             StoreButtonView(isActive: !lines.isEmpty)
                         }
                     }
                 }
+            }.onAppear {
+                lines = store.jihwaja.A9
             }
             // DrawingShape 호출
             ForEach(lines) { line in

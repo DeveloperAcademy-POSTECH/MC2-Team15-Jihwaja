@@ -20,12 +20,13 @@ struct jihwajaData : Codable {
     var A5 : CGFloat
     var A6 : String
     var A7 : String
+    var A9 : [Line]
     var A11 : [Double]
     var A12S : [String]
     var A12B : [Bool]
     
     
-    init(isFirst: Bool, isCompleted: [Bool], isFlipped: [Bool], A1: String, A2: Double, A3: [CGPoint], A4: String, A5: CGFloat, A6: String, A7: String, A11 : [Double], A12S: [String], A12B: [Bool]) {
+    init(isFirst: Bool, isCompleted: [Bool], isFlipped: [Bool], A1: String, A2: Double, A3: [CGPoint], A4: String, A5: CGFloat, A6: String, A7: String, A9: [Line], A11 : [Double], A12S: [String], A12B: [Bool]) {
         self.isFirst = isFirst
         self.isCompleted = isCompleted
         self.isFlipped = isFlipped
@@ -36,6 +37,7 @@ struct jihwajaData : Codable {
         self.A5 = A5
         self.A6 = A6
         self.A7 = A7
+        self.A9 = A9
         self.A11 = A11
         self.A12S = A12S
         self.A12B = A12B
@@ -52,6 +54,7 @@ struct jihwajaData : Codable {
                   A5: 0.0,
                   A6: "",
                   A7: "",
+                  A9: [],
                   A11: [0.0, 0.0, 0.0, 0.0],
                   A12S: ["","","",""],
                   A12B: [false, false, false, false]
