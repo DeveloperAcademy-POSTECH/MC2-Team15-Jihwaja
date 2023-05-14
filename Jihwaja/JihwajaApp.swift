@@ -13,33 +13,8 @@ struct JihwajaApp: App {
     
     var body: some Scene {
         WindowGroup {
-
-            if store.jihwaja.isFirst{
-            MainView()
-                    {
-                Task{
-                    do {
-                        try await store.save(jihwaja: store.jihwaja)
-                    } catch {
-                        fatalError(error.localizedDescription)
-                    }
-                    
-                    
-                }
-            }
-            .environmentObject(store)
-            .task{
-                do{
-                    try await store.load()
-                } catch {
-                    fatalError(error.localizedDescription)
-                }
-            }
-            
-            } else {
-                OnboardingView(jihwajaData: $store.jihwaja)
-                    .environmentObject(store)
-            }
+                ContentView()
+                .environmentObject(store)
 
         }
     }

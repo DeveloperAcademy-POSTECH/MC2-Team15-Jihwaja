@@ -39,6 +39,7 @@ struct QuestionView01: View {
                 Button(action: {
                     store.jihwaja.A1 = name
                     store.jihwaja.isCompleted[0] = true
+                    store.jihwaja.isFirst = false
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     StoreButtonView(isActive: !name.isEmpty)

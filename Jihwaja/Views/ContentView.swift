@@ -8,17 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
-    var isFirst = false
-    var isLoading = true
+    @EnvironmentObject var store: JihwajaStore
+    
     var body: some View {
-        
-        
-        if isFirst {
-            Text("Onboarding")
+        if store.jihwaja.isFirst == false{
+            MainView()
+            {
+                Task{
+                    do {
+                        try await store.save(jihwaja: store.jihwaja)
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                    
+                    
+                }
+            }
+            .task{
+                do{
+                    try await store.load()
+                } catch {
+                    fatalError(error.localizedDescription)
+                }
+            }
+            
         } else {
-            Text("Main")
+            OnboardingView()
+                .task{
+                    do{
+                        try await store.load()
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                }
         }
-        
     }
 }
 
