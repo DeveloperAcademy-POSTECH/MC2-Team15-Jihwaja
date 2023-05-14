@@ -17,7 +17,7 @@ struct MainView: View {
     // 앱 내에서 계속 읽고 쓸 데이터 원본 from JihwajaApp.swift
     @EnvironmentObject var store: JihwajaStore
     
-    let saveAction: ()->Void
+    //let saveAction: ()->Void
     
     var body: some View {
         
@@ -93,18 +93,22 @@ struct MainView: View {
                 
             } //VStack
             .frame(width: getWidth() * 0.76)
-            .onChange(of: scenePhase) { phase in
-                        if phase == .inactive { saveAction() }
-                    }
+//            .onChange(of: scenePhase) { phase in
+//                        if phase == .inactive { saveAction() }
+//                    }
             
         } //NavigationView
+        .onAppear{
+            
+            print(store.jihwaja.A1)
+        }
     } // Body
     
 
     func destinationView(for qnum: Int) -> some View {
         switch qnum {
         case 1:
-            return AnyView(QuestionView01())
+            return AnyView(QuestionView01(isFirstLaunching:.constant(false)))
         case 2:
             return AnyView(QuestionView02())
         case 3:
@@ -150,7 +154,8 @@ extension View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(saveAction: {})
+        //MainView(saveAction: {})
+        MainView()
     }
 }
 

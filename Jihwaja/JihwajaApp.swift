@@ -13,9 +13,27 @@ struct JihwajaApp: App {
     
     var body: some Scene {
         WindowGroup {
-                ContentView()
-                .environmentObject(store)
-
+            ContentView()
+            {
+                Task{
+                    do {
+                        try await store.save(jihwaja: store.jihwaja)
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                    
+                    
+                }
+            }
+            .environmentObject(store)
+            .task{
+                do{
+                    try await store.load()
+                } catch {
+                    fatalError(error.localizedDescription)
+                }
+            }
+                
         }
     }
 }
