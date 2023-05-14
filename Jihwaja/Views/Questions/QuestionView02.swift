@@ -14,6 +14,8 @@ struct QuestionView02: View {
     @State private var yes = 1.0
     @State private var isActiveQ2 = false
     
+    @State private var showModal = true
+    
     var body: some View {
         
         VStack{
@@ -61,6 +63,10 @@ struct QuestionView02: View {
                 StoreButtonView(isActive: isActiveQ2)
             }).disabled(!isActiveQ2)
                 .opacity(store.jihwaja.isCompleted[1] == true ? 0 : 1)
+                .sheet(isPresented: store.jihwaja.isCompleted[1] ? .constant(false) : $showModal) {
+                    HalfModalView(imageName: "Q2_motion", title: "옆으로 밀기", content: "슬라이더를 옆으로 밀어 답변의 크기를 조절해보세요!", showModal: $showModal)
+                }
+            
         }
         .padding(.horizontal)
         .onAppear{

@@ -13,6 +13,7 @@ struct HalfModalView: View {
     var imageName: String
     var title: String
     var content: String
+    @Binding var showModal : Bool
     
     var body: some View {
         Group {
@@ -37,6 +38,8 @@ struct HalfModalView: View {
                     .padding(.bottom, getWidth() * 0.02)
                 
                 Button(action: {
+                    
+                    self.showModal.toggle()
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("확인했습니다")
@@ -57,6 +60,6 @@ struct HalfModalView: View {
 
 struct HalfModalView_Previews: PreviewProvider {
     static var previews: some View {
-        HalfModalView(imageName: "", title: "", content: "")
+        HalfModalView(imageName: "", title: "", content: "", showModal: .constant(true))
     }
 }

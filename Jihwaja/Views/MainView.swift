@@ -17,11 +17,11 @@ struct MainView: View {
     // 앱 내에서 계속 읽고 쓸 데이터 원본 from JihwajaApp.swift
     @EnvironmentObject var store: JihwajaStore
     
-    let saveAction: ()->Void
+    //let saveAction: ()->Void
     
     var body: some View {
         
-        var remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
+        let remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
         
         NavigationView{
             VStack {
@@ -72,16 +72,6 @@ struct MainView: View {
                                             .opacity(store.jihwaja.isFlipped[index] != false ? 1 : 0)
                                     }
                                     .rotation3DEffect(.init(degrees: store.jihwaja.isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
-//                                    .onTapGesture(perform: {
-//                                        print(index + 1)
-//                                        withAnimation(Animation.easeInOut(duration: 0.5)) {
-//                                                                if isFlipped[index] == false {
-//                                                                    // 카드가 아직 뒤집히지 않았을 경우
-//                                                                    isFlipped[index] = true
-//                                                                    // isFlipped를 뒤집힌 상태로 변경
-//                                                                   
-//                                                                }
-//                                                            }})
                                     
                                 }
                             )
@@ -103,9 +93,9 @@ struct MainView: View {
                 
             } //VStack
             .frame(width: getWidth() * 0.76)
-            .onChange(of: scenePhase) { phase in
-                        if phase == .inactive { saveAction() }
-                    }
+//            .onChange(of: scenePhase) { phase in
+//                        if phase == .inactive { saveAction() }
+//                    }
             
         } //NavigationView
     } // Body
@@ -114,7 +104,7 @@ struct MainView: View {
     func destinationView(for qnum: Int) -> some View {
         switch qnum {
         case 1:
-            return AnyView(QuestionView01())
+            return AnyView(QuestionView01(isFirstLaunching:.constant(false)))
         case 2:
             return AnyView(QuestionView02())
         case 3:
@@ -160,7 +150,8 @@ extension View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(saveAction: {})
+        //MainView(saveAction: {})
+        MainView()
     }
 }
 

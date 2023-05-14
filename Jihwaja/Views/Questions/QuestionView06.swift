@@ -86,7 +86,7 @@ struct QuestionView06: View {
                             StoreButtonView(isActive: eraseFlag ? !habit.isEmpty : !lines.isEmpty)
                     }
                     .sheet(isPresented: self.$showModal) {
-                        HalfModalView(imageName: "test_gif", title: "힘껏 문지르기", content: "고치고 싶은 습관이 고쳐지길\n바라면서 힘껏 문질러주세요")
+                        HalfModalView(imageName: "Q6_motion", title: "힘껏 문지르기", content: "고치고 싶은 습관이 고쳐지길\n바라면서 힘껏 문질러주세요", showModal: $showModal)
                     }
                 }
             }
