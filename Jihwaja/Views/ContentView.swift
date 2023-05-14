@@ -8,22 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    var isFirst = false
-    var isLoading = true
+    @AppStorage("_isFirstLaunching") var isFirstLaunching : Bool = true
+    @Environment(\.scenePhase) private var scenePhase
+    let saveAction: ()->Void
+    
+    @EnvironmentObject var store: JihwajaStore
     var body: some View {
-        
-        
-        if isFirst {
-            Text("Onboarding")
-        } else {
-            Text("Main")
+        ZStack{
+            if isFirstLaunching == false{
+                MainView()
+            } else {
+                OnboardingView(isFirstLaunching: $isFirstLaunching)
+            }
         }
-        
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive { saveAction() }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(saveAction: {})
     }
 }

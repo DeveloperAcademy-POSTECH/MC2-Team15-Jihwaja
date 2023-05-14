@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct QuestionView11: View {
+    @EnvironmentObject var store: JihwajaStore
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var isActiveQ11 = false
-    
     @State private var sliderValues = [0.0, 0.0, 0.0, 0.0]
     
     var body: some View {
-        NavigationView{
+       
             VStack{
                 // 질문 뷰
-                QuestionView(question: "📈 각 나이대별로 곽애숙씨가 행복했던 정도를 표시해주세요.")
+                QuestionView(question: "📈 각 나이대별로 \(store.jihwaja.A1)씨가 행복했던 정도를 표시해주세요.")
 
                 
                 Spacer()
@@ -25,7 +27,6 @@ struct QuestionView11: View {
                 
                 // 답변 뷰
                 ZStack {
-                    
                     Image("Q11GraphBg")
                         .resizable()
                         .frame(width: getWidth() * 0.9, height: getWidth() * 1)
@@ -46,12 +47,16 @@ struct QuestionView11: View {
                     HStack {
                         SliderView(height: 300, value: $sliderValues[0])
                             .frame(width: getWidth() * 0.17)
+                            .disabled(store.jihwaja.isCompleted[10])
                         SliderView(height: 300, value: $sliderValues[1])
                             .frame(width: getWidth() * 0.17)
+                            .disabled(store.jihwaja.isCompleted[10])
                         SliderView(height: 300, value: $sliderValues[2])
                             .frame(width: getWidth() * 0.17)
+                            .disabled(store.jihwaja.isCompleted[10])
                         SliderView(height: 300, value: $sliderValues[3])
                             .frame(width: getWidth() * 0.17)
+                            .disabled(store.jihwaja.isCompleted[10])
                             
                         
                     }
@@ -70,10 +75,19 @@ struct QuestionView11: View {
                 Spacer()
                 
                 // 저장 버튼
-                StoreButtonView(isActive: isActiveQ11)
+                Button(action: {
+                    store.jihwaja.A11 = sliderValues
+                    store.jihwaja.isCompleted[10] = true
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    StoreButtonView(isActive: isActiveQ11)
+                }).disabled(!isActiveQ11)
+                    .opacity(store.jihwaja.isCompleted[10] == true ? 0: 1)
                 
             }
-        }
+            .onAppear{
+                sliderValues = store.jihwaja.A11
+            }
     }
 }
 
