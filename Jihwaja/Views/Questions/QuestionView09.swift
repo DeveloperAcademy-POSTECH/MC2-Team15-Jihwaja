@@ -148,7 +148,7 @@ struct QuestionView09: View {
             }
         }.gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local).onChanged({ value in
             let newPoint = value.location
-            if value.location.x > getWidth() * 0.15 && value.location.x < getWidth() * 0.85 && value.location.y > getHeight() * 0.25 && value.location.y < getHeight() * 0.66 {
+            if value.location.x > getWidth() * 0.15 && value.location.x < getWidth() * 0.85 && value.location.y > getHeight() * 0.17 && value.location.y < getHeight() * 0.61 {
                 if value.translation.width + value.translation.height == 0 {
                     lines.append(Line(points: [newPoint], color: brushColor, lineWidth: brushWidth))
                 } else {
