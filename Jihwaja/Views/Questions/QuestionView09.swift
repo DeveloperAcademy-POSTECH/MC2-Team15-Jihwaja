@@ -129,6 +129,7 @@ struct QuestionView09: View {
                                     }
                                 }
                         }
+                        Color.white.opacity(0.01)
                         
                         // 저장 버튼
                         Button(action:{
@@ -143,6 +144,7 @@ struct QuestionView09: View {
             }.onAppear {
                 lines = store.jihwaja.A9
             }
+            
             // DrawingShape 호출
             ForEach(lines) { line in
                 DrawingShape(points: line.points)
