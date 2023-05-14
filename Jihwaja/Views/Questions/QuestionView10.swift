@@ -2,8 +2,8 @@ import SwiftUI
 
 
 // edit it later
-let IMAGE_WIDTHS: CGFloat = 150
-let IMAGE_HEIGHTS: CGFloat = 200
+let IMAGE_WIDTHS: CGFloat = 160
+let IMAGE_HEIGHTS: CGFloat = 270
 
 
 struct QuestionView10: View {
@@ -21,7 +21,7 @@ struct QuestionView10: View {
     // selected card name
     @State var selected: [String]! = []
     // default card list for each stage
-    @State var not_cards = ["cardDesign00", "cardDesign01", "cardDesign02", "cardDesign03","cardDesign04", "cardDesign05", "cardDesign06", "cardDesign07", "", ""]
+    @State var not_cards = ["Drawing", "Listening", "Golf", "Cooking","Planting", "Climbing", "Traveling", "Reading", "", ""]
     
     var body: some View {
         
@@ -40,10 +40,13 @@ struct QuestionView10: View {
                         
                         if stage == 3 {
                             
-                            HStack() {
-                                ImageView(imageName: selected[0])
+                            VStack {
+                                HStack() {
+                                    ImageView(imageName: selected[0])
+                                }
+                                .frame(width: IMAGE_WIDTHS, height: IMAGE_HEIGHTS)
+                                .padding()
                             }
-                            .frame(width: IMAGE_WIDTHS + 50, height: IMAGE_HEIGHTS + 50)
                         }
                         else {
                             
@@ -65,6 +68,7 @@ struct QuestionView10: View {
                                     ImageView(imageName: not_cards[1])
                                 }
                             }
+                            .padding()
                         }
                     }
                     .padding()
@@ -99,7 +103,7 @@ struct QuestionView10: View {
                     HStack() {
                         ImageView(imageName: store.jihwaja.A10)
                     }
-                    .frame(width: IMAGE_WIDTHS + 50, height: IMAGE_HEIGHTS + 50)
+                    .frame(width: IMAGE_WIDTHS, height: IMAGE_HEIGHTS)
                 }
             }
             
