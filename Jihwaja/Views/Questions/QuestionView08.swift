@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct QuestionView08: View {
-    @State private var cards = Array<Card>(repeating: Card.example, count: 10)
+    let country: [String] = ["이집트", "네덜란드", "일본", "서울", "모스크바", "중국", "인도", "스페인"]
     @State private var isActiveQ8 = true
+    @State private var result = ""
     
     var body: some View {
         ZStack {
@@ -17,9 +18,32 @@ struct QuestionView08: View {
                 QuestionView(question: "✈️ 곽애숙씨가 지금 당장\n떠나고 싶은 곳은 어디인가요?")
                 
                 ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: cards[index])
-                            .stacked(at: index, in: cards.count)
+                    if result == "" {
+                        Text("지금 당장 떠나고 싶은 곳이 있나요?")
+                            .multilineTextAlignment(.center)
+                            .frame(width: getWidth() * 0.65)
+                            .font(.system(size: 27))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("green"))
+                    } else if result.last == "본" || result.last == "울" || result.last == "국" || result.last == "인"{
+                        Text("지금 당장 \(result)으로 떠나 보는것은 어떨까요?")
+                            .multilineTextAlignment(.center)
+                            .frame(width: getWidth() * 0.65)
+                            .font(.system(size: 27))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("green"))
+                    } else {
+                        Text("지금 당장 \(result)로 떠나 보는것은 어떨까요?")
+                            .multilineTextAlignment(.center)
+                            .frame(width: getWidth() * 0.65)
+                            .font(.system(size: 27))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("green"))
+                    }
+                    
+                    ForEach(0..<8, id: \.self) { index in
+                        CardView(result: $result, image: "cardPic0\(index)", country: country[index])
+                            .stacked(at: index, in: 8)
                     }
                 }
                 
@@ -38,8 +62,10 @@ struct QuestionView08_Previews: PreviewProvider {
 }
 
 struct CardView: View {
-    let card: Card
     @State private var offset = CGSize.zero
+    @Binding var result: String
+    let image: String
+    let country: String
     
     var body: some View {
         ZStack {
@@ -52,7 +78,10 @@ struct CardView: View {
             
             VStack {
                 Spacer()
-                Text("이집트")
+                Image(image)
+                    .resizable()
+                    .frame(width: getWidth() * 0.8, height: getWidth() * 0.66)
+                Text(country)
                     .padding(.bottom)
             }
         }
@@ -64,20 +93,22 @@ struct CardView: View {
             .onChanged { gesture in
                 offset = gesture.translation
             }.onEnded{ _ in
-                if abs(offset.width) > 100 {
-                    //remove card
+                if offset.width > 100 {
+                    if result == "" {
+                        result.append(country)
+                    } else {
+                        result.append(", \(country)")
+                    }
+                    // remove card
+                } else if offset.width < -100 {
+                    // remove card
                 } else {
                     offset = .zero
                 }
             })
     }
 }
-struct Card {
-    let prompt: String
-    let answer: String
-    
-    static let example = Card(prompt: "제이름은", answer: "애숙애숙")
-}
+
 extension View {
     func stacked(at position: Int, in total: Int) -> some View {
         let offset = Double(total - position)
