@@ -52,6 +52,7 @@ struct QuestionView08: View {
                 
                 Spacer()
                 
+                // 저장 버튼
                 Button(action: {
                     store.jihwaja.A8 = result
                     store.jihwaja.isCompleted[7] = true
@@ -59,6 +60,7 @@ struct QuestionView08: View {
                 }, label: {
                     StoreButtonView(isActive: isActiveQ8)
                 })
+                .opacity(store.jihwaja.isCompleted[7])
             }
         }
         .onAppear{
