@@ -80,10 +80,8 @@ struct MainView: View {
                                         print(store.jihwaja.isFlipped[index])
                                     }
                                     .rotation3DEffect(.init(degrees: store.jihwaja.isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
-                                    
                                 }
                             )
-                            
                         } // ForEach
                     }
                 }
@@ -101,10 +99,6 @@ struct MainView: View {
                 
             } //VStack
             .frame(width: getWidth() * 0.76)
-//            .onChange(of: scenePhase) { phase in
-//                        if phase == .inactive { saveAction() }
-//                    }
-            
         } //NavigationView
     } // Body
     
@@ -138,10 +132,7 @@ struct MainView: View {
         default:
             return AnyView(EmptyView())
         }
-
     }
-    
- 
 } // View
 
 extension View {
@@ -158,7 +149,6 @@ extension View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        //MainView(saveAction: {})
         MainView()
     }
 }
