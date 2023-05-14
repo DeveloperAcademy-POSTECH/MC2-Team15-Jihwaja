@@ -19,21 +19,21 @@ struct QuestionView08: View {
                 
                 ZStack {
                     if result == "" {
-                        Text("지금 당장 떠나고 싶은 곳이 있나요?")
+                        Text("\n지금 당장 떠나고 싶은 곳이 있나요?")
                             .multilineTextAlignment(.center)
                             .frame(width: getWidth() * 0.65)
                             .font(.system(size: 27))
                             .fontWeight(.bold)
                             .foregroundColor(Color("green"))
                     } else if result.last == "본" || result.last == "울" || result.last == "국" || result.last == "인"{
-                        Text("지금 당장 \(result)으로 떠나 보는것은 어떨까요?")
+                        Text("\n지금 당장 \(result)으로 떠나보는 것은 어떨까요?")
                             .multilineTextAlignment(.center)
                             .frame(width: getWidth() * 0.65)
                             .font(.system(size: 27))
                             .fontWeight(.bold)
                             .foregroundColor(Color("green"))
                     } else {
-                        Text("지금 당장 \(result)로 떠나 보는것은 어떨까요?")
+                        Text("\n지금 당장 \(result)로 떠나보는 것은 어떨까요?")
                             .multilineTextAlignment(.center)
                             .frame(width: getWidth() * 0.65)
                             .font(.system(size: 27))
@@ -76,14 +76,14 @@ struct CardView: View {
                     .fill(offset.width > 0 ? Color("lightGreen") : Color("lightRed")))
                 .shadow(color: Color("grayText").opacity(0.3), radius: 6)
             
-            VStack {
-                Spacer()
-                Image(image)
-                    .resizable()
-                    .frame(width: getWidth() * 0.8, height: getWidth() * 0.66)
-                Text(country)
-                    .padding(.bottom)
-            }
+            Image(image)
+                .resizable()
+                .frame(width: getWidth() * 0.7, height: getWidth() * 0.93)
+            
+            Text(country)
+                .font(.system(size: 27))
+                .fontWeight(.bold)
+                .padding(.top, getWidth() * 0.7)
         }
         .frame(width: getWidth() * 0.78, height: getHeight() * 0.45)
         .rotationEffect(.degrees(Double(offset.width / 5)))
