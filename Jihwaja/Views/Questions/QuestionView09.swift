@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QuestionView09: View {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var jihwajaData : jihwajaData
+    @EnvironmentObject var store: JihwajaStore
 
     @State private var lines = [Line]()
     @State private var deletedLines = [Line]()
@@ -28,7 +28,7 @@ struct QuestionView09: View {
             ScrollView {
                 VStack {
                     // 질문 뷰
-                    QuestionView(question: "👻 곽애숙씨는 어떤 표정으로\n기억되었으면 좋겠나요?")
+                    QuestionView(question: "👻 \(store.jihwaja.A1)씨는 어떤 표정으로\n기억되었으면 좋겠나요?")
                     
                     Rectangle()
                         .frame(width: getWidth() * 0.74, height: getHeight() * 0.45)
@@ -164,6 +164,6 @@ struct QuestionView09: View {
 
 struct QuestionView09_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView09(jihwajaData:.constant(jihwajaData.emptyData))
+        QuestionView09()
     }
 }

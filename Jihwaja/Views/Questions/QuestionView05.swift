@@ -10,7 +10,8 @@ import SwiftUI
 struct QuestionView05: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @Binding var jihwajaData : jihwajaData
+    @EnvironmentObject var store: JihwajaStore
+    
     
     @State private var scale: CGFloat = 0.4
     @State private var isActiveQ5 = false
@@ -18,7 +19,7 @@ struct QuestionView05: View {
         var body: some View {
             VStack{
                 // 질문
-                QuestionView(question: "😄 지금 \(jihwajaData.A1)씨가 느끼고 있는\n행복의 크기를 알려주세요!")
+                QuestionView(question: "😄 지금 \(store.jihwaja.A1)씨가 느끼고 있는\n행복의 크기를 알려주세요!")
                 Spacer()
                
                 //답변 영역
@@ -36,7 +37,7 @@ struct QuestionView05: View {
                         .opacity(0.1)
                         .frame(width: getWidth() * 0.8)
                         // 확대 축소 제스쳐
-                        .gesture(!jihwajaData.isCompleted[4] ?
+                        .gesture(!store.jihwaja.isCompleted[4] ?
                                 MagnificationGesture().onChanged { value in
                                     self.scale = min(value, 4.0)
                                     isActiveQ5 = true
@@ -52,23 +53,23 @@ struct QuestionView05: View {
                 Spacer()
                 //저장 버튼
                 Button(action: {
-                    jihwajaData.A5 = Double(scale)
-                    jihwajaData.isCompleted[4] = true
+                    store.jihwaja.A5 = Double(scale)
+                    store.jihwaja.isCompleted[4] = true
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     StoreButtonView(isActive: isActiveQ5)
                 }).disabled(!isActiveQ5)
-                    .opacity(jihwajaData.isCompleted[4] == true ? 0: 1)
+                    .opacity(store.jihwaja.isCompleted[4] == true ? 0: 1)
                     
             }
             .onAppear{
-                scale = CGFloat(jihwajaData.A5)
+                scale = CGFloat(store.jihwaja.A5)
             }
         }
 }
     
     struct QuestionView05_Previews: PreviewProvider {
         static var previews: some View {
-            QuestionView05(jihwajaData:.constant(jihwajaData.emptyData))
+            QuestionView05()
         }
     }

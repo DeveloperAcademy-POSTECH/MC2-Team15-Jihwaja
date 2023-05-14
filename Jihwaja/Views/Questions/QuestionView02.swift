@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QuestionView02: View {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var jihwajaData : jihwajaData
+    @EnvironmentObject var store: JihwajaStore
     
     @State private var yes = 1.0
     @State private var isActiveQ2 = false
@@ -18,7 +18,7 @@ struct QuestionView02: View {
         
         VStack{
             // 질문
-            QuestionView(question: "🙋🏻‍♀️\(jihwajaData.A1)씨는 지금까지\n 진정으로 원하는 삶을 살았나요?")
+            QuestionView(question: "🙋🏻‍♀️\(store.jihwaja.A1)씨는 지금까지\n 진정으로 원하는 삶을 살았나요?")
             Spacer()
             
             //답변 영역
@@ -47,24 +47,24 @@ struct QuestionView02: View {
                 isActiveQ2 = true
             }
             .accentColor(Color("green"))
-            .disabled(jihwajaData.isCompleted[1])
+            .disabled(store.jihwaja.isCompleted[1])
             
             // % 텍스트
             Text("\(Int(yes)-1) %")
             
             //저장 버튼
             Button(action: {
-                jihwajaData.A2 = yes
-                jihwajaData.isCompleted[1] = true
+                store.jihwaja.A2 = yes
+                store.jihwaja.isCompleted[1] = true
                 self.presentationMode.wrappedValue.dismiss()
             }, label: {
                 StoreButtonView(isActive: isActiveQ2)
             }).disabled(!isActiveQ2)
-                .opacity(jihwajaData.isCompleted[1] == true ? 0 : 1)
+                .opacity(store.jihwaja.isCompleted[1] == true ? 0 : 1)
         }
         .padding(.horizontal)
         .onAppear{
-            yes = jihwajaData.A2
+            yes = store.jihwaja.A2
         }
     }
     
@@ -72,6 +72,6 @@ struct QuestionView02: View {
 
 struct QuestionView02_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView02(jihwajaData:.constant(jihwajaData.emptyData))
+        QuestionView02()
     }
 }

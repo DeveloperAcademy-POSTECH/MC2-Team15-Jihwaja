@@ -10,7 +10,7 @@ import Foundation
 
 struct QuestionView06: View {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var jihwajaData : jihwajaData
+    @EnvironmentObject var store: JihwajaStore
     
     
     @State var habit : String = ""
@@ -29,14 +29,14 @@ struct QuestionView06: View {
         ZStack {
             if eraseFlag {
                 VStack{
-                    QuestionView(question: "⚒️ \(jihwajaData.A1)씨의 고치고 싶은 습관이\n고쳐지길 바라면서 지워주세요")
+                    QuestionView(question: "⚒️ \(store.jihwaja.A1)씨의 고치고 싶은 습관이\n고쳐지길 바라면서 지워주세요")
                     EraseView(lines: $lines, initialHabit: habit)
                 }
             } else {
                     VStack {
                         ScrollView{
                             // 질문 뷰
-                            QuestionView(question: "⚒️ \(jihwajaData.A1)씨가 고치고 싶은\n습관을 적어주세요!")
+                            QuestionView(question: "⚒️ \(store.jihwaja.A1)씨가 고치고 싶은\n습관을 적어주세요!")
                             
                             // 답변 TextEditor
                             TextEditor(text: $habit)
@@ -78,7 +78,7 @@ struct QuestionView06: View {
                             // MainView 로 넘어가는 코드
                             // 여섯 번째 답변 저장
                             print("done")
-                            jihwajaData.isCompleted[5] = true
+                            store.jihwaja.isCompleted[5] = true
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }) {
@@ -141,6 +141,6 @@ struct EraseView: View {
 
 struct QuestionView06_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView06(jihwajaData:.constant(jihwajaData.emptyData))
+        QuestionView06()
     }
 }

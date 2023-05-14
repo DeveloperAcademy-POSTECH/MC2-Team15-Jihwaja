@@ -14,20 +14,20 @@ struct MainView: View {
     @Environment(\.scenePhase) private var scenePhase
     
     // 앱 내에서 계속 읽고 쓸 데이터 원본 from JihwajaApp.swift
-    @Binding var jihwajaData : jihwajaData
+    @EnvironmentObject var store: JihwajaStore
     
     let saveAction: ()->Void
     
     var body: some View {
         
-        var remainingQ = 12 - jihwajaData.isCompleted.filter { $0 }.count
+        var remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
         
         NavigationView{
             VStack {
                 
                 //문구
                 HStack {
-                    Text(jihwajaData.A1)
+                    Text(store.jihwaja.A1)
                         .font(.title)
                     Text("님, 반가워요!")
                         .font(.title)
@@ -68,9 +68,9 @@ struct MainView: View {
                                             .frame(width: getWidth() * 0.18, height: getWidth() * 0.24)
                                             .cornerRadius(7)
                                             .flipped()
-                                            .opacity(jihwajaData.isFlipped[index] != false ? 1 : 0)
+                                            .opacity(store.jihwaja.isFlipped[index] != false ? 1 : 0)
                                     }
-                                    .rotation3DEffect(.init(degrees: jihwajaData.isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
+                                    .rotation3DEffect(.init(degrees: store.jihwaja.isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
 //                                    .onTapGesture(perform: {
 //                                        print(index + 1)
 //                                        withAnimation(Animation.easeInOut(duration: 0.5)) {
@@ -113,23 +113,23 @@ struct MainView: View {
     func destinationView(for qnum: Int) -> some View {
         switch qnum {
         case 1:
-            return AnyView(NavigationView {QuestionView01(jihwajaData:$jihwajaData)})
+            return AnyView(QuestionView01())
         case 2:
-            return AnyView(NavigationView {QuestionView02(jihwajaData:$jihwajaData)})
+            return AnyView(QuestionView02())
         case 3:
-            return AnyView(NavigationView {QuestionView03(jihwajaData:$jihwajaData)})
+            return AnyView(QuestionView03())
         case 4:
-            return AnyView(NavigationView {QuestionView04(jihwajaData:$jihwajaData)})
+            return AnyView(QuestionView04())
         case 5:
-            return AnyView(NavigationView {QuestionView05(jihwajaData:$jihwajaData)})
+            return AnyView(QuestionView05())
         case 6:
-            return AnyView(NavigationView {QuestionView06(jihwajaData:$jihwajaData)})
+            return AnyView(QuestionView06())
         case 7:
-            return AnyView(NavigationView {QuestionView07(jihwajaData:$jihwajaData)})
+            return AnyView(QuestionView07())
         case 8:
             return AnyView(QuestionView08())
         case 9:
-            return AnyView(NavigationView {QuestionView09(jihwajaData:$jihwajaData)})
+            return AnyView(QuestionView09())
         case 10:
             return AnyView(QuestionView10())
         case 11:
@@ -157,6 +157,6 @@ extension View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(jihwajaData:.constant(jihwajaData.emptyData), saveAction: {})
+        MainView(saveAction: {})
     }
 }

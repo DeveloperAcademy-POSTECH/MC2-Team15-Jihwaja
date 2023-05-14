@@ -11,7 +11,7 @@ import SwiftUI
 @MainActor
 
 class JihwajaStore : ObservableObject {
-    @Published var jihwaja : jihwajaData = jihwajaData.emptyData
+    @Published var jihwaja = jihwajaData.emptyData
     
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,

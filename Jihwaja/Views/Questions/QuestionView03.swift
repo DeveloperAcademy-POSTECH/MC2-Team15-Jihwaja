@@ -10,7 +10,8 @@ import SwiftUI
 struct QuestionView03: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @Binding var jihwajaData : jihwajaData
+    @EnvironmentObject var store: JihwajaStore
+    
     
     // 버튼 활성화를 위한 변수
     @State private var isActiveQ3 = false
@@ -81,7 +82,7 @@ struct QuestionView03: View {
         
         VStack{
             // 질문
-            QuestionView(question: "☝️ \(jihwajaData.A1)씨에게 가장 중요한\n5가지 가치는 무엇인가요?")
+            QuestionView(question: "☝️ \(store.jihwaja.A1)씨에게 가장 중요한\n5가지 가치는 무엇인가요?")
             // 초록색 영역
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color("green"))
@@ -119,7 +120,7 @@ struct QuestionView03: View {
                                                 
                                             }
                                             .position(positions[i])
-                                            .gesture(!jihwajaData.isCompleted[2] ? dragGesture(row: rowIndex, col:colIndex) : nil)
+                                            .gesture(!store.jihwaja.isCompleted[2] ? dragGesture(row: rowIndex, col:colIndex) : nil)
                                     }
                                     
                                 }
@@ -130,16 +131,16 @@ struct QuestionView03: View {
             Spacer()
             // 저장 버튼
             Button(action: {
-                jihwajaData.A3 = positions
-                jihwajaData.isCompleted[2] = true
+                store.jihwaja.A3 = positions
+                store.jihwaja.isCompleted[2] = true
                 self.presentationMode.wrappedValue.dismiss()
             }, label: {
                 StoreButtonView(isActive: isActiveQ3)
             }).disabled(!isActiveQ3)
-                .opacity(jihwajaData.isCompleted[2] == true ? 0: 1)
+                .opacity(store.jihwaja.isCompleted[2] == true ? 0: 1)
         }
         .onAppear{
-            positions = jihwajaData.A3
+            positions = store.jihwaja.A3
         }
     }
 }
@@ -148,6 +149,6 @@ struct QuestionView03: View {
 
 struct QuestionView03_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView03(jihwajaData:.constant(jihwajaData.emptyData))
+        QuestionView03()
     }
 }

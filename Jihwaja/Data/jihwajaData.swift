@@ -37,7 +37,7 @@ struct jihwajaData : Codable {
     }
     
     static let emptyData : jihwajaData
-    = jihwajaData(isFirst: false,
+    = jihwajaData(isFirst: true ,
                   isCompleted: [false, false, false, false, false, false, false, false, false, false, false, false],
                   isFlipped: [false, false, false, false, false, false, false, false, false, false, false, false],
                   A1: "",

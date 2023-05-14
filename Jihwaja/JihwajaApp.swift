@@ -14,7 +14,8 @@ struct JihwajaApp: App {
     var body: some Scene {
         WindowGroup {
             if store.jihwaja.isFirst{
-            MainView(jihwajaData: $store.jihwaja){
+            MainView()
+                    {
                 Task{
                     do {
                         try await store.save(jihwaja: store.jihwaja)
@@ -25,6 +26,7 @@ struct JihwajaApp: App {
                     
                 }
             }
+            .environmentObject(store)
             .task{
                 do{
                     try await store.load()
@@ -35,6 +37,7 @@ struct JihwajaApp: App {
             
             } else {
                 OnboardingView(jihwajaData: $store.jihwaja)
+                    .environmentObject(store)
             }
 
         }
