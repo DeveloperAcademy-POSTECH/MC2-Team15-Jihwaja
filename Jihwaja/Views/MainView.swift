@@ -4,81 +4,136 @@
 //
 //  Created by ffffff on 2023/05/02.
 //
-
+ 
 import SwiftUI
 
 struct MainView: View {
-    // UserDefaults의 _isFlipped isFlipped에 저장
-    @State var isFlipped = UserDefaults.standard.array(forKey: "_isFlipped") as! [Bool]
+
+    @Environment(\.presentationMode) var presentationMode
     
-    @State var isActive = false
+    // 사용자가 화면을 이탈하는지 감시할 변수
+    @Environment(\.scenePhase) private var scenePhase
+    
+    // 앱 내에서 계속 읽고 쓸 데이터 원본 from JihwajaApp.swift
+    @EnvironmentObject var store: JihwajaStore
+    
+    //let saveAction: ()->Void
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("곽애숙님, 반가워요!")
-                    .font(.title)
-                    .foregroundColor(.gray)
-                Spacer()
-            }.padding(.top, getWidth() * 0.18)
-            
-            HStack {
-                Text("카드를 골라 질문을 선택해 주세요 :)")
-                    .font(.body)
-                    .foregroundColor(.gray)
-                Spacer()
-            }.padding(.bottom, getWidth() * 0.05)
-            Spacer()
-            
+        
+        let remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
+        
+        NavigationView{
             VStack {
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 3), spacing: 16) {
-                    ForEach(0..<12, id: \.self) { index in
-                        ZStack {
-                            Image("background")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: getWidth() * 0.23, height: getWidth() * 0.29)
-                                .cornerRadius(10)
-                                .shadow(radius: 5)
+                
+                //문구
+                HStack {
+                    Text(store.jihwaja.A1)
+                        .font(.title)
+                    Text("님, 반가워요!")
+                        .font(.title)
+                        .foregroundColor(.gray)
+                    Spacer()
+                }.padding(.top, getWidth() * 0.18)
+                
+                HStack {
+                    Text("카드를 골라 질문을 선택해 주세요 :)")
+                        .font(.body)
+                        .foregroundColor(.gray)
+                    Spacer()
+                }.padding(.bottom, getWidth() * 0.05)
+                Spacer()
+                
+                
+                // 화투패 12개
+                VStack {
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 3), spacing: 16) {
+                        // 각 카드들
+                        ForEach(0..<12, id: \.self) { index in
                             
-                            Image("cardDesign\(String(format: "%02d", index))")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: getWidth() * 0.18, height: getWidth() * 0.24)
-                                .cornerRadius(7)
-                                .flipped()
-                                .opacity(isFlipped[index] != false ? 1 : 0)
-                        }
-                        .rotation3DEffect(.init(degrees: isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
-                        .onTapGesture(perform: { withAnimation(Animation.easeInOut(duration: 0.5)) {
-                            if isFlipped[index] == false {
-                                // 카드가 아직 뒤집히지 않았을 경우
-                                isFlipped[index] = true
-                                // isFlipped를 뒤집힌 상태로 변경
-                                UserDefaults.standard.set(isFlipped, forKey: "_isFlipped")
-                                // UserDefaults 업데이트
-                            }
-                        }})
+                            NavigationLink(
+                                destination: self.destinationView(for: index + 1),
+                                label: {
+                                    ZStack {
+                                        Image("background")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: getWidth() * 0.23, height: getWidth() * 0.29)
+                                            .cornerRadius(10)
+                                            .shadow(radius: 5)
+                                            
+                                        
+                                        Image("cardDesign\(String(format: "%02d", index))")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: getWidth() * 0.18, height: getWidth() * 0.24)
+                                            .cornerRadius(7)
+                                            .flipped()
+                                            .opacity(store.jihwaja.isFlipped[index] ? 1 : 0)
+                                    }
+                                    .onAppear{
+                                        if store.jihwaja.isCompleted[index] == true && store.jihwaja.isFlipped[index] == false {
+                                            withAnimation(Animation.easeInOut(duration: 0.5)){
+                                                store.jihwaja.isFlipped[index] = true
+                                            }
+                                        }
+                                        print(store.jihwaja.isFlipped[index])
+                                    }
+                                    .rotation3DEffect(.init(degrees: store.jihwaja.isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
+                                }
+                            )
+                        } // ForEach
                     }
                 }
-            }
-            Button("아직 11개의 질문이 남아있어요"){
                 
-            }
-            .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
-            // 버튼이 활성화되면 초록색, 비활성화되면 회색 배경색
-            .background(isActive ? Color("green") : Color("grayButton"))
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            .padding(.top, getWidth() * 0.04)
-            .padding(.bottom, getWidth() * 0.12)
+                // 결과 버튼
+                Button(remainingQ == 0 ? "결과 보러가기" : "아직 \(remainingQ)개의 질문이 남아있어요"){
+                    
+                }
+                .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
+                .background(remainingQ == 0 ? Color("green") : Color("grayButton"))
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .padding(.top, getWidth() * 0.04)
+                .padding(.bottom, getWidth() * 0.12)
+                
+            } //VStack
+            .frame(width: getWidth() * 0.76)
+        } //NavigationView
+    } // Body
+    
+
+    func destinationView(for qnum: Int) -> some View {
+        switch qnum {
+        case 1:
+            return AnyView(QuestionView01(isFirstLaunching:.constant(false)))
+        case 2:
+            return AnyView(QuestionView02())
+        case 3:
+            return AnyView(QuestionView03())
+        case 4:
+            return AnyView(QuestionView04())
+        case 5:
+            return AnyView(QuestionView05())
+        case 6:
+            return AnyView(QuestionView06())
+        case 7:
+            return AnyView(QuestionView07())
+        case 8:
+            return AnyView(QuestionView08())
+        case 9:
+            return AnyView(QuestionView09())
+        case 10:
+            return AnyView(QuestionView10())
+        case 11:
+            return AnyView(QuestionView11())
+        case 12:
+            return AnyView(QuestionView12())
+        default:
+            return AnyView(EmptyView())
         }
-        .frame(width: getWidth() * 0.76)
-        .navigationBarHidden(true)
-
     }
-
-}
+} // View
 
 extension View {
     func flipped(_ axis: Axis = .horizontal, anchor: UnitPoint = .center) -> some View {
@@ -91,8 +146,10 @@ extension View {
     }
 }
 
+
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(isFlipped: [true, true, false, false, false, true, false, false, false, true, false, false])
+        MainView()
     }
 }
+
