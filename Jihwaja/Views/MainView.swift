@@ -98,10 +98,6 @@ struct MainView: View {
 //                    }
             
         } //NavigationView
-        .onAppear{
-            
-            print(store.jihwaja.A1)
-        }
     } // Body
     
 
