@@ -24,7 +24,7 @@ struct HalfModalView: View {
                   .foregroundColor(Color(UIColor.tertiaryLabel))
                 Spacer()
                 
-                AnimatedManager(fileName: "Q2_motion")
+                AnimatedManager(fileName: "\(imageName)")
                     .frame(width: getWidth() * 0.78, height: getWidth() * 0.62)
                 Spacer()
                 

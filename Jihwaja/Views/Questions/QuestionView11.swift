@@ -12,6 +12,8 @@ struct QuestionView11: View {
     
     @State private var sliderValues = [0.0, 0.0, 0.0, 0.0]
     
+    @State private var showModal = true
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -71,6 +73,9 @@ struct QuestionView11: View {
                 
                 // 저장 버튼
                 StoreButtonView(isActive: isActiveQ11)
+                    .sheet(isPresented: self.$showModal) {
+                        HalfModalView(imageName: "Q11_motion", title: "그래프 그리기", content: "각 축의 동그라미를 위아래로 끌어당겨 그래프를 그려주세요!")
+                    }
                 
             }
         }
