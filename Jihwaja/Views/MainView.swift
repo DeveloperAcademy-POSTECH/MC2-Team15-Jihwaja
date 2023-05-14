@@ -69,13 +69,19 @@ struct MainView: View {
                                             .frame(width: getWidth() * 0.18, height: getWidth() * 0.24)
                                             .cornerRadius(7)
                                             .flipped()
-                                            .opacity(store.jihwaja.isFlipped[index] != false ? 1 : 0)
+                                            .opacity(store.jihwaja.isFlipped[index] ? 1 : 0)
+                                    }
+                                    .onAppear{
+                                        if store.jihwaja.isCompleted[index] == true && store.jihwaja.isFlipped[index] == false {
+                                            withAnimation(Animation.easeInOut(duration: 0.5)){
+                                                store.jihwaja.isFlipped[index] = true
+                                            }
+                                        }
+                                        print(store.jihwaja.isFlipped[index])
                                     }
                                     .rotation3DEffect(.init(degrees: store.jihwaja.isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
-                                    
                                 }
                             )
-                            
                         } // ForEach
                     }
                 }
@@ -93,10 +99,6 @@ struct MainView: View {
                 
             } //VStack
             .frame(width: getWidth() * 0.76)
-//            .onChange(of: scenePhase) { phase in
-//                        if phase == .inactive { saveAction() }
-//                    }
-            
         } //NavigationView
     } // Body
     
@@ -130,10 +132,7 @@ struct MainView: View {
         default:
             return AnyView(EmptyView())
         }
-
     }
-    
- 
 } // View
 
 extension View {
@@ -150,7 +149,6 @@ extension View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        //MainView(saveAction: {})
         MainView()
     }
 }
