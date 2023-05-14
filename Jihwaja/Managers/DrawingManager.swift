@@ -40,9 +40,9 @@ struct DrawingShape: Shape {
     }
 }
 
-struct Line: Identifiable {
+struct Line: Identifiable, Codable {
     var points: [CGPoint]
     var color: Color
     var lineWidth: CGFloat
-    let id = UUID()
+    var id = UUID()
 }

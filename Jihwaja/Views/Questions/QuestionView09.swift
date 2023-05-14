@@ -129,18 +129,22 @@ struct QuestionView09: View {
                                     }
                                 }
                         }
+                        Color.white.opacity(0.01)
                         
                         // 저장 버튼
                         Button(action:{
                             // MainView 로 넘어가는 코드
-                            
+                            store.jihwaja.A9 = lines
                         }){
                             // lines.isEmpty == false 이면 isActive true
                             StoreButtonView(isActive: !lines.isEmpty)
                         }
                     }
                 }
+            }.onAppear {
+                lines = store.jihwaja.A9
             }
+            
             // DrawingShape 호출
             ForEach(lines) { line in
                 DrawingShape(points: line.points)
@@ -148,7 +152,7 @@ struct QuestionView09: View {
             }
         }.gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local).onChanged({ value in
             let newPoint = value.location
-            if value.location.x > getWidth() * 0.15 && value.location.x < getWidth() * 0.85 && value.location.y > getHeight() * 0.25 && value.location.y < getHeight() * 0.66 {
+            if value.location.x > getWidth() * 0.15 && value.location.x < getWidth() * 0.85 && value.location.y > getHeight() * 0.17 && value.location.y < getHeight() * 0.61 {
                 if value.translation.width + value.translation.height == 0 {
                     lines.append(Line(points: [newPoint], color: brushColor, lineWidth: brushWidth))
                 } else {
