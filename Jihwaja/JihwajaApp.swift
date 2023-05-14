@@ -13,7 +13,7 @@ struct JihwajaApp: App {
     
     var body: some Scene {
         WindowGroup {
-<<<<<<< HEAD
+
 
             if store.jihwaja.isFirst{
             MainView()
@@ -42,11 +42,10 @@ struct JihwajaApp: App {
                     .environmentObject(store)
             }
 
-=======
             //ContentView()
             //MainView()
             QuestionView03()
->>>>>>> 048e52e957b66b6c0ce94680e96b297acdf7fbb3
+
         }
     }
 }
