@@ -24,6 +24,7 @@ struct QuestionView03: View {
     
     // 올라갔는지 여부를 저장할 배열
     @State private var isInGreen : [Bool] = Array(repeating: false, count: 9)
+    @State private var showModal = true
     
     // 전체 너비와 높이
     let width = ceil(getWidth())
@@ -138,6 +139,11 @@ struct QuestionView03: View {
                 StoreButtonView(isActive: isActiveQ3)
             }).disabled(!isActiveQ3)
                 .opacity(store.jihwaja.isCompleted[2] == true ? 0: 1)
+                .sheet(isPresented: store.jihwaja.isCompleted[2] ? .constant(false) : $showModal)
+                
+                {
+                    HalfModalView(imageName:"Q3_motion", title: "끌어오기", content: "답변뷰를 끌어오세요!", showModal: $showModal)
+                }
         }
         .onAppear{
             positions = store.jihwaja.A3
