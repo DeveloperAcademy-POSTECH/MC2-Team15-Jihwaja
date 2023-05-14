@@ -114,7 +114,7 @@ struct QuestionView10: View {
             .disabled(!isActiveQ10)
             .opacity(store.jihwaja.isCompleted[9] == true ? 0 : 1)
             .sheet(isPresented: store.jihwaja.isCompleted[9] ? .constant(false) : $showModal)
-            { HalfModalView(imageName:"Q9_motion",
+            { HalfModalView(imageName:"Q10_motion",
                             title: "선택지에서 고르기",
                             content: "두 가지 선택지 중에 더 선호하는 취미를 골라주세요!",
                             showModal: $showModal)

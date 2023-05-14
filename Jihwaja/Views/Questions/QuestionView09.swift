@@ -21,6 +21,8 @@ struct QuestionView09: View {
     @State private var isBlue: Bool = false
     @State private var isYellow: Bool = false
     
+    @State var showModal = true
+    
     let lightGray = Color("lightGray")
     
     var body: some View {
@@ -167,7 +169,14 @@ struct QuestionView09: View {
         .onEnded({ value in
             if let lastLine = lines.last?.points, lastLine.isEmpty { lines.removeLast() }
         })
-        ).disabled(store.jihwaja.isCompleted[8])
+        )
+        .disabled(store.jihwaja.isCompleted[8])
+        .sheet(isPresented: store.jihwaja.isCompleted[8] ? .constant(false) : $showModal)
+            { HalfModalView(imageName:"Q9_motion",
+                           title: "그림 그리기",
+                            content: "다양한 색을 선택해 나만의 그림을 그려보세요!",
+                            showModal: $showModal)
+            }
     }
 }
 

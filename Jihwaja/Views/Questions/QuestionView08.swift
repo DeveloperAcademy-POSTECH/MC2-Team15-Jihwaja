@@ -73,7 +73,7 @@ struct QuestionView08: View {
                 .opacity(store.jihwaja.isCompleted[7] ? 0 : 1)
             }
         }.sheet(isPresented: store.jihwaja.isCompleted[7] ? .constant(false) : $showModal)
-        { HalfModalView(imageName:"Q6_motion",
+        { HalfModalView(imageName:"Q8_motion",
                        title: "카드 좌우로 밀기",
                         content: "긍정적이면 오른쪽, 부정적이면 왼쪽으로 카드를 밀어주세요!",
                         showModal: $showModal)
@@ -121,7 +121,7 @@ struct CardView: View {
         .opacity(2 - Double(abs(offset.width / 50)))
         .gesture(DragGesture()
             .onChanged { gesture in
-                offset = gesture.translation
+                offset = gesture.translation 
             }.onEnded{ _ in
                 if offset.width > 100 {
                     if result == "" {
