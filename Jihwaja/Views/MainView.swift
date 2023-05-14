@@ -21,7 +21,7 @@ struct MainView: View {
     
     var body: some View {
         
-        var remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
+        let remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
         
         NavigationView{
             VStack {
@@ -72,16 +72,6 @@ struct MainView: View {
                                             .opacity(store.jihwaja.isFlipped[index] != false ? 1 : 0)
                                     }
                                     .rotation3DEffect(.init(degrees: store.jihwaja.isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
-//                                    .onTapGesture(perform: {
-//                                        print(index + 1)
-//                                        withAnimation(Animation.easeInOut(duration: 0.5)) {
-//                                                                if isFlipped[index] == false {
-//                                                                    // 카드가 아직 뒤집히지 않았을 경우
-//                                                                    isFlipped[index] = true
-//                                                                    // isFlipped를 뒤집힌 상태로 변경
-//                                                                   
-//                                                                }
-//                                                            }})
                                     
                                 }
                             )
