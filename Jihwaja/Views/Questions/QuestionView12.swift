@@ -52,7 +52,7 @@ struct QuestionView12: View{
                             .padding(.bottom, getWidth() * 0.08)
                             
                     }
-                    .disabled(items.allSatisfy { $0.isEmpty })
+                    .disabled(!items.allSatisfy { !$0.isEmpty })
                 
             }
            
