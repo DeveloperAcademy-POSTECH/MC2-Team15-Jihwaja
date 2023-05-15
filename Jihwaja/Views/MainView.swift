@@ -22,6 +22,7 @@ struct MainView: View {
     var body: some View {
         
         let remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
+
         
         NavigationView{
             VStack {
@@ -77,7 +78,6 @@ struct MainView: View {
                                                 store.jihwaja.isFlipped[index] = true
                                             }
                                         }
-                                        print(store.jihwaja.isFlipped[index])
                                     }
                                     .rotation3DEffect(.init(degrees: store.jihwaja.isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
                                 }

@@ -39,8 +39,6 @@ struct QuestionView01: View {
                 Button(action: {
                     store.jihwaja.A1 = name
                     store.jihwaja.isCompleted[0] = true
-                    print(store.jihwaja.A1)
-                    print("Clicked")
                     isFirstLaunching.toggle()
                 }, label: {
                     StoreButtonView(isActive: !name.isEmpty)
