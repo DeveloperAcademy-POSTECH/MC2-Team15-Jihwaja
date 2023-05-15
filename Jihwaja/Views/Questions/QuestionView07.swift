@@ -33,8 +33,10 @@ struct QuestionView07: View {
                     .frame(width: getWidth() * 0.78, height: getHeight() * 0.15)
                     .disabled(store.jihwaja.isCompleted[6])
                 
+                
                 Spacer()
             }
+            
             
             // 저장 버튼
             Button(action: {
