@@ -36,12 +36,13 @@ struct QuestionView12: View{
                             .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
                         // 버튼이 활성화되면 초록색, 비활성화되면 회색 배경색
                             .background(items.allSatisfy { !$0.isEmpty } ? Color("green") : Color("grayButton"))
-                            .accentColor(.white)
+                            .foregroundColor(.white)
                             .cornerRadius(10)
                             .padding(.top, getWidth() * 0.04)
                             .padding(.bottom, getWidth() * 0.08)
-                            .disabled(!items.allSatisfy { !$0.isEmpty })
+                            
                     }
+                    .disabled(items.allSatisfy { $0.isEmpty })
                 
             }
            
