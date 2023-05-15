@@ -100,7 +100,7 @@ struct MainView: View {
                 }.disabled(remainingQ != 0)
             } //VStack
             .frame(width: getWidth() * 0.76)
-        } //NavigationView
+        } .tint(Color("green"))//NavigationView
     } // Body
     
 
