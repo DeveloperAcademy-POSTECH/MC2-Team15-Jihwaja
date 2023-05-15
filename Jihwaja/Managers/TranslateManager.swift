@@ -44,8 +44,8 @@ class TranslateManager {
         
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/x-www-form-urlencoded; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("79pZoWORQjfqVPZB8GZC", forHTTPHeaderField: "X-Naver-Client-Id")
-        urlRequest.setValue("DXC5Cwjt0G", forHTTPHeaderField: "X-Naver-Client-Secret")
+        urlRequest.setValue("VO7enXbO3kKf994vl79U", forHTTPHeaderField: "X-Naver-Client-Id")
+        urlRequest.setValue("_Jj3RQw1Kp", forHTTPHeaderField: "X-Naver-Client-Secret")
         
         let parameter = "source=\(papago.source)&target=\(papago.target)&text=\(papago.text)"
         let parameterData = parameter.data(using: .utf8)
@@ -59,6 +59,7 @@ class TranslateManager {
             case .success:
                 Task.detached{
                     guard let response = response.value,let decode = self.jsonDecoder(String(response))else  {
+                        print(response)
                         return
                     }
                     
