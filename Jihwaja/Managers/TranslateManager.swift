@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import Combine
 
 struct Papago: Codable {
     var source: String
@@ -15,28 +16,63 @@ struct Papago: Codable {
 }
 
 class TranslateManager {
-    func getTranslateText(papago: Papago) {
+    
+    let koreaText = CurrentValueSubject<String,Error>("")
+    var subscription = Set<AnyCancellable>()
+    
+    init(){
+        koreaText.sink(receiveCompletion: { completion in
+            switch completion {
+                
+            case .finished:
+                print("FIN")
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+            
+        }, receiveValue: { str in
+            print("korea \(str)")
+        })
+        .store(in: &subscription)
+    }
+    
+    func getTranslateText(papago: Papago) -> String {
+        print(papago)
         let url = "https://openapi.naver.com/v1/papago/n2mt"
         var urlRequest = URLRequest(url: URL(string: url)!)
+        var returnValue: String = ""
         
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/x-www-form-urlencoded; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("nMAIuBlgt3nlC0q24ECP", forHTTPHeaderField: "X-Naver-Client-Id")
-        urlRequest.setValue("fKDEsqPjqq", forHTTPHeaderField: "X-Naver-Client-Secret")
+        urlRequest.setValue("79pZoWORQjfqVPZB8GZC", forHTTPHeaderField: "X-Naver-Client-Id")
+        urlRequest.setValue("DXC5Cwjt0G", forHTTPHeaderField: "X-Naver-Client-Secret")
         
         let parameter = "source=\(papago.source)&target=\(papago.target)&text=\(papago.text)"
         let parameterData = parameter.data(using: .utf8)
         urlRequest.httpBody = parameterData
         
-        AF.request(urlRequest).responseString { response in
+        AF.request(urlRequest).responseString {[weak self] response in
+            
+            guard let self else {return}
+            
             switch response.result {
             case .success:
-                let decoded = self.jsonDecoder(String(response.value!))
-                print(decoded!.message.result.translatedText)
+                Task.detached{
+                    guard let response = response.value,let decode = self.jsonDecoder(String(response))else  {
+                        return
+                    }
+                    
+                    let text = decode.message.result.translatedText
+                    print("Res :\(text)")
+                    self.koreaText.send(text)
+                    
+                }
             case .failure(let error):
                 print("Alamofire Request Error: \(error)")
+                returnValue = "Alamofire Request Error: \(error)"
             }
         }
+        return ""
     }
     
     func jsonDecoder(_ data: String) -> TranslateResponseBody? {
@@ -49,6 +85,7 @@ class TranslateManager {
         } catch {
             print("jsonDecoder Decoding Error")
         }
+        
         return nil
     }
 }

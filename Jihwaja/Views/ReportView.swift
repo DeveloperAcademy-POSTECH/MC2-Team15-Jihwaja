@@ -16,11 +16,19 @@ struct ReportView: View {
 
     var body: some View {
         VStack {
-            ForEach(models, id: \.self) { string in
-                Text(string)
-            }
-            Button("Send") {
-                send()
+            if text == "" {
+                ForEach(models, id: \.self) { string in
+                    Text(string)
+                }
+                Button("Send") {
+                    send()
+                }
+            } else {
+                Text(text)
+                    .font(.system(size: 22))
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .frame(width: getWidth() * 0.8)
             }
         }.onAppear {
             viewModel.setup()
@@ -34,7 +42,7 @@ struct ReportView: View {
         let group = DispatchGroup()
         group.enter()
         
-        viewModel.send(text: "Write a warm fairy tale about an ordinary person. His name is Kwak Ae-sook, and he is in his 50s. I'm living with about 80 percent of happiness. Important values are health, leisure time, and finding hobbies. He wants to be remembered as a warm person by everyone in the future. The habit I want to fix is shaking my legs. The food that brings back memories is the kimchi jjim set meal that my mom made for me. The place she wants to leave right now is 이집트. She wants to go 낚시 as a new hobby.") { response in
+        viewModel.send(text: "Write a warm fairy tale about an ordinary person. My name is Kwak Ae-sook (Q1), and I have a memory of my mom's kimchi jjim set meal~~~~~(Q7), so I am thinking of memories with this food. Kwak Ae-sook has lived the life she really wanted at around 20% (Q2), and she felt -30% (Q11-1) in adolescence, 80% (Q11-2) in youth, and 40% (Q11-3) in middle age. Kwak Ae-sook (Q1) is currently feeling 40% (Q5) happiness, and important values are health, leisure time, and hobby search (Q3). The habit I want to break is constantly shaking my legs (Q6). Kwak Ae-sook's preferred hobby is fishing (Q10), and the places she wants to leave right away are Egypt, Korea, and China (Q8). Kwak Ae-sook (Q1) wants to be called 00 mother and Kwak Ae-sook (Q12) in the future, and Kwak Ae-sook wants to be remembered as a warm person to everyone (Q4).") { response in
             DispatchQueue.main.async {
                 //print(response)
                 //result = response
@@ -43,8 +51,12 @@ struct ReportView: View {
                 
                 group.leave()
                 
-                let input: () = translateManager.getTranslateText(papago: Papago(source: "en", target: "ko", text: "\(response.replacingOccurrences(of: "\n\n", with: "").replacingOccurrences(of: "\n", with: ""))"))
-                print(input)
+                text = translateManager.getTranslateText(papago: Papago(source: "en", target: "ko", text: "\(response.replacingOccurrences(of: "\n\n", with: "").replacingOccurrences(of: "\n", with: ""))"))
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                    print("text: \(text)")
+                    print(translateManager.koreaText.value)
+                    text = translateManager.koreaText.value
+                }
             }
             print("waiting..")
             group.wait()
@@ -65,12 +77,12 @@ final class ViewModel: ObservableObject {
     private var client: OpenAISwift?
 
     func setup() {
-        client = OpenAISwift(authToken: "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")
+        client = OpenAISwift(authToken: "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")
     }
 
     func send(text: String, completion: @escaping (String) -> Void) {
         client?.sendCompletion(with: text,
-                               maxTokens: 100,
+                               maxTokens: 500,
                                completionHandler: { result in
             switch result {
             case .success(let model):
