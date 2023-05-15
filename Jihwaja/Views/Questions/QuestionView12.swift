@@ -19,15 +19,25 @@ struct QuestionView12: View{
         if store.jihwaja.isCompleted[11] == false && showSecondView == false {
             VStack{
                 QuestionView(question: "😎 주변에서 \(store.jihwaja.A1)씨를 부를 때 사용하는 호칭들을 작성해주세요!")
-                Spacer()
                 
-                List {
-                    ForEach(items.indices, id: \.self) { index in
-                        TextField("호칭 \(index+1)", text: $items[index])
-                            .background(Color.clear)
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color("gray"), lineWidth: 2)
+                    .foregroundColor(.clear)
+                    .frame(width: getWidth() * 0.75, height: getHeight() * 0.225)
+                    .overlay{
+                        List {
+                            ForEach(items.indices, id: \.self) { index in
+                                TextField("호칭 \(index+1)", text: $items[index])
+                                    .background(Color.clear)
+                                    
+                            }
+                            
+                        }.scrollContentBackground(.hidden)
+                            .padding(.top, -getHeight()*0.03)
+                            Spacer()
                     }
-                }
-                
+                Spacer()
+            
                     Button {
                         store.jihwaja.A12S = items
                         showSecondView.toggle()
