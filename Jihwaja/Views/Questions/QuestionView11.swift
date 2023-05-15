@@ -38,7 +38,8 @@ struct QuestionView11: View {
                     
                     // 슬라이더 핸들들이 이어진 Path
                     Path { path in
-                        path.move(to: CGPoint(x: 68+32, y: CGFloat(sliderValues[0]) + 250))
+                        path.move(to: CGPoint(x: 44, y: 250))
+                        path.addLine(to: CGPoint(x: 68+37, y: CGFloat(sliderValues[0]) + 250))
                         path.addLine(to: CGPoint(x: 142+35, y: CGFloat(sliderValues[1]) + 250))
                         path.addLine(to: CGPoint(x: 216+35, y: CGFloat(sliderValues[2]) + 250))
                         path.addLine(to: CGPoint(x: 290+35, y: CGFloat(sliderValues[3]) + 250))
