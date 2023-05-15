@@ -19,13 +19,17 @@ struct OnboardingView: View {
         NavigationView{
                 VStack{
                     TabView (selection: $selectedTabIndex){
-                        Image("OnBoarding1")
+                        Onboarding1()
+                            .frame(height: getHeight() * 0.6)
                             .tag(0)
-                        Image("OnBoarding2")
+                        Onboarding2()
+                            .frame(height: getHeight() * 0.6)
                             .tag(1)
-                        Image("OnBoarding3")
+                        Onboarding3()
+                            .frame(height: getHeight() * 0.6)
                             .tag(2)
-                        Image("OnBoarding4")
+                        Onboarding4()
+                            .frame(height: getHeight() * 0.6)
                             .tag(3)
                         
                     }

@@ -13,7 +13,7 @@ struct Onboarding2: View {
             
             HStack {
                 Text("12개의 카드")
-                    .font(.system(size: 21))
+                    .font(.system(size: 18))
                     .fontWeight(.heavy)
                     .padding(.trailing, -8)
                     .padding(.top, getWidth() * 0.18)
@@ -24,15 +24,15 @@ struct Onboarding2: View {
                       }
             
             Text("답을 자유롭게 해주세요.")
-            .font(.system(size: 21))
+            .font(.system(size: 18))
             .fontWeight(.semibold)
             
-            Spacer()
+            
             
             Image("iPhoneMain")
                 .resizable()
                 .frame(width: 200, height: 400)
-                .padding(.bottom, getWidth() * 0.03)
+                .padding(.vertical, getWidth() * 0.03)
             
         }
         .multilineTextAlignment(.center)

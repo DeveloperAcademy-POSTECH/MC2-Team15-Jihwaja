@@ -13,25 +13,25 @@ struct Onboarding3: View {
             
             HStack {
                 Text("예시를 보고 게임하듯 답")
-                    .font(.system(size: 21))
+                    .font(.system(size: 18))
                     .fontWeight(.heavy)
                     .padding(.trailing, -8)
                     .padding(.top, getWidth() * 0.18)
                 Text("을 하다 보면")
-                .font(.system(size: 21))
+                .font(.system(size: 18))
                 .fontWeight(.semibold)
                 .padding(.top, getWidth() * 0.18)
                       }
             
             Text("카드의 그림이 하나 둘 완성될거에요.")
-            .font(.system(size: 21))
+            .font(.system(size: 18))
             .fontWeight(.semibold)
             
-            Spacer()
+           
             
             AnimatedManager(fileName: "onboarding_motion")
                 .frame(width: 200, height: 400)
-                .padding(.bottom, getWidth() * 0.03)
+                .padding(.vertical, getWidth() * 0.03)
             
         }
         .multilineTextAlignment(.center)
