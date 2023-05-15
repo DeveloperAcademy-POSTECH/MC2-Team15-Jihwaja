@@ -39,7 +39,6 @@ struct OnboardingView: View {
                     if selectedTabIndex != 3 {
                         Button(action:{
                                 selectedTabIndex += 1
-                                print(selectedTabIndex)
                             
                         }, label: {
                             Text( "다음")

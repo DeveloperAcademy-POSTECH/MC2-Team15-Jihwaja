@@ -18,7 +18,6 @@ struct JihwajaApp: App {
                 SplashView()
                     .frame(width: getWidth() * 0.8)
                     .onAppear {
-                        print("splash")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             self.showSplash = false
                         }
