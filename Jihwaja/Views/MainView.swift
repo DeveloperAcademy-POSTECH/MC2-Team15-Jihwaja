@@ -12,7 +12,7 @@ struct MainView: View {
     @Environment(\.presentationMode) var presentationMode
     
     // 사용자가 화면을 이탈하는지 감시할 변수
-    @Environment(\.scenePhase) private var scenePhase
+    
     
     // 앱 내에서 계속 읽고 쓸 데이터 원본 from JihwajaApp.swift
     @EnvironmentObject var store: JihwajaStore

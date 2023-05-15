@@ -12,26 +12,26 @@ struct Onboarding4: View {
         VStack {
             
             Text("모든 질문에 답을 완료하면")
-            .font(.system(size: 21))
+            .font(.system(size: 18))
             .fontWeight(.semibold)
             .padding(.top, getWidth() * 0.18)
             
             HStack {
                 Text("최종 결과지가 생성")
-                    .font(.system(size: 21))
+                    .font(.system(size: 18))
                     .fontWeight(.heavy)
                     .padding(.trailing, -8)
                 Text("됩니다!")
-                .font(.system(size: 21))
+                .font(.system(size: 18))
                 .fontWeight(.semibold)
                       }
             
-            Spacer()
+            
             
             Image("iPhoneLoad")
                 .resizable()
                 .frame(width: 200, height: 400)
-                .padding(.bottom, getWidth() * 0.03)
+                .padding(.vertical, getWidth() * 0.03)
             
         }
         .multilineTextAlignment(.center)
