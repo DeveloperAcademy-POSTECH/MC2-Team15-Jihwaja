@@ -106,6 +106,7 @@ struct CardView: View {
                     .fill(offset.width > 0 ? Color("lightGreen") : Color("lightRed")))
                 .shadow(color: Color("grayText").opacity(0.3), radius: 6)
             
+            
             Image(image)
                 .resizable()
                 .frame(width: getWidth() * 0.7, height: getWidth() * 0.93)
@@ -119,10 +120,11 @@ struct CardView: View {
         .rotationEffect(.degrees(Double(offset.width / 5)))
         .offset(x: offset.width * 5, y: 0)
         .opacity(2 - Double(abs(offset.width / 50)))
-        .gesture(DragGesture()
+        .gesture(DragGesture(minimumDistance: 0.05)
             .onChanged { gesture in
                 offset = gesture.translation 
             }.onEnded{ _ in
+                
                 if offset.width > 100 {
                     if result == "" {
                         result.append(country)
@@ -135,7 +137,10 @@ struct CardView: View {
                 } else {
                     offset = .zero
                 }
-            })
+                
+            }
+            
+        )
     }
 }
 
