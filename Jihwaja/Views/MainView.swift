@@ -17,11 +17,11 @@ struct MainView: View {
     // 앱 내에서 계속 읽고 쓸 데이터 원본 from JihwajaApp.swift
     @EnvironmentObject var store: JihwajaStore
     
-    let saveAction: ()->Void
+    @State var isReportViewShowing : Bool = false
     
     var body: some View {
         
-        var remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
+        let remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
         
         NavigationView{
             VStack {
@@ -69,44 +69,37 @@ struct MainView: View {
                                             .frame(width: getWidth() * 0.18, height: getWidth() * 0.24)
                                             .cornerRadius(7)
                                             .flipped()
-                                            .opacity(store.jihwaja.isFlipped[index] != false ? 1 : 0)
+                                            .opacity(store.jihwaja.isFlipped[index] ? 1 : 0)
+                                    }
+                                    .onAppear{
+                                        if store.jihwaja.isCompleted[index] == true && store.jihwaja.isFlipped[index] == false {
+                                            withAnimation(Animation.easeInOut(duration: 0.5)){
+                                                store.jihwaja.isFlipped[index] = true
+                                            }
+                                        }
+                                        print(store.jihwaja.isFlipped[index])
                                     }
                                     .rotation3DEffect(.init(degrees: store.jihwaja.isFlipped[index] != false ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 0.0), anchor: .center, anchorZ: 0.0, perspective: 0.2)
-//                                    .onTapGesture(perform: {
-//                                        print(index + 1)
-//                                        withAnimation(Animation.easeInOut(duration: 0.5)) {
-//                                                                if isFlipped[index] == false {
-//                                                                    // 카드가 아직 뒤집히지 않았을 경우
-//                                                                    isFlipped[index] = true
-//                                                                    // isFlipped를 뒤집힌 상태로 변경
-//                                                                   
-//                                                                }
-//                                                            }})
-                                    
                                 }
                             )
-                            
                         } // ForEach
                     }
                 }
                 
                 // 결과 버튼
-                Button(remainingQ == 0 ? "결과 보러가기" : "아직 \(remainingQ)개의 질문이 남아있어요"){
-                    
-                }
-                .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
-                .background(remainingQ == 0 ? Color("green") : Color("grayButton"))
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .padding(.top, getWidth() * 0.04)
-                .padding(.bottom, getWidth() * 0.12)
-                
+                NavigationLink(destination: ReportView(), isActive: $isReportViewShowing){
+                    Button(remainingQ == 0 ? "축하합니다! 결과를 보러 가 볼까요?" : "아직 \(remainingQ)개의 질문이 남아있어요!"){
+                        isReportViewShowing.toggle()
+                    }
+                    .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
+                    .background(remainingQ == 0 ? Color("green") : Color("grayButton"))
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .padding(.top, getWidth() * 0.04)
+                    .padding(.bottom, getWidth() * 0.12)
+                }.disabled(remainingQ != 0)
             } //VStack
             .frame(width: getWidth() * 0.76)
-            .onChange(of: scenePhase) { phase in
-                        if phase == .inactive { saveAction() }
-                    }
-            
         } //NavigationView
     } // Body
     
@@ -114,7 +107,7 @@ struct MainView: View {
     func destinationView(for qnum: Int) -> some View {
         switch qnum {
         case 1:
-            return AnyView(QuestionView01())
+            return AnyView(QuestionView01(isFirstLaunching:.constant(false)))
         case 2:
             return AnyView(QuestionView02())
         case 3:
@@ -140,10 +133,7 @@ struct MainView: View {
         default:
             return AnyView(EmptyView())
         }
-
     }
-    
- 
 } // View
 
 extension View {
@@ -160,7 +150,7 @@ extension View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(saveAction: {})
+        MainView()
     }
 }
 

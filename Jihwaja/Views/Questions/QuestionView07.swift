@@ -45,6 +45,8 @@ struct QuestionView07: View {
                 StoreButtonView(isActive: !food.isEmpty)
             }).disabled(food.isEmpty)
                 .opacity(store.jihwaja.isCompleted[6] == true ? 0 : 1)
+                
+
             
         }
         .onAppear {

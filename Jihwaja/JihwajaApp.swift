@@ -13,11 +13,8 @@ struct JihwajaApp: App {
     
     var body: some Scene {
         WindowGroup {
-
-
-            if store.jihwaja.isFirst{
-            MainView()
-                    {
+            ContentView()
+            {
                 Task{
                     do {
                         try await store.save(jihwaja: store.jihwaja)
@@ -36,16 +33,7 @@ struct JihwajaApp: App {
                     fatalError(error.localizedDescription)
                 }
             }
-            
-            } else {
-                OnboardingView(jihwajaData: $store.jihwaja)
-                    .environmentObject(store)
-            }
-
-            //ContentView()
-            //MainView()
-            QuestionView03()
-
+                
         }
     }
 }

@@ -21,6 +21,8 @@ struct QuestionView09: View {
     @State private var isBlue: Bool = false
     @State private var isYellow: Bool = false
     
+    @State var showModal = true
+    
     let lightGray = Color("lightGray")
     
     var body: some View {
@@ -129,18 +131,25 @@ struct QuestionView09: View {
                                     }
                                 }
                         }
+                        Color.white.opacity(0.01)
                         
                         // 저장 버튼
                         Button(action:{
                             // MainView 로 넘어가는 코드
-                            
+                            store.jihwaja.A9 = lines
+                            store.jihwaja.isCompleted[8] = true
+                            self.presentationMode.wrappedValue.dismiss()
                         }){
                             // lines.isEmpty == false 이면 isActive true
                             StoreButtonView(isActive: !lines.isEmpty)
-                        }
+                        }.disabled(store.jihwaja.isCompleted[8])
+                            .opacity(store.jihwaja.isCompleted[8] ? 0 : 1)
                     }
                 }
+            }.onAppear {
+                lines = store.jihwaja.A9
             }
+            
             // DrawingShape 호출
             ForEach(lines) { line in
                 DrawingShape(points: line.points)
@@ -148,7 +157,7 @@ struct QuestionView09: View {
             }
         }.gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local).onChanged({ value in
             let newPoint = value.location
-            if value.location.x > getWidth() * 0.15 && value.location.x < getWidth() * 0.85 && value.location.y > getHeight() * 0.25 && value.location.y < getHeight() * 0.66 {
+            if value.location.x > getWidth() * 0.15 && value.location.x < getWidth() * 0.85 && value.location.y > getHeight() * 0.17 && value.location.y < getHeight() * 0.61 {
                 if value.translation.width + value.translation.height == 0 {
                     lines.append(Line(points: [newPoint], color: brushColor, lineWidth: brushWidth))
                 } else {
@@ -156,9 +165,18 @@ struct QuestionView09: View {
                     lines[index].points.append(newPoint)
                 }
             }
-        }).onEnded({ value in
+        })
+        .onEnded({ value in
             if let lastLine = lines.last?.points, lastLine.isEmpty { lines.removeLast() }
-        }))
+        })
+        )
+        .disabled(store.jihwaja.isCompleted[8])
+        .sheet(isPresented: store.jihwaja.isCompleted[8] ? .constant(false) : $showModal)
+            { HalfModalView(imageName:"Q9_motion",
+                           title: "그림 그리기",
+                            content: "다양한 색을 선택해 나만의 그림을 그려보세요!",
+                            showModal: $showModal)
+            }
     }
 }
 
