@@ -44,8 +44,8 @@ class TranslateManager {
         
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/x-www-form-urlencoded; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("FJ2V_KhTZCpQoeD0n57R", forHTTPHeaderField: "X-Naver-Client-Id")
-        urlRequest.setValue("LTfCp5kujA", forHTTPHeaderField: "X-Naver-Client-Secret")
+        urlRequest.setValue("", forHTTPHeaderField: "X-Naver-Client-Id")
+        urlRequest.setValue("", forHTTPHeaderField: "X-Naver-Client-Secret")
         
         let parameter = "source=\(papago.source)&target=\(papago.target)&text=\(papago.text)"
         let parameterData = parameter.data(using: .utf8)
