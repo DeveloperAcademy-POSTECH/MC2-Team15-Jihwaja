@@ -19,7 +19,8 @@ struct QuestionView07: View {
         VStack{
             ScrollView{
                 // 질문 뷰
-                QuestionView(question: "🍛 \(store.jihwaja.A1)씨에게 추억을 떠올리게\n하는 음식과 그 추억을 말해주세요!")
+                QuestionView(question: "🍛 \(store.jihwaja.A1)씨의 추억이 담긴 음식과\n그 추억을 말해주세요!")
+                    .padding(.horizontal, -10)
                 
                 // 답변 TextEditor
                 TextEditor(text: $food)

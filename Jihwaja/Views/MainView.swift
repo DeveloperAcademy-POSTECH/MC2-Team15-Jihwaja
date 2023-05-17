@@ -37,7 +37,7 @@ struct MainView: View {
                 }.padding(.top, getWidth() * 0.18)
                 
                 HStack {
-                    Text("카드를 골라 질문을 선택해 주세요 :)")
+                    Text("카드를 골라 질문을 선택해 주세요")
                         .font(.body)
                         .foregroundColor(.gray)
                     Spacer()

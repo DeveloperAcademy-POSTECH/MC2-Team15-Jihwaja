@@ -86,9 +86,16 @@ struct QuestionView03: View {
             QuestionView(question: "☝️ \(store.jihwaja.A1)씨에게 가장 중요한\n5가지 가치는 무엇인가요?")
             // 초록색 영역
             RoundedRectangle(cornerRadius: 20)
+                .stroke(Color("green"), lineWidth: 2)
+                .foregroundColor(.white)
+                .frame(width: getWidth() * 0.78, height: getHeight() * 0.2)
+                .overlay(
+            RoundedRectangle(cornerRadius: 20)
                 .fill(Color("green"))
                 .opacity(0.1)
                 .frame(width: getWidth() * 0.78, height: getHeight() * 0.2)
+                )
+                
             
             Spacer()
             

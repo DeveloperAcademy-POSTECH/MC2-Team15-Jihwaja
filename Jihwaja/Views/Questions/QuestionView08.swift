@@ -26,51 +26,53 @@ struct QuestionView08: View {
                         Text("\n지금 당장 떠나고 싶은 곳이 있나요?")
                             .multilineTextAlignment(.center)
                             .frame(width: getWidth() * 0.65)
-                            .font(.system(size: 27))
+                            .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(Color("green"))
                     } else if result.last == "본" || result.last == "울" || result.last == "국" || result.last == "인"{
+                       
                         VStack{
                             Text("\n지금 당장\n")
                                 .multilineTextAlignment(.center)
                                 .frame(width: getWidth() * 0.65)
-                                .font(.body)
-                                .fontWeight(.bold)
+                                .font(.title)
+                            //.fontWeight(.bold)
                                 .foregroundColor(Color("grayText"))
                             Text("\(result)")
                                 .multilineTextAlignment(.center)
                                 .frame(width: getWidth() * 0.65)
-                                .font(.system(size: 27))
-                                .fontWeight(.bold)
+                                .font(.title)
+                            //.fontWeight(.bold)
                                 .foregroundColor(Color("green"))
                                 .padding(.vertical)
                             Text("으로 떠나보는 것은 어떨까요?")
                                 .multilineTextAlignment(.center)
                                 .frame(width: getWidth() * 0.65)
-                                .font(.body)
-                                .fontWeight(.bold)
+                                .font(.title)
+                            //.fontWeight(.bold)
                                 .foregroundColor(Color("grayText"))
                         }
+                        
                     } else {
                         VStack{
                             Text("\n지금 당장")
                                 .multilineTextAlignment(.center)
                                 .frame(width: getWidth() * 0.65)
-                                .font(.body)
-                                .fontWeight(.bold)
+                                .font(.title)
+                                //.fontWeight(.bold)
                                 .foregroundColor(Color("grayText"))
                             Text("\(result)")
                                 .multilineTextAlignment(.center)
                                 .frame(width: getWidth() * 0.65)
-                                .font(.system(size: 27))
+                                .font(.title)
                                 .fontWeight(.bold)
                                 .foregroundColor(Color("green"))
                                 .padding(.vertical)
                             Text("로 떠나보는 것은 어떨까요?")
                                 .multilineTextAlignment(.center)
                                 .frame(width: getWidth() * 0.65)
-                                .font(.body)
-                                .fontWeight(.bold)
+                                .font(.title)
+                                //.fontWeight(.bold)
                                 .foregroundColor(Color("grayText"))
                         }
                         
@@ -82,29 +84,29 @@ struct QuestionView08: View {
                             Text("\n지금 당장 떠나고 싶은 곳이 있나요?")
                                 .multilineTextAlignment(.center)
                                 .frame(width: getWidth() * 0.65)
-                                .font(.system(size: 27))
-                                .fontWeight(.bold)
+                                .font(.title)
+                                //.fontWeight(.bold)
                                 .foregroundColor(Color("green"))
                         } else if result.last == "본" || result.last == "울" || result.last == "국" || result.last == "인"{
                             VStack{
                                 Text("\n지금 당장\n")
                                     .multilineTextAlignment(.center)
                                     .frame(width: getWidth() * 0.65)
-                                    .font(.body)
-                                    .fontWeight(.bold)
+                                    .font(.title)
+                                    //.fontWeight(.bold)
                                     .foregroundColor(Color("grayText"))
                                 Text("\(result)")
                                     .multilineTextAlignment(.center)
                                     .frame(width: getWidth() * 0.65)
-                                    .font(.system(size: 27))
+                                    .font(.title)
                                     .fontWeight(.bold)
                                     .foregroundColor(Color("green"))
                                     .padding(.vertical)
                                 Text("으로 떠나보는 것은 어떨까요?")
                                     .multilineTextAlignment(.center)
                                     .frame(width: getWidth() * 0.65)
-                                    .font(.body)
-                                    .fontWeight(.bold)
+                                    .font(.title)
+                                    //.fontWeight(.bold)
                                     .foregroundColor(Color("grayText"))
                             }
                         } else {
@@ -112,21 +114,21 @@ struct QuestionView08: View {
                                 Text("\n지금 당장")
                                     .multilineTextAlignment(.center)
                                     .frame(width: getWidth() * 0.65)
-                                    .font(.body)
-                                    .fontWeight(.bold)
+                                    .font(.title)
+                                    //.fontWeight(.bold)
                                     .foregroundColor(Color("grayText"))
                                 Text("\(result)")
                                     .multilineTextAlignment(.center)
                                     .frame(width: getWidth() * 0.65)
-                                    .font(.system(size: 27))
+                                    .font(.title)
                                     .fontWeight(.bold)
                                     .foregroundColor(Color("green"))
                                     .padding(.vertical)
                                 Text("로 떠나보는 것은 어떨까요?")
                                     .multilineTextAlignment(.center)
                                     .frame(width: getWidth() * 0.65)
-                                    .font(.body)
-                                    .fontWeight(.bold)
+                                    .font(.title)
+                                    //.fontWeight(.bold)
                                     .foregroundColor(Color("grayText"))
                             }
                             
@@ -153,7 +155,7 @@ struct QuestionView08: View {
         }.sheet(isPresented: store.jihwaja.isCompleted[7] ? .constant(false) : $showModal)
         { HalfModalView(imageName:"Q8_motion",
                         title: "카드 좌우로 밀기",
-                        content: "긍정적이면 오른쪽, 부정적이면 왼쪽으로 카드를 밀어주세요!",
+                        content: "긍정적 답변은 오른쪽,\n부정적 답변은 왼쪽으로\n카드를 밀어주세요!",
                         showModal: $showModal)
         }
         
@@ -200,7 +202,7 @@ struct CardView: View {
         .opacity(2 - Double(abs(offset.width / 50)))
         .gesture(DragGesture(minimumDistance: 0.05)
             .onChanged { gesture in
-                offset = gesture.translation 
+                offset = gesture.translation
             }.onEnded{ _ in
                 
                 if offset.width > 100 {

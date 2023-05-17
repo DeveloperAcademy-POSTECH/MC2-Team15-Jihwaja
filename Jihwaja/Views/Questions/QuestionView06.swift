@@ -24,7 +24,7 @@ struct QuestionView06 : View {
     var body : some View {
         if isShowingEraseView == true || store.jihwaja.isCompleted[5] == true {
             VStack{
-                QuestionView(question: "⚒️ \(store.jihwaja.A1)씨의 고치고 싶은 습관이\n고쳐지길 바라면서 지워주세요")
+                QuestionView(question: "⚒️ \(store.jihwaja.A1)씨의 습관이\n고쳐지길 바라면서 지워주세요")
                 EraseView(lines: $lines)
                 
                 Button(action:{
@@ -43,7 +43,7 @@ struct QuestionView06 : View {
             .sheet(isPresented: store.jihwaja.isCompleted[5] ? .constant(false) : $showModal)
             { HalfModalView(imageName:"Q6_motion",
                             title: "힘껏 문지르기",
-                            content: "고치고 싶은 습관이 고쳐지길\n바라면서 힘껏 문질러주세요",
+                            content: "글씨를 문질러서 지워주세요",
                             showModal: $showModal)
             }
             
@@ -125,7 +125,7 @@ struct EraseView: View {
                         DrawingShape(points: line.points)
                             .stroke(line.color, style: StrokeStyle(lineWidth: line.lineWidth, lineCap: .round, lineJoin: .round))
                     }
-                }
+                }.frame(width: getWidth(), height: getHeight()/2)
                 .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local).onChanged({ value in
                     let newPoint = value.location
                     if value.translation.width + value.translation.height == 0 {
@@ -139,6 +139,7 @@ struct EraseView: View {
                 }))
                 .disabled(store.jihwaja.isCompleted[5])
             }
+            .scrollDisabled(true)
         }
     }
 }
