@@ -21,8 +21,17 @@ struct QuestionView05: View {
             VStack{
                 // 질문
                 QuestionView(question: "😄 지금 \(store.jihwaja.A1)씨가 느끼고 있는\n행복의 크기를 알려주세요!")
-                Spacer()
+                //Spacer()
                
+                // % 텍스트
+                Text("\(Int(scale * 25))%")
+                                .padding()
+                                .font(.title)
+                                //.fontWeight(.bold)
+                
+                Spacer()
+                
+                
                 //답변 영역
                 ZStack{
                     
@@ -45,12 +54,7 @@ struct QuestionView05: View {
                                 } : nil)
                 }
                 
-                // % 텍스트
-                Text("\(Int(scale * 25))%")
-                                .padding()
-                                .font(.title)
-                                .fontWeight(.bold)
-                
+               
                 Spacer()
                 //저장 버튼
                 Button(action: {
