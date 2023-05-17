@@ -59,7 +59,8 @@ struct QuestionView05: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     StoreButtonView(isActive: isActiveQ5)
-                }).disabled(!isActiveQ5)
+                })
+                //.disabled(!isActiveQ5)
                     .opacity(store.jihwaja.isCompleted[4] == true ? 0: 1)
                     .sheet(isPresented: store.jihwaja.isCompleted[4] ? .constant(false) : $showModal)
                     

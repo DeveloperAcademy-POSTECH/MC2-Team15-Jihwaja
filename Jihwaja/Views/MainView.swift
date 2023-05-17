@@ -21,8 +21,8 @@ struct MainView: View {
     
     var body: some View {
         
-        let remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
-
+        //let remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
+        let remainingQ = 0
         
         NavigationView{
             VStack {

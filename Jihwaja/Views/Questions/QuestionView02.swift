@@ -22,13 +22,18 @@ struct QuestionView02: View {
             QuestionView(question: "🙋🏻‍♀️ \(store.jihwaja.A1)씨는 지금까지\n 진정으로 원하는 삶을 살았나요?")
             Spacer()
             
+            // % 텍스트
+            Text("\(Int(yes)-1) %")
+                .font(.title)
+                Spacer()
+            
             //답변 영역
             VStack{
                 Text("네!")
                 // 슬라이더에서 변경되는 $yes에 따라 font size 변경
                     .font(.system(size:(10 * (yes/5))))
                     .foregroundColor(Color("green"))
-            }.frame(width: getWidth(), height: getHeight() * 0.4)
+            }.frame(width: getWidth(), height: getHeight() * 0.3)
             
             // 슬라이더
             Slider(
@@ -52,8 +57,7 @@ struct QuestionView02: View {
             .accentColor(Color("green"))
             .disabled(store.jihwaja.isCompleted[1])
             
-            // % 텍스트
-            Text("\(Int(yes)-1) %")
+            Spacer()
             
             //저장 버튼
             Button(action: {
