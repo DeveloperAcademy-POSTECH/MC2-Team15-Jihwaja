@@ -11,16 +11,17 @@ struct FinalView: View {
     @EnvironmentObject var store: JihwajaStore
     var body: some View {
         VStack{
+            ProfileView()
             
-                ZStack{
-                    Circle()
-                        .stroke(Color("green"), lineWidth: 3)
-                        .frame(width: getWidth() * 0.3, height: getWidth() * 0.3)
-                    Image("SplashImg")
-                        .resizable()
-                        .frame(width: getWidth() * 0.1, height: getHeight() * 0.1)
-                }
-                .padding(.vertical)
+//                ZStack{
+//                    Circle()
+//                        .stroke(Color("green"), lineWidth: 3)
+//                        .frame(width: getWidth() * 0.3, height: getWidth() * 0.3)
+//                    Image("SplashImg")
+//                        .resizable()
+//                        .frame(width: getWidth() * 0.1, height: getHeight() * 0.1)
+//                }
+//                .padding(.vertical)
                 
             Group{
                 HStack{
@@ -53,7 +54,7 @@ struct FinalView: View {
                             .cornerRadius(7)
                     }
                     
-                    Text("\(store.jihwaja.A1)씨는 지금까지\n진정으로 원하는 삶을 살았나요?")
+                    Text("\(store.jihwaja.A1)씨가 훗날\n기억되고 싶은 표정은")
                     
                     Spacer()
                 }
@@ -63,27 +64,10 @@ struct FinalView: View {
                     .font(.system(size:(10 * (store.jihwaja.A2/5))))
                     .foregroundColor(Color("green"))
                 
-                //Q3
-                HStack{
-                    ZStack {
-                        Image("background")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: getWidth() * 0.08, height: getWidth() * 0.1)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
-                        
-                        
-                        Image("cardDesign02")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: getWidth() * 0.06, height: getWidth() * 0.08)
-                            .cornerRadius(7)
-                    }
-                    
-                    Text("\(store.jihwaja.A1)씨에게\n가장 중요한 5가지 가치는")
-                    Spacer()
-                }
+                Rectangle()
+                    .frame(width: getWidth() * 0.74, height: getHeight() * 0.45)
+                    .foregroundColor(Color.black.opacity(0.06))
+                    .cornerRadius(10)
                 
                 //Q4
                 HStack{
@@ -210,7 +194,7 @@ struct FinalView: View {
                             .frame(width: getWidth() * 0.06, height: getWidth() * 0.08)
                             .cornerRadius(7)
                     }
-                    Text("\(store.jihwaja.A1)씨가 기억되고 싶은 표정은")
+                    Text("\(store.jihwaja.A1)씨에게\n가장 중요한 5가지 가치는")
                     Spacer()
                 }
                 
@@ -282,6 +266,21 @@ struct FinalView: View {
     }
 }
 
+struct ProfileView: View {
+    @EnvironmentObject var store: JihwajaStore
+    @State private var lines = [Line]()
+    
+    var body: some View {
+        ZStack {
+            ForEach(lines) { line in
+                DrawingShape(points: line.points)
+                    .stroke(line.color, style: StrokeStyle(lineWidth: line.lineWidth, lineCap: .round, lineJoin: .round))
+            }
+        }.onAppear {
+            lines = store.jihwaja.A9
+        }
+    }
+}
 struct FinalView_Previews: PreviewProvider {
     static var previews: some View {
         FinalView()
