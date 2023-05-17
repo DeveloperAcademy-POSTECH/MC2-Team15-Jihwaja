@@ -69,7 +69,7 @@ struct QuestionView05: View {
                     .sheet(isPresented: store.jihwaja.isCompleted[4] ? .constant(false) : $showModal)
                     
                     {
-                    HalfModalView(imageName:"Q5_motion", title: "손가락 벌리기", content: "답변의 크기만큼 손가락을 벌려\n원의 크기를 설정해주세요!", showModal: $showModal)
+                    HalfModalView(imageName:"Q5_motion", title: "손가락 벌리기", content: "답변의 크기만큼 손가락을 벌려\n원의 크기를 변경해보세요!", showModal: $showModal)
                     }
                     
             }
