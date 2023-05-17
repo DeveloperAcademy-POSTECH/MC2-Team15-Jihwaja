@@ -20,6 +20,7 @@ struct FinalView: View {
                         .resizable()
                         .frame(width: getWidth() * 0.1, height: getHeight() * 0.1)
                 }
+                .padding(.vertical)
                 
             Group{
                 HStack{
@@ -30,7 +31,7 @@ struct FinalView: View {
                         .font(.title)
                     Spacer()
                 }
-                
+                .padding(.vertical)
                 
                 
                 
@@ -56,6 +57,11 @@ struct FinalView: View {
                     
                     Spacer()
                 }
+                
+                Text("네!")
+                // 슬라이더에서 변경되는 $yes에 따라 font size 변경
+                    .font(.system(size:(10 * (store.jihwaja.A2/5))))
+                    .foregroundColor(Color("green"))
                 
                 //Q3
                 HStack{
@@ -267,7 +273,7 @@ struct FinalView: View {
                             .frame(width: getWidth() * 0.06, height: getWidth() * 0.08)
                             .cornerRadius(7)
                     }
-                    Text("😎 앞으로도 \(store.jihwaja.A1)씨가 듣고 싶은 호칭은")
+                    Text("앞으로도 \(store.jihwaja.A1)씨가 듣고 싶은 호칭은")
                     Spacer()
                 }
             }
