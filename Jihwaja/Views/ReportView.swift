@@ -18,25 +18,63 @@ struct ReportView: View {
     @State var models = [String]()
 
     var body: some View {
-        
-        if text == "" {
-            VStack {
-                QuestionView(question: "\(store.jihwaja.A1)님의 소중한 결과를\n불러오고 있는 중입니다")
-                Spacer()
-                ProgressView("조금만 기다려 주세요").foregroundColor(Color("greenvie"))
-                    .frame(width: getWidth() * 0.2)
-                Spacer()
-                Image("SplashImg")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: getWidth() * 0.2, height: getWidth() * 0.4)
+            if text == "" {
+                VStack {
+                    QuestionView(question: "\(store.jihwaja.A1)님의 소중한 결과를\n불러오고 있는 중입니다")
+                    Spacer()
+                    ProgressView("조금만 기다려 주세요").foregroundColor(Color("greenvie"))
+                        .frame(width: getWidth() * 0.2)
+                    Spacer()
+                    Image("SplashImg")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: getWidth() * 0.2, height: getWidth() * 0.4)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        send()
+                    }, label: {
+                        Text("다시 불러오기")
+                            .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
+                            .background(Color("green"))
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding(.top, getWidth() * 0.04)
+                            .padding(.bottom, getWidth() * 0.12)
+                    })
+                }.onAppear { send() }
+            } else {
+                ScrollView {
+//                    Text("\(store.jihwaja.A1)님이 답해주신 내용을 바탕으로,\n")
+//                        .font(.body)
+//                        .foregroundColor(Color("grayText"))
+//
+//                    HStack{
+//                        Text("\(store.jihwaja.A1)")
+//                            .font(.body)
+//                            .fontWeight(.bold)
+//
+//                        Text("님에 대한")
+//                            .font(.body)
+//                            .foregroundColor(Color("grayText"))
+//                    }
+//
+//                    Text("짧은 이야기를 들려드릴게요!")
+//
+//                    Text(text)
+//                        .font(.body)
+//                        .frame(width: getWidth() * 0.8)
+                    
+                    
+                    FinalView()
+                }
                 
-                Spacer()
                 
                 Button(action: {
-                    send()
+                    self.presentationMode.wrappedValue.dismiss()
                 }, label: {
-                    Text("다시 불러오기")
+                    Text("완료")
                         .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
                         .background(Color("green"))
                         .foregroundColor(.white)
@@ -44,79 +82,7 @@ struct ReportView: View {
                         .padding(.top, getWidth() * 0.04)
                         .padding(.bottom, getWidth() * 0.12)
                 })
-            }.onAppear { send() }
-        } else {
-            ScrollView {
-                VStack(alignment: .leading){
-                    Text("\(store.jihwaja.A1)님이 답해주신 내용을 바탕으로,\n")
-                        .font(.body)
-                        .foregroundColor(Color("grayText"))
-                    
-                    HStack{
-                        Text("\(store.jihwaja.A1)")
-                            .font(.body)
-                            .fontWeight(.bold)
-                        
-                        Text("님에 대한")
-                            .font(.body)
-                            .foregroundColor(Color("grayText"))
-                    }
-                    
-                    Text("짧은 이야기를 들려드릴게요!")
-                    
-                    Spacer()
-                    
-                    HStack{
-                        Circle()
-                            .stroke(Color("green"), lineWidth: 3)
-                            .overlay(
-                                Image("SplashImg")
-                                    .resizable()
-                                    .frame(width: getWidth() * 0.2, height: getHeight() * 0.2)
-                                    .scaledToFit()
-                                
-                            )
-                            .frame(width: getWidth() * 0.2, height: getHeight() * 0.2)
-                        Text("\(store.jihwaja.A1)")
-                            .fontWeight(.bold)
-                            .font(.title)
-                        Text("님의 답변 모아보기")
-                            .font(.title)
-                        
-                    }
-                    
-                    Spacer()
-                    
-                    Text(text)
-                        .font(.body)
-                        .frame(width: getWidth() * 0.8)
-                    
-                    
-                    ForEach(store.jihwaja.A6L) { line in
-                        DrawingShape(points: line.points)
-                            .stroke(line.color, style: StrokeStyle(lineWidth: line.lineWidth, lineCap: .round, lineJoin: .round))
-                    }
-                    
-                    Image(store.jihwaja.A8)
-                        .padding(.horizontal)
-                    Image(store.jihwaja.A10)
-                        .padding(.horizontal)
-                }
-            }.border(.black)
-            
-            
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Text("완료")
-                    .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
-                    .background(Color("green"))
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding(.top, getWidth() * 0.04)
-                    .padding(.bottom, getWidth() * 0.12)
-            })
-        }
+            }
     }
 
     func send() {
