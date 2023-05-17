@@ -22,7 +22,6 @@ struct MainView: View {
     var body: some View {
         
         let remainingQ = 12 - store.jihwaja.isCompleted.filter { $0 }.count
-
         
         NavigationView{
             VStack {
@@ -38,7 +37,7 @@ struct MainView: View {
                 }.padding(.top, getWidth() * 0.18)
                 
                 HStack {
-                    Text("카드를 골라 질문을 선택해 주세요 :)")
+                    Text("카드를 골라 질문을 선택해 주세요")
                         .font(.body)
                         .foregroundColor(.gray)
                     Spacer()
@@ -88,7 +87,7 @@ struct MainView: View {
                 
                 // 결과 버튼
                 NavigationLink(destination: ReportView(), isActive: $isReportViewShowing){
-                    Button(remainingQ == 0 ? "축하합니다! 결과를 보러 가 볼까요?" : "아직 \(remainingQ)개의 질문이 남아있어요!"){
+                    Button(remainingQ == 0 ? "축하합니다! 결과를 보러 가볼까요?" : "아직 \(remainingQ)개의 질문이 남아있어요!"){
                         isReportViewShowing.toggle()
                     }
                     .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)

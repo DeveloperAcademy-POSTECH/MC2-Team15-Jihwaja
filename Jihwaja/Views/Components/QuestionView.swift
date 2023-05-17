@@ -14,7 +14,7 @@ struct QuestionView: View {
         VStack{
             Text(question)
                 .font(.system(size: 22))
-                .fontWeight(.bold)
+                .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
         }
         .padding(.top, getWidth() * 0.1)

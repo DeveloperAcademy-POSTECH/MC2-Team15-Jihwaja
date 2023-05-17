@@ -22,44 +22,124 @@ struct QuestionView08: View {
                 QuestionView(question: "✈️ \(store.jihwaja.A1)씨가 지금 당장\n떠나고 싶은 곳은 어디인가요?")
                 
                 if store.jihwaja.isCompleted[7] {
-                    Text("\n지금 당장 \(result)로 떠나보는 것은 어떨까요?")
-                        .multilineTextAlignment(.center)
-                        .frame(width: getWidth() * 0.65)
-                        .font(.system(size: 27))
-                        .fontWeight(.bold)
-                        .foregroundColor(Color("green"))
-                    
-                } else {
-                ZStack {
                     if result == "" {
                         Text("\n지금 당장 떠나고 싶은 곳이 있나요?")
                             .multilineTextAlignment(.center)
                             .frame(width: getWidth() * 0.65)
-                            .font(.system(size: 27))
+                            .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(Color("green"))
                     } else if result.last == "본" || result.last == "울" || result.last == "국" || result.last == "인"{
-                        Text("\n지금 당장 \(result)으로 떠나보는 것은 어떨까요?")
-                            .multilineTextAlignment(.center)
-                            .frame(width: getWidth() * 0.65)
-                            .font(.system(size: 27))
-                            .fontWeight(.bold)
-                            .foregroundColor(Color("green"))
+                       
+                        VStack{
+                            Text("\n지금 당장\n")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.title)
+                            //.fontWeight(.bold)
+                                .foregroundColor(Color("grayText"))
+                            Text("\(result)")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.title)
+                            //.fontWeight(.bold)
+                                .foregroundColor(Color("green"))
+                                .padding(.vertical)
+                            Text("으로 떠나보는 것은 어떨까요?")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.title)
+                            //.fontWeight(.bold)
+                                .foregroundColor(Color("grayText"))
+                        }
+                        
                     } else {
-                        Text("\n지금 당장 \(result)로 떠나보는 것은 어떨까요?")
-                            .multilineTextAlignment(.center)
-                            .frame(width: getWidth() * 0.65)
-                            .font(.system(size: 27))
-                            .fontWeight(.bold)
-                            .foregroundColor(Color("green"))
+                        VStack{
+                            Text("\n지금 당장")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.title)
+                                //.fontWeight(.bold)
+                                .foregroundColor(Color("grayText"))
+                            Text("\(result)")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("green"))
+                                .padding(.vertical)
+                            Text("로 떠나보는 것은 어떨까요?")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.title)
+                                //.fontWeight(.bold)
+                                .foregroundColor(Color("grayText"))
+                        }
+                        
                     }
                     
-                    ForEach(0..<8, id: \.self) { index in
-                        CardView(result: $result, image: "cardPic0\(index)", country: country[index])
-                            .stacked(at: index, in: 8)
+                } else {
+                    ZStack {
+                        if result == "" {
+                            Text("\n지금 당장 떠나고 싶은 곳이 있나요?")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.title)
+                                //.fontWeight(.bold)
+                                .foregroundColor(Color("green"))
+                        } else if result.last == "본" || result.last == "울" || result.last == "국" || result.last == "인"{
+                            VStack{
+                                Text("\n지금 당장\n")
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: getWidth() * 0.65)
+                                    .font(.title)
+                                    //.fontWeight(.bold)
+                                    .foregroundColor(Color("grayText"))
+                                Text("\(result)")
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: getWidth() * 0.65)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("green"))
+                                    .padding(.vertical)
+                                Text("으로 떠나보는 것은 어떨까요?")
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: getWidth() * 0.65)
+                                    .font(.title)
+                                    //.fontWeight(.bold)
+                                    .foregroundColor(Color("grayText"))
+                            }
+                        } else {
+                            VStack{
+                                Text("\n지금 당장")
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: getWidth() * 0.65)
+                                    .font(.title)
+                                    //.fontWeight(.bold)
+                                    .foregroundColor(Color("grayText"))
+                                Text("\(result)")
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: getWidth() * 0.65)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("green"))
+                                    .padding(.vertical)
+                                Text("로 떠나보는 것은 어떨까요?")
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: getWidth() * 0.65)
+                                    .font(.title)
+                                    //.fontWeight(.bold)
+                                    .foregroundColor(Color("grayText"))
+                            }
+                            
+                        }
+                        
+                        ForEach(0..<8, id: \.self) { index in
+                            CardView(result: $result, image: "cardPic0\(index)", country: country[index])
+                                .stacked(at: index, in: 8)
+                        }
                     }
                 }
-            }
                 Spacer()
                 
                 // 저장 버튼
@@ -74,8 +154,8 @@ struct QuestionView08: View {
             }
         }.sheet(isPresented: store.jihwaja.isCompleted[7] ? .constant(false) : $showModal)
         { HalfModalView(imageName:"Q8_motion",
-                       title: "카드 좌우로 밀기",
-                        content: "긍정적이면 오른쪽, 부정적이면 왼쪽으로 카드를 밀어주세요!",
+                        title: "카드 좌우로 밀기",
+                        content: "긍정적 답변은 오른쪽,\n부정적 답변은 왼쪽으로\n카드를 밀어주세요!",
                         showModal: $showModal)
         }
         
@@ -103,7 +183,7 @@ struct CardView: View {
                 .frame(width: getWidth() * 0.78, height: getHeight() * 0.45)
                 .foregroundColor(Color("lightGray").opacity(1 - Double(abs(offset.width / 50))))
                 .background(RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .fill(offset.width > 0 ? Color("lightGreen") : Color("lightRed")))
+                .fill(offset.width > 0 ? Color("green") : Color("red")))
                 .shadow(color: Color("grayText").opacity(0.3), radius: 6)
             
             
@@ -122,7 +202,7 @@ struct CardView: View {
         .opacity(2 - Double(abs(offset.width / 50)))
         .gesture(DragGesture(minimumDistance: 0.05)
             .onChanged { gesture in
-                offset = gesture.translation 
+                offset = gesture.translation
             }.onEnded{ _ in
                 
                 if offset.width > 100 {

@@ -51,7 +51,7 @@ struct QuestionView03: View {
                     
                     // 각 텍스트가 갈 수 있는 바운더리 x, y 값
                     let minX = width * 0.1 - width * 0.25 * CGFloat(col)
-                    let maxX = width * 0.68 - width * 0.25 * CGFloat(col)
+                    let maxX = width * 0.67 - width * 0.25 * CGFloat(col)
                     
                     let minY = -height * 0.18 - height * 0.1 * CGFloat(row)
                     let maxY = (height * 0.26 - height * 0.1 * CGFloat(row))
@@ -86,9 +86,16 @@ struct QuestionView03: View {
             QuestionView(question: "☝️ \(store.jihwaja.A1)씨에게 가장 중요한\n5가지 가치는 무엇인가요?")
             // 초록색 영역
             RoundedRectangle(cornerRadius: 20)
+                .stroke(Color("green"), lineWidth: 2)
+                .foregroundColor(.white)
+                .frame(width: getWidth() * 0.78, height: getHeight() * 0.2)
+                .overlay(
+            RoundedRectangle(cornerRadius: 20)
                 .fill(Color("green"))
                 .opacity(0.1)
                 .frame(width: getWidth() * 0.78, height: getHeight() * 0.2)
+                )
+                
             
             Spacer()
             
@@ -140,9 +147,8 @@ struct QuestionView03: View {
             }).disabled(!isActiveQ3)
                 .opacity(store.jihwaja.isCompleted[2] == true ? 0: 1)
                 .sheet(isPresented: store.jihwaja.isCompleted[2] ? .constant(false) : $showModal)
-                
                 {
-                    HalfModalView(imageName:"Q3_motion", title: "끌어오기", content: "답변뷰를 끌어오세요!", showModal: $showModal)
+                    HalfModalView(imageName:"Q3_motion", title: "끌어오기", content: "답변들을 아래에서 위로 끌어오세요!", showModal: $showModal)
                 }
         }
         .onAppear{

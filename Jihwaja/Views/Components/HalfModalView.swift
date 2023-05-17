@@ -25,14 +25,16 @@ struct HalfModalView: View {
                   .foregroundColor(Color(UIColor.tertiaryLabel))
                 Spacer()
                 
-                AnimatedManager(fileName: "\(imageName)")
-                    .frame(width: getWidth() * 0.78, height: getWidth() * 0.62)
-                Spacer()
-                
                 Text(title)
                     .font(.system(size: 22))
                     .fontWeight(.bold)
                     .padding(.bottom, getWidth() * 0.02)
+                
+                AnimatedManager(fileName: "\(imageName)")
+                    .frame(width: getWidth() * 0.78, height: getWidth() * 0.62)
+                Spacer()
+                
+                
                 Text(content)
                     .font(.system(size: 20))
                     .padding(.bottom, getWidth() * 0.02)

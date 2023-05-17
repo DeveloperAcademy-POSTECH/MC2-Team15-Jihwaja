@@ -10,16 +10,12 @@ import SwiftUI
 struct SplashView: View {
     var body: some View {
         
-        VStack{
-            Text("知 化 自")
-                .font(.title)
-                .padding()
+//        VStack{
+//            Text("知 化 自")
+//                .font(.title)
+//                .padding()
             Image ("SplashImg")
-                
-                
-                
-        }
-        
+//        }
     }
 }
 

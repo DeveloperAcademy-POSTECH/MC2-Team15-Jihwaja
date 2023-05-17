@@ -27,7 +27,7 @@ struct Onboarding1: View {
             Spacer()
             Image("SplashImg")
                 .resizable()
-                .frame(width: getWidth() * 0.2, height: getHeight() * 0.2)
+                .frame(width: getWidth() * 0.1, height: getHeight() * 0.1)
             Spacer()
             
             HStack {
@@ -37,17 +37,27 @@ struct Onboarding1: View {
                     .padding(.trailing, -8)
                 Text("이 많아진")
                     .font(.system(size: 18))
-                    .fontWeight(.semibold)
+                //.fontWeight(.semibold)
             }
             
-            Text("부모님들을 위한 앱입니다.")
-                .font(.system(size: 18))
-                .fontWeight(.semibold)
-                .padding(.bottom, getWidth() * 0.05)
+            
+            HStack{
+                Text("부모님들")
+                    .font(.system(size: 18))
+                    .fontWeight(.semibold)
+                    .padding(.trailing, -8)
+                    .padding(.bottom, getWidth() * 0.05)
+                    
+                Text("을 위한 앱입니다.")
+                    .font(.system(size: 18))
+                    .padding(.bottom, getWidth() * 0.05)
+                //.fontWeight(.semibold)
+                    
+            }
             
             Text("질문에 답을 하는 과정을 통해")
                 .font(.system(size: 18))
-                .fontWeight(.semibold)
+            //.fontWeight(.semibold)
             
             HStack {
                 Text("나 자신에 대해 더 깊게 이해")
@@ -56,12 +66,12 @@ struct Onboarding1: View {
                     .padding(.trailing, -8)
                 Text("하고")
                     .font(.system(size: 18))
-                    .fontWeight(.semibold)
+                //.fontWeight(.semibold)
             }
             
             Text("행복을 찾아보세요!")
                 .font(.system(size: 18))
-                .fontWeight(.semibold)
+            //.fontWeight(.semibold)
                 .padding(.bottom, getWidth() * 0.07)
             
         }

@@ -14,11 +14,10 @@ struct ReportView: View {
     @EnvironmentObject var store: JihwajaStore
     @Environment(\.presentationMode) var presentationMode
     
-    @State var text = ""
+    @State var text = "ㅎ"
     @State var models = [String]()
 
     var body: some View {
-        VStack {
             if text == "" {
                 VStack {
                     QuestionView(question: "\(store.jihwaja.A1)님의 소중한 결과를\n불러오고 있는 중입니다")
@@ -47,45 +46,28 @@ struct ReportView: View {
                 }.onAppear { send() }
             } else {
                 ScrollView {
-                    Text("\(store.jihwaja.A1)님이 답해주신 내용을 바탕으로,\n")
-                        .font(.body)
-                        .foregroundColor(Color("grayText"))
-                    
-                    HStack{
-                    Text("\(store.jihwaja.A1)")
-                        .font(.body)
-                        .fontWeight(.bold)
-                         
-                    Text("님에 대한")
-                        .font(.body)
-                        .foregroundColor(Color("grayText"))
-                         }
-                         
-                    Text("짧은 이야기를 들려드릴게요!")
-                    
-                    Spacer()
-                    Text("네!")
-                    // 슬라이더에서 변경되는 $yes에 따라 font size 변경
-                        .font(.system(size:(10 * (store.jihwaja.A2/5))))
-                        .foregroundColor(Color("green"))
-                        .padding()
-                    Spacer()
-                    
-                    Text(text)
-                        .font(.body)
-                        .frame(width: getWidth() * 0.8)
+//                    Text("\(store.jihwaja.A1)님이 답해주신 내용을 바탕으로,\n")
+//                        .font(.body)
+//                        .foregroundColor(Color("grayText"))
+//
+//                    HStack{
+//                        Text("\(store.jihwaja.A1)")
+//                            .font(.body)
+//                            .fontWeight(.bold)
+//
+//                        Text("님에 대한")
+//                            .font(.body)
+//                            .foregroundColor(Color("grayText"))
+//                    }
+//
+//                    Text("짧은 이야기를 들려드릴게요!")
+//
+//                    Text(text)
+//                        .font(.body)
+//                        .frame(width: getWidth() * 0.8)
                     
                     
-                    ForEach(store.jihwaja.A6L) { line in
-                        DrawingShape(points: line.points)
-                            .stroke(line.color, style: StrokeStyle(lineWidth: line.lineWidth, lineCap: .round, lineJoin: .round))
-                    }
-                    
-                    Image(store.jihwaja.A8)
-                        .padding(.horizontal)
-                    Image(store.jihwaja.A10)
-                        .padding(.horizontal)
-                    
+                    FinalView()
                 }
                 
                 
@@ -101,24 +83,10 @@ struct ReportView: View {
                         .padding(.bottom, getWidth() * 0.12)
                 })
             }
-        }.onAppear {
-            print("A1: \(store.jihwaja.A1)")
-            print("A2: \(store.jihwaja.A2)")
-            print("A4: \(store.jihwaja.A4)")
-            print("A5: \(store.jihwaja.A5)")
-            print("A6: \(store.jihwaja.A6)")
-            print("A7: \(store.jihwaja.A7)")
-            print("A8: \(store.jihwaja.A8)")
-            print("A10: \(store.jihwaja.A10)")
-            print("A11: \(store.jihwaja.A11)")
-            print("A12s:\(store.jihwaja.A12S)")
-            viewModel.setup()
-        }
     }
 
     func send() {
-        let textStore = "Write a warm story about my self in ENGLISH! My name is \(store.jihwaja.A1). I have a memory of \(store.jihwaja.A6). I have lived the life she really wanted at around 20% (Q2), and she felt -30% (Q11-1) in adolescence, 80% (Q11-2) in youth, and 40% (Q11-3) in middle age. I am currently feeling 40% (Q5) happiness, and important values are health, leisure time, and hobby search (Q3). The habit I want to break is constantly \(store.jihwaja.A6). My preferred hobby is \(store.jihwaja.A10), and the places she wants to leave right away are \(store.jihwaja.A8). I want to be called \(store.jihwaja.A10) in the future, and I want to be remembered as a \(store.jihwaja.A4)."
-        print("===============문구 잘 들어갔는지======================")
+        let textStore = "Can you write a story about me, portraying me as the protagonist of an exciting fairy tale?\nMy name is \(store.jihwaja.A1).I have the following memories from the past:\(store.jihwaja.A4). And when I think about how happy I've been from the past until now: During my teenage years, it was \(store.jihwaja.A11[0]). In my twenties, it was \(store.jihwaja.A11[1]). In my thirties, it was \(store.jihwaja.A11[2]). And now, it's \(store.jihwaja.A11[3]), in terms of happiness.And at this very moment, I'm as happy as \(store.jihwaja.A5). The habit I want to change right now, in my current state, is \(store.jihwaja.A6).I also have a desire to travel to \(store.jihwaja.A7). My hobby is \(store.jihwaja.A10). So far, I have lived with a satisfaction level of \(store.jihwaja.A2). I would like to leave a phrase on my tombstone saying, '\(store.jihwaja.A4)"
         print(textStore)
         let realText = textStore.withoutPunctuations
         

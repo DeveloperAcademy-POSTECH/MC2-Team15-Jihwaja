@@ -18,7 +18,7 @@ struct QuestionView12: View{
     var body : some View {
         if store.jihwaja.isCompleted[11] == false && showSecondView == false {
             VStack{
-                QuestionView(question: "😎 주변에서 \(store.jihwaja.A1)씨를 부를 때 사용하는 호칭들을 작성해주세요!")
+                QuestionView(question: "😎 주변에서 \(store.jihwaja.A1)씨를 어떻게 부르나요?\n그 호칭들을 적어주세요!")
                 
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(Color("gray"), lineWidth: 2)
@@ -69,28 +69,33 @@ struct QuestionView12: View{
             
         } else if store.jihwaja.isCompleted[11] == true || showSecondView == true {
             VStack{
-                QuestionView(question: "😎 앞으로도 \(store.jihwaja.A1)씨가 불려지고 싶은 호칭을 선택해주세요!")
-                Spacer()
+                QuestionView(question: "😎 앞으로도 \(store.jihwaja.A1)씨가 듣고 싶은 호칭을 모두 선택해주세요!")
                 
-                List {
-                    ForEach(items.indices, id: \.self){ index in
-                        HStack {
-                            Text("\(items[index])")
-                                .padding()
-                                .disabled(store.jihwaja.isCompleted[11])
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color("gray"), lineWidth: 2)
+                    .foregroundColor(.clear)
+                    .frame(width: getWidth() * 0.75, height: getHeight() * 0.225)
+                    .overlay{
+                        List {
+                            ForEach(items.indices, id: \.self) { index in
+                                HStack {
+                                    Text("\(items[index])")
+                                    Spacer()
+                                    
+                                    Button(action: {
+                                        isLiked[index].toggle()
+                                    }) {
+                                        Image(systemName: isLiked[index] ? "heart.fill" : "heart")
+                                            .foregroundColor(isLiked[index] ? .red : .gray)
+                                    }.disabled(store.jihwaja.isCompleted[11])
+                                }
+                                    
+                            }
                             
-                            Spacer()
-                            
-                            Button(action: {
-                                isLiked[index].toggle()
-                            }) {
-                                Image(systemName: isLiked[index] ? "heart.fill" : "heart")
-                                    .foregroundColor(isLiked[index] ? .red : .gray)
-                            }.disabled(store.jihwaja.isCompleted[11])
-                        }
+                        }.scrollContentBackground(.hidden)
+                            .padding(.top, -getHeight()*0.03)
                     }
-                }
-                .listStyle(InsetGroupedListStyle())
+                Spacer()
                 
                 
                 Button(action: {
