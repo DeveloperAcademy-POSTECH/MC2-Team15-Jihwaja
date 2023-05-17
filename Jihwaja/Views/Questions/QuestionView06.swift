@@ -50,7 +50,7 @@ struct QuestionView06 : View {
             
         } else if isShowingEraseView == false {
             VStack {
-                ScrollView{
+               
                     // 질문 뷰
                     QuestionView(question: "⚒️ \(store.jihwaja.A1)씨가 고치고 싶은\n습관을 적어주세요!")
                     
@@ -75,7 +75,7 @@ struct QuestionView06 : View {
                 }) {
                         // habit이 비어있지 않으면 isActive true
                         StoreButtonView(isActive: !habit.isEmpty )
-                }
+                
             } // Vstack
             .onAppear {
                 habit = store.jihwaja.A6
