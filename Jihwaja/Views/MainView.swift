@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
 
     @Environment(\.presentationMode) var presentationMode
-    
+    @Binding var isFirstLaunching : Bool
     // 사용자가 화면을 이탈하는지 감시할 변수
     
     
@@ -86,7 +86,7 @@ struct MainView: View {
                 }
                 
                 // 결과 버튼
-                NavigationLink(destination: ReportView(), isActive: $isReportViewShowing){
+                NavigationLink(destination: ReportView(isFirstLaunching: $isFirstLaunching), isActive: $isReportViewShowing){
                     Button(remainingQ == 0 ? "축하합니다! 결과를 보러 가볼까요?" : "아직 \(remainingQ)개의 질문이 남아있어요!"){
                         isReportViewShowing.toggle()
                     }
@@ -149,7 +149,7 @@ extension View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(isFirstLaunching: .constant(false))
     }
 }
 

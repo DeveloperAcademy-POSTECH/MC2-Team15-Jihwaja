@@ -13,6 +13,7 @@ struct ReportView: View {
     let translateManager = TranslateManager()
     @EnvironmentObject var store: JihwajaStore
     @Environment(\.presentationMode) var presentationMode
+    @Binding var isFirstLaunching : Bool
     
     @State var text = "ㅎ"
     @State var models = [String]()
@@ -46,42 +47,8 @@ struct ReportView: View {
                 }.onAppear { send() }
             } else {
                 ScrollView {
-//                    Text("\(store.jihwaja.A1)님이 답해주신 내용을 바탕으로,\n")
-//                        .font(.body)
-//                        .foregroundColor(Color("grayText"))
-//
-//                    HStack{
-//                        Text("\(store.jihwaja.A1)")
-//                            .font(.body)
-//                            .fontWeight(.bold)
-//
-//                        Text("님에 대한")
-//                            .font(.body)
-//                            .foregroundColor(Color("grayText"))
-//                    }
-//
-//                    Text("짧은 이야기를 들려드릴게요!")
-//
-//                    Text(text)
-//                        .font(.body)
-//                        .frame(width: getWidth() * 0.8)
-                    
-                    
-                    FinalView()
+                    FinalView(isFirstLaunching: $isFirstLaunching)
                 }
-                
-                
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Text("완료")
-                        .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
-                        .background(Color("green"))
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .padding(.top, getWidth() * 0.04)
-                        .padding(.bottom, getWidth() * 0.12)
-                })
             }
     }
 
@@ -123,7 +90,7 @@ struct ReportView: View {
 
 struct ReportView_Previews: PreviewProvider {
     static var previews: some View {
-        ReportView()
+        ReportView(isFirstLaunching: .constant(true))
     }
 }
 
