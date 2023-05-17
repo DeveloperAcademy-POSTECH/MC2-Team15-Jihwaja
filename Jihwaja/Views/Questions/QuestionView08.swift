@@ -22,12 +22,59 @@ struct QuestionView08: View {
                 QuestionView(question: "✈️ \(store.jihwaja.A1)씨가 지금 당장\n떠나고 싶은 곳은 어디인가요?")
                 
                 if store.jihwaja.isCompleted[7] {
-                    Text("\n지금 당장 \(result)로 떠나보는 것은 어떨까요?")
-                        .multilineTextAlignment(.center)
-                        .frame(width: getWidth() * 0.65)
-                        .font(.system(size: 27))
-                        .fontWeight(.bold)
-                        .foregroundColor(Color("green"))
+                    if result == "" {
+                        Text("\n지금 당장 떠나고 싶은 곳이 있나요?")
+                            .multilineTextAlignment(.center)
+                            .frame(width: getWidth() * 0.65)
+                            .font(.system(size: 27))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("green"))
+                    } else if result.last == "본" || result.last == "울" || result.last == "국" || result.last == "인"{
+                        VStack{
+                            Text("\n지금 당장\n")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.body)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("grayText"))
+                            Text("\(result)")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.system(size: 27))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("green"))
+                                .padding(.vertical)
+                            Text("으로 떠나보는 것은 어떨까요?")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.body)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("grayText"))
+                        }
+                    } else {
+                        VStack{
+                            Text("\n지금 당장")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.body)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("grayText"))
+                            Text("\(result)")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.system(size: 27))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("green"))
+                                .padding(.vertical)
+                            Text("로 떠나보는 것은 어떨까요?")
+                                .multilineTextAlignment(.center)
+                                .frame(width: getWidth() * 0.65)
+                                .font(.body)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("grayText"))
+                        }
+                        
+                    }
                     
                 } else {
                     ZStack {
