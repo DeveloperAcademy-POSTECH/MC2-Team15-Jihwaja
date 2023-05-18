@@ -13,75 +13,69 @@ struct ReportView: View {
     let translateManager = TranslateManager()
     @EnvironmentObject var store: JihwajaStore
     @Environment(\.presentationMode) var presentationMode
+    @Binding var isFirstLaunching : Bool
     
-    @State var text = "ㅎ"
+    @State var text = ""
     @State var models = [String]()
 
     var body: some View {
             if text == "" {
                 VStack {
                     QuestionView(question: "\(store.jihwaja.A1)님의 소중한 결과를\n불러오고 있는 중입니다")
-                    Spacer()
-                    ProgressView("조금만 기다려 주세요").foregroundColor(Color("greenvie"))
-                        .frame(width: getWidth() * 0.2)
-                    Spacer()
-                    Image("SplashImg")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: getWidth() * 0.2, height: getWidth() * 0.4)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        send()
-                    }, label: {
-                        Text("다시 불러오기")
-                            .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
-                            .background(Color("green"))
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                            .padding(.top, getWidth() * 0.04)
-                            .padding(.bottom, getWidth() * 0.12)
-                    })
-                }.onAppear { send() }
+                        Spacer()
+                        ProgressView("조금만 기다려 주세요").foregroundColor(Color("greenvie"))
+                            .frame(width: getWidth() * 0.2)
+                        Spacer()
+                        Image("SplashImg")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: getWidth() * 0.3, height: getWidth() * 0.6)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            send()
+                        }, label: {
+                            Text("다시 불러오기")
+                                .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
+                                .background(Color("green"))
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .padding(.top, getWidth() * 0.04)
+                                .padding(.bottom, getWidth() * 0.12)
+                        })
+                }.onAppear {
+                    viewModel.setup()
+                    send()}
             } else {
                 ScrollView {
-//                    Text("\(store.jihwaja.A1)님이 답해주신 내용을 바탕으로,\n")
-//                        .font(.body)
-//                        .foregroundColor(Color("grayText"))
-//
-//                    HStack{
-//                        Text("\(store.jihwaja.A1)")
-//                            .font(.body)
-//                            .fontWeight(.bold)
-//
-//                        Text("님에 대한")
-//                            .font(.body)
-//                            .foregroundColor(Color("grayText"))
-//                    }
-//
-//                    Text("짧은 이야기를 들려드릴게요!")
-//
-//                    Text(text)
-//                        .font(.body)
-//                        .frame(width: getWidth() * 0.8)
-                    
-                    
-                    FinalView()
+                    VStack {
+                        ZStack{
+                            Circle()
+                                .stroke(Color("green"), lineWidth: 3)
+                                .frame(width: getWidth() * 0.3, height: getWidth() * 0.3)
+                            Image("SplashImg")
+                                .resizable()
+                                .frame(width: getWidth() * 0.1, height: getHeight() * 0.1)
+                        }
+                        .padding(.vertical)
+                        
+                        HStack{
+                            Text("\(store.jihwaja.A1)")
+                                .fontWeight(.bold)
+                                .font(.title)
+                                .padding(.horizontal)
+                            Text("님의 이야기")
+                                .font(.title)
+                            Spacer()
+                        }
+                        .padding(.vertical)
+                        
+                        Text(text).frame(width: getWidth() * 0.8)
+                        //FinalView(isFirstLaunching: $isFirstLaunching)
+                        FinalView(isFirstLaunching: $isFirstLaunching)
+                    }
                 }
-                
-                
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Text("완료")
-                        .frame(width: getWidth() * 0.78, height: getHeight() * 0.06)
-                        .background(Color("green"))
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .padding(.top, getWidth() * 0.04)
-                        .padding(.bottom, getWidth() * 0.12)
-                })
             }
     }
 
@@ -123,7 +117,7 @@ struct ReportView: View {
 
 struct ReportView_Previews: PreviewProvider {
     static var previews: some View {
-        ReportView()
+        ReportView(isFirstLaunching: .constant(true))
     }
 }
 
@@ -133,10 +127,12 @@ final class ViewModel: ObservableObject {
     private var client: OpenAISwift?
 
     func setup() {
-        client = OpenAISwift(authToken: "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")
+        print("[setup]")
+        client = OpenAISwift(authToken: "")
     }
 
     func send(text: String, completion: @escaping (String) -> Void) {
+        print("[send]")
         client?.sendCompletion(with: text,
                                maxTokens: 800,
                                temperature: 0.8,
