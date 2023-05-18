@@ -38,14 +38,14 @@ class TranslateManager {
     
     func getTranslateText(papago: Papago) -> String {
         print(papago)
-        let url = "https://openapi.naver.com/v1/papago/n2mt"
+        let url = "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation"
         var urlRequest = URLRequest(url: URL(string: url)!)
         var returnValue: String = ""
         
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/x-www-form-urlencoded; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("", forHTTPHeaderField: "X-Naver-Client-Id")
-        urlRequest.setValue("", forHTTPHeaderField: "X-Naver-Client-Secret")
+        urlRequest.setValue("qmcsqdiczo", forHTTPHeaderField: "X-NCP-APIGW-API-KEY-ID")
+        urlRequest.setValue("bOUbb7fMz6PTliI1su5YvGpmkOS0fk0Y6X18k2yo", forHTTPHeaderField: "X-NCP-APIGW-API-KEY")
         
         let parameter = "source=\(papago.source)&target=\(papago.target)&text=\(papago.text)"
         let parameterData = parameter.data(using: .utf8)

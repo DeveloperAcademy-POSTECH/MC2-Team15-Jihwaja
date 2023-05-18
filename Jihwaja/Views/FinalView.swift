@@ -37,8 +37,6 @@ struct FinalView: View {
                 }
                 .padding(.vertical)
                 
-                
-                
                 //Q2
                 HStack{
                     ZStack {
@@ -57,7 +55,7 @@ struct FinalView: View {
                             .cornerRadius(7)
                     }
                     
-                    Text("\(store.jihwaja.A1)씨가 훗날\n기억되고 싶은 표정은")
+                    Text("\(store.jihwaja.A1)씨는 지금까지\n진정으로 원하는 삶을 살았나요?")
                     
                     Spacer()
                 }
