@@ -14,7 +14,7 @@ struct QuestionView11: View {
     @State private var isActiveQ11 = false
     @State private var sliderValues = [0.0, 0.0, 0.0, 0.0]
     
-    @State private var showModal = true
+    @State private var isShowModal = true
     
     var body: some View {
        
@@ -86,8 +86,8 @@ struct QuestionView11: View {
                     StoreButtonView(isActive: isActiveQ11)
                 }).disabled(!isActiveQ11)
                     .opacity(store.jihwaja.isCompleted[10] == true ? 0: 1)
-                    .sheet(isPresented: store.jihwaja.isCompleted[10] ? .constant(false) : $showModal) {
-                        HalfModalView(imageName: "Q11_motion", title: "그래프 그리기", content: "각 축의 동그라미를 위아래로 끌어당겨 그래프를 그려주세요!", showModal: $showModal)
+                    .sheet(isPresented: store.jihwaja.isCompleted[10] ? .constant(false) : $isShowModal) {
+                        HalfModalView(imageName: "Q11_motion", title: "그래프 그리기", content: "각 축의 동그라미를 위아래로 끌어당겨 그래프를 그려주세요!", showModal: $isShowModal)
                     }
 
                 
